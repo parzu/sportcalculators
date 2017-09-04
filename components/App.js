@@ -1,9 +1,10 @@
 import React from 'react';
-import { Grid, Row, Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-bootstrap';
 import TimeSelector from './TimeSelector.js';
 import DistanceSelector from './DistanceSelector.js';
 import SpeedDisplay from './SpeedDisplay.js';
 import Head from 'next/head'
+import Paper from 'material-ui/Paper';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 //import './App.css';
 
 class App extends React.Component {
@@ -15,6 +16,8 @@ class App extends React.Component {
       speed: 0,
     };
   }
+
+  
 
   calculateSpeed() {
     if (this.state.time > 0 && this.state.distance > 0) {
@@ -31,47 +34,44 @@ class App extends React.Component {
   }
 
   render() {
+    const style = {
+      // height: 100,
+      // width: 100,
+      padding: 20,
+      textAlign: 'center',
+      maxWidth: '600px',
+      diplay: 'flex',
+    };
+
     return (
-      <div>
-      <Head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"/>
-      </Head>
-      <Grid>
-            <Row>
-                <Navbar inverse collapseOnSelect>
-                  <Navbar.Header>
-                    <Navbar.Brand>
-                      <a href="#">SportCalculators</a>
-                    </Navbar.Brand>
-                    <Navbar.Toggle />
-                  </Navbar.Header>
-                  <Navbar.Collapse>
-                    <Nav>
-                      <NavDropdown eventKey={3} title="Calculators" id="basic-nav-dropdown">
-                        <MenuItem eventKey={3.1}>Action</MenuItem>
-                        <MenuItem eventKey={3.2}>Another action</MenuItem>
-                        <MenuItem eventKey={3.3}>Something else here</MenuItem>
-                        <MenuItem divider />
-                        <MenuItem eventKey={3.3}>Separated link</MenuItem>
-                      </NavDropdown>
-                    </Nav>
-                    <Nav pullRight>
-                      <NavItem eventKey={1} href="#">About</NavItem>
-                      <NavItem eventKey={2} href="#">Contact</NavItem>
-                    </Nav>
-                  </Navbar.Collapse>
-                </Navbar>
-            </Row>
-            <Row>
-              <TimeSelector time={this.state.time} onTimeChange={this.onTimeChange.bind(this)}/> 
-            </Row>
-            <Row>
-              <DistanceSelector distance={this.state.distance} onDistanceChange={this.onDistanceChange.bind(this)}/> 
-            </Row>
-            <Row>
-              <SpeedDisplay speed={this.state.speed} /> 
-            </Row>
-      </Grid>
+      <div className='parent'>
+        <style jsx >{`
+          .parent {
+            display: flex;
+            justify-content: center;
+          }
+          .child {
+            margin: auto;  /* Magic! */
+          }
+          .time {
+            margin-bottom: 20px;
+          }     
+          .distance {
+            margin-bottom: 40px;
+          }
+        `}</style>
+        
+        <Paper className='calculatorBox' style={style} zDepth={5}>
+          <div className='time child'>
+            <TimeSelector  time={this.state.time} onTimeChange={this.onTimeChange.bind(this)}/> 
+          </div>
+          <div className='distance child'>
+            <DistanceSelector distance={this.state.distance} onDistanceChange={this.onDistanceChange.bind(this)}/> 
+          </div>
+          <div className='speed child'>
+            <SpeedDisplay speed={this.state.speed} /> 
+          </div>
+        </Paper>
       </div>
     );
   }

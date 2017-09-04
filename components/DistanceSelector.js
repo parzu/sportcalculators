@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grid, Row, Col, FormGroup, Radio, FormControl} from 'react-bootstrap';
+import TextField from 'material-ui/TextField';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 //import './TimeSelector.css';
 
 class DistanceSelector extends React.Component {
@@ -7,13 +8,11 @@ class DistanceSelector extends React.Component {
     super(props);
     this.state = { 
         dist: '0',
-        distType: 'm',
+        distType: 'km',
      };
   }
 
   handleChange(event) {
-    console.log(event.target.name);
-    console.log(event.target.value);
     this.setState({[event.target.name]: event.target.value}, this.distChanged);
   }
 
@@ -32,36 +31,31 @@ class DistanceSelector extends React.Component {
 
   render() {
     return (
-        <form>
-            <FormGroup>
-                <Grid>
-                    <Row>
-                        <Col xs={12} md={6}>
-                            <FormControl placeholder="dist" componentClass="input" name="dist" type='text' onChange={this.handleChange.bind(this)} />
-                        </Col>
-                        <Col xs={12} md={6}>
-                            <FormGroup onChange={this.handleChange.bind(this)} >
-                                <Radio name="distType" value='m' inline selected>
-                                    m
-                                </Radio>
-                                {' '}
-                                <Radio name="distType" value='ft' inline>
-                                    ft
-                                </Radio>
-                                {' '}
-                                <Radio name="distType" value='km' inline>
-                                    km
-                                </Radio>
-                                {' '}
-                                <Radio name="distType" value='miles' inline>
-                                    miles
-                                </Radio>
-                            </FormGroup>
-                        </Col>
-                    </Row>
-                </Grid>
-            </FormGroup>
-        </form>
+        <div className='parent'>
+            <style jsx >{`
+            .parent {
+                display: flex;
+                flex-flow: column;
+            }
+
+            .child {
+                margin: auto;
+                
+            }
+
+            `}</style>
+            <div className='child'>
+                <TextField floatingLabelText='distance' hintText="distance" name="dist" type='text' onChange={this.handleChange.bind(this)} />
+            </div>
+            <div className='child'>
+                <RadioButtonGroup name="distType" defaultSelected="km" onChange={this.handleChange.bind(this)} style={{ display: 'flex' }}>
+                    <RadioButton value="m" label="m" style={{ width: 'auto' }} />
+                    <RadioButton value="ft" label="ft" style={{ width: 'auto' }} />
+                    <RadioButton value="km" label="km" style={{ width: 'auto' }} />
+                    <RadioButton value="miles" label="miles" style={{ width: 'auto' }} />
+                </RadioButtonGroup>
+            </div>
+        </div>
     );
   }
 }

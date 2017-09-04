@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col, FormGroup, FormControl} from 'react-bootstrap';
+import TextField from 'material-ui/TextField';
 //import './TimeSelector.css';
 
 class TimeSelector extends React.Component {
@@ -22,23 +23,29 @@ class TimeSelector extends React.Component {
 
   render() {
     return (
-        <form>
-            <FormGroup>
-                <Grid>
-                    <Row>
-                        <Col xs={4}>
-                            <FormControl placeholder="hrs" componentClass="input" name="hours" type='text'  onChange={this.handleChange.bind(this)} />
-                        </Col>
-                        <Col xs={4}>
-                            <FormControl placeholder="min" componentClass="input" name="minutes" type='text' onChange={this.handleChange.bind(this)}/>
-                        </Col>
-                        <Col xs={4}>
-                            <FormControl placeholder="sec" componentClass="input" name="seconds" type='text' onChange={this.handleChange.bind(this)}/>
-                        </Col>
-                    </Row>
-                </Grid>
-            </FormGroup>
-        </form>
+        <div className='parent'>
+            <style jsx >{`
+            .parent {
+                display: flex;
+                flex-flow: row nowrap;
+            }
+
+            .child {
+                margin: auto;  /* Magic! */
+                width: 30%;
+            }
+
+            `}</style>
+            <div className='child'>
+                <TextField floatingLabelText='hours' fullWidth={true} hintText="hours" name='hours' type='text' onChange={this.handleChange.bind(this)} />
+            </div>
+            <div className='child'>
+                <TextField floatingLabelText='minutes' fullWidth={true} hintText="minutes" name='minutes' type='text' onChange={this.handleChange.bind(this)}/>
+            </div>
+            <div className='child'>
+                <TextField floatingLabelText='seconds' fullWidth={true} hintText="seconds" name='seconds' type='text' onChange={this.handleChange.bind(this)}/>
+            </div>
+        </div>
     );
   }
 }
