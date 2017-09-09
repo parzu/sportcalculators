@@ -7,6 +7,13 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Link from 'next/link';
 import AppBar from 'material-ui/AppBar';
 import Head from 'next/head';
+import Avatar from 'material-ui/Avatar';
+import {List, ListItem} from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
+import Divider from 'material-ui/Divider';
+import FontIcon from 'material-ui/FontIcon';
+import WidgetsIcon from 'material-ui/svg-icons/device/widgets';
+
 
 const muiThemeConfig = getMuiTheme({}, {userAgent: 'all'});
 
@@ -38,8 +45,8 @@ export default class DrawerSimpleExample extends React.Component {
       <MuiThemeProvider muiTheme={muiThemeConfig}>
         <div>            
             <Head>
-                <title>My page title</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <script src="https://use.fontawesome.com/4a9aa864c0.js"></script>
                 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" />
             </Head>
            <style jsx global>{`
@@ -66,12 +73,12 @@ export default class DrawerSimpleExample extends React.Component {
                 }
                 @media (max-width: 600px) {
                     .container {
-                        margin-left: 5px;
-                        margin-right: 5px;
+                        margin-left: 15px;
+                        margin-right: 15px;
                     }
                     .calculatorBox {
-                        margin-left: 5px;
-                        margin-right: 5px;
+                        margin-left: 15px;
+                        margin-right: 15px;
                     }
                 }
                 @media (min-width: 900px) {
@@ -96,10 +103,44 @@ export default class DrawerSimpleExample extends React.Component {
                     onRequestChange={(open) => this.setState({open})}
                 >
                         <AppBar showMenuIconButton={false} title='SportCalculators'/>
-                        <MenuItem><Link href="/"><a>Home</a></Link></MenuItem>
-                        <MenuItem><Link href="/calculator"><a>Calculator</a></Link></MenuItem>
-                        <MenuItem onClick={this.handleToggle}>Close</MenuItem>
-                </Drawer>
+                        <List>
+                            <Subheader>Running</Subheader>
+                            <Link href="/running-speed-calculator">
+                                <ListItem
+                                    primaryText="Running Speed Calculator"
+                                    leftIcon={<WidgetsIcon />}
+                                />
+                            </Link>
+                            <Link href="/race-time-calculator">
+                                <ListItem
+                                    primaryText="Race Time Calculator"
+                                    leftIcon={<WidgetsIcon />}
+                                />
+                            </Link>
+                        </List>
+                        <Divider />
+                        <List>
+                            <Subheader>Cycling</Subheader>
+                            <Link href="/cycling-speed-calculator">
+                                <ListItem
+                                    primaryText="Cycling Speed Calculator"
+                                    leftIcon={<WidgetsIcon />}
+                                />
+                            </Link>
+                        </List>
+                        <Divider />
+                        <List>
+                            <Link href="/about">
+                                <ListItem primaryText="About" />
+                            </Link>
+                            <Link href="/contact">
+                                <ListItem primaryText="Contact" />
+                            </Link>
+                            <Link href="/privacy">
+                                <ListItem primaryText="Privacy" />
+                            </Link>
+                        </List>
+                    </Drawer>
             </div>
             <div className='container'>
                 {this.props.children}

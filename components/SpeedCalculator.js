@@ -1,13 +1,12 @@
 import React from 'react';
-import TimeSelector from './TimeSelector.js';
-import DistanceSelector from './DistanceSelector.js';
+import TimeInput from './TimeInput.js';
+import DistanceInput from './DistanceInput.js';
 import SpeedDisplay from './SpeedDisplay.js';
 import Head from 'next/head'
 import Paper from 'material-ui/Paper';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-//import './App.css';
 
-class App extends React.Component {
+class SpeedCalculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,12 +60,12 @@ class App extends React.Component {
           }
         `}</style>
         
-        <Paper className='calculatorBox' style={style} zDepth={5}>
+        <Paper className='calculatorBox' style={style} zDepth={3}>
           <div className='time child'>
-            <TimeSelector  time={this.state.time} onTimeChange={this.onTimeChange.bind(this)}/> 
+            <TimeInput  time={this.state.time} onTimeChange={this.onTimeChange.bind(this)}/> 
           </div>
           <div className='distance child'>
-            <DistanceSelector distance={this.state.distance} onDistanceChange={this.onDistanceChange.bind(this)}/> 
+            <DistanceInput distance={this.state.distance} onDistanceChange={this.onDistanceChange.bind(this)}/> 
           </div>
           <div className='speed child'>
             <SpeedDisplay speed={this.state.speed} /> 
@@ -77,4 +76,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default SpeedCalculator;

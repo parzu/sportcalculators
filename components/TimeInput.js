@@ -3,7 +3,7 @@ import { Grid, Row, Col, FormGroup, FormControl} from 'react-bootstrap';
 import TextField from 'material-ui/TextField';
 //import './TimeSelector.css';
 
-class TimeSelector extends React.Component {
+class TimeInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
@@ -50,4 +50,4 @@ class TimeSelector extends React.Component {
   }
 }
 
-export default TimeSelector;
+export default TimeInput;
