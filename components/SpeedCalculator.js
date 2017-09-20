@@ -5,6 +5,7 @@ import SpeedDisplay from './SpeedDisplay.js';
 import Head from 'next/head'
 import Paper from 'material-ui/Paper';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import {calculateSpeed} from '../services/speedService.js';
 
 class SpeedCalculator extends React.Component {
   constructor(props) {
@@ -16,20 +17,12 @@ class SpeedCalculator extends React.Component {
     };
   }
 
-  
-
-  calculateSpeed() {
-    if (this.state.time > 0 && this.state.distance > 0) {
-      this.setState({speed: this.state.distance / this.state.time});
-    }
-  }
-
   onTimeChange(totalSecs) {
-    this.setState({time: totalSecs}, this.calculateSpeed);
+    this.setState({time: totalSecs, speed: calculateSpeed(this.state.time, this.state.distance)});
   }
 
   onDistanceChange(dist) {
-    this.setState({distance: dist}, this.calculateSpeed);
+    this.setState({distance: dist, speed: calculateSpeed(this.state.time, this.state.distance)});
   }
 
   render() {
@@ -43,31 +36,33 @@ class SpeedCalculator extends React.Component {
     };
 
     return (
-      <div className='parent'>
-        <style jsx >{`
-          .parent {
-            display: flex;
-            justify-content: center;
-          }
-          .child {
-            margin: auto;  /* Magic! */
-          }
-          .time {
-            margin-bottom: 20px;
-          }     
-          .distance {
-            margin-bottom: 40px;
-          }
-        `}</style>
-        
+<div className='speedCalculatorParent'>
+      <style jsx >{`
+        .speedCalculatorParent {
+          display: flex;
+          justify-content: center;
+        }
+        .speedCalculatorChild {
+          margin: auto;  /* Magic! */
+        }
+        .speedCalculatorTime {
+          margin-bottom: 20px;
+        }     
+        .speedCalculatorDistance {
+          margin-bottom: 40px;
+        }
+    `}</style>
+
+
+      
         <Paper className='calculatorBox' style={style} zDepth={3}>
-          <div className='time child'>
+          <div className='speedCalculatorTime speedCalculatorChild'>
             <TimeInput  time={this.state.time} onTimeChange={this.onTimeChange.bind(this)}/> 
           </div>
-          <div className='distance child'>
+          <div className='speedCalculatorDistance speedCalculatorChild'>
             <DistanceInput distance={this.state.distance} onDistanceChange={this.onDistanceChange.bind(this)}/> 
           </div>
-          <div className='speed child'>
+          <div className='speedCalculatorChild'>
             <SpeedDisplay speed={this.state.speed} /> 
           </div>
         </Paper>

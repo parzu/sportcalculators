@@ -39,20 +39,22 @@ class DistanceSelector extends React.Component {
 
   render() {
     return (
-        <div className='parent'>
-            <style jsx >{`
-            .parent {
-                display: flex;
-                flex-flow: column;
-            }
+<div className='distanceSelectorParent'>
+        <style jsx >{`
+        .distanceSelectorParent {
+            display: flex;
+            flex-flow: column;
+        }
 
-            .child {
-                margin: auto;
-                
-            }
+        .distanceSelecterChild {
+            margin: auto;
+            
+        }
 
-            `}</style>
-            <div className='child'>
+        `}</style>
+
+        
+            <div className='distanceSelecterChild'>
                 <RadioButtonGroup name="selectedDist" defaultSelected="5000" onChange={this.handleChange.bind(this)} style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
                     <RadioButton value="1500" label="1 500 m" style={{ width: 'auto' }} />
                     <RadioButton value="1609.34" label="1 mi" style={{ width: 'auto' }} />
@@ -68,10 +70,10 @@ class DistanceSelector extends React.Component {
                 </RadioButtonGroup>
             </div>
             
-                <div className='child'>
+                <div className='distanceSelecterChild'>
                     <TextField floatingLabelText='distance' hintText="distance" name="dist" type='text' onChange={this.handleChange.bind(this)} />
                 </div>
-                <div className='child'>
+                <div className='distanceSelecterChild'>
                     <RadioButtonGroup name="distType" defaultSelected="km" onChange={this.handleChange.bind(this)} style={{ display: 'flex' }}>
                         <RadioButton value="m" label="m" style={{ width: 'auto' }} />
                         <RadioButton value="ft" label="ft" style={{ width: 'auto' }} />

@@ -7,34 +7,20 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
+import {formatTime} from '../services/timeService.js'
 
 class SplitRow extends React.Component {
   constructor(props) {
       super(props);
   }
   
-  formatTime(secs) {
-    let hours = parseInt(secs / 3600);
-    secs = secs-(hours*3600);
-    let mins = parseInt(secs/60);
-    secs = parseInt(secs-(mins*60));
-    if (mins < 10) {
-        mins = '0'+mins.toPrecision(1);
-    }
-    if (secs < 10) {
-        secs = '0'+secs.toPrecision(1);
-    }
-
-    return hours+':'+mins+':'+secs;
-  }
-
   predictedTime(time, orgDist, newDist) {
     let result = {time: 0, paceKm: 0, paceMi: 0};
     let secs = time*Math.pow((newDist/orgDist), 1.06);
 
-    result.time = this.formatTime(secs);
-    result.paceKm = this.formatTime(secs / (newDist/1000));
-    result.paceMi = this.formatTime(secs / (newDist/1609.34));
+    result.time = formatTime(secs);
+    result.paceKm = formatTime(secs / (newDist/1000));
+    result.paceMi = formatTime(secs / (newDist/1609.34));
 
     return result;
   }
@@ -65,14 +51,8 @@ class PredictedSplitTimes extends React.Component {
   render() {
     return (
     <div>
-        <style jsx >{`
-            .headerRow {
-                border-bottom: 2px;
-                background-color: blue;
-            }
-        `}</style>
         <div>
-             <Table className='speedTable'  style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+             <Table style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                 <TableBody displayRowCheckbox={false}>
                     <TableRow style={{borderBottom: '2px solid #e0e0e0', fontWeight: 'bold'}}>
                         <TableRowColumn>Split Distance</TableRowColumn>

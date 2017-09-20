@@ -31,23 +31,25 @@ class DistanceInput extends React.Component {
 
   render() {
     return (
-        <div className='parent'>
-            <style jsx >{`
-            .parent {
-                display: flex;
-                flex-flow: column;
-            }
+        <div className='distanceInputParent'>  
+        <style jsx >{`
+        .distanceInputParent {
+            display: flex;
+            flex-flow: column;
+        }
 
-            .child {
-                margin: auto;
-                
-            }
+        .distanceInputChild {
+            margin: auto;
+            
+        }
 
-            `}</style>
-            <div className='child'>
+        `}</style>
+
+          
+            <div className='distanceInputChild'>
                 <TextField floatingLabelText='distance' hintText="distance" name="dist" type='text' onChange={this.handleChange.bind(this)} />
             </div>
-            <div className='child'>
+            <div className='distanceInputChild'>
                 <RadioButtonGroup name="distType" defaultSelected="km" onChange={this.handleChange.bind(this)} style={{ display: 'flex' }}>
                     <RadioButton value="m" label="m" style={{ width: 'auto' }} />
                     <RadioButton value="ft" label="ft" style={{ width: 'auto' }} />

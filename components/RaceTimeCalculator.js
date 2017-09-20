@@ -5,6 +5,7 @@ import PredictedSplitTimes from './PredictedSplitTimes.js';
 import Head from 'next/head'
 import Paper from 'material-ui/Paper';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import {calculateSpeed} from '../services/speedService.js'
 
 class RaceTimeCalculator extends React.Component {
   constructor(props) {
@@ -16,18 +17,12 @@ class RaceTimeCalculator extends React.Component {
     };
   }
 
-  calculateSpeed() {
-    if (this.state.time > 0 && this.state.distance > 0) {
-      this.setState({speed: this.state.distance / this.state.time});
-    }
-  }
-
   onTimeChange(totalSecs) {
-    this.setState({time: totalSecs}, this.calculateSpeed);
+    this.setState({time: totalSecs, speed: calculateSpeed(this.state.time, this.state.distance)});
   }
 
   onDistanceChange(dist) {
-    this.setState({distance: dist}, this.calculateSpeed);
+    this.setState({distance: dist, speed: calculateSpeed(this.state.time, this.state.distance)});
   }
 
   render() {
@@ -41,25 +36,24 @@ class RaceTimeCalculator extends React.Component {
     };
 
     return (
-      <div className='parent'>
+<div className='raceTimeCalculatorParent'>
         <style jsx >{`
-          .parent {
+          .raceTimeCalculatorParent {
             display: flex;
             justify-content: center;
           }
-          .child {
+          .raceTimeCalculatorChild {
             margin: auto;  /* Magic! */
           }
-          .time {
+          .raceTimeCalculatorTime {
             margin-bottom: 20px;
-          }     
-          .distance {
-            margin-bottom: 40px;
           }
         `}</style>
         
+
+      
         <Paper className='calculatorBox' style={style} zDepth={3}>
-          <div className='time child'>
+          <div className='raceTimeCalculatorTime raceTimeCalculatorChild'>
             <TimeInput  time={this.state.time} onTimeChange={this.onTimeChange.bind(this)}/> 
           </div>
           <div>
