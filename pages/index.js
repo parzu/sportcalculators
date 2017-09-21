@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import RaisedButton from 'material-ui/RaisedButton';
-// import Layout from '../components/Layout.js';
-//import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import Layout from '../components/Layout.js';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 // import FlatButton from 'material-ui/FlatButton';
 
 
@@ -10,9 +10,9 @@ import ReactDOM from 'react-dom';
 
 
 const App = () => (
-  <div>
+  <Layout>
       <h2>All Calculators</h2>
-      {/* <Card style={{maxWidth: '300px'}}>
+      <Card style={{maxWidth: '300px'}}>
         <CardMedia
 
           overlay={<CardTitle title="Running Speed Calculator" subtitle="Running" />}
@@ -34,8 +34,8 @@ const App = () => (
         <CardText>
         Calculate running speed from time and distance. Calculator shows the result in the most used units including minutes/km and minutes/mile. You can input distance in meters, feet, kilometers or miles.
         </CardText>
-      </Card> */}
-  </div>
+      </Card>
+  </Layout>
 );
 
 export default App;
