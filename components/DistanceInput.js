@@ -1,14 +1,15 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-//import './TimeSelector.css';
+import {distanceToMeters} from '../services/distanceService.js'
+import * as consts from '../services/unitConstants.js';
 
 class DistanceInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
         dist: '0',
-        distType: 'km',
+        distType: consts.distanceTypes.KM,
      };
   }
 
@@ -17,17 +18,9 @@ class DistanceInput extends React.Component {
   }
 
   distChanged() {
-    let multiple = 1;
-    switch (this.state.distType) {
-        case 'ft': multiple=0.3048; break;
-        case 'km': multiple=1000; break;
-        case 'miles': multiple=1.6093; break;
-        default: multiple=1; break;
-    } 
-    console.log(this.state.dist);
-    console.log(multiple);
-    this.props.onDistanceChange(parseFloat(this.state.dist) * multiple);
+    this.props.onDistanceChange(distanceToMeters(this.state.dist, this.state.distType));    
   }
+
 
   render() {
     return (
@@ -50,11 +43,11 @@ class DistanceInput extends React.Component {
                 <TextField floatingLabelText='distance' hintText="distance" name="dist" type='text' onChange={this.handleChange.bind(this)} />
             </div>
             <div className='distanceInputChild'>
-                <RadioButtonGroup name="distType" defaultSelected="km" onChange={this.handleChange.bind(this)} style={{ display: 'flex' }}>
-                    <RadioButton value="m" label="m" style={{ width: 'auto' }} />
-                    <RadioButton value="ft" label="ft" style={{ width: 'auto' }} />
-                    <RadioButton value="km" label="km" style={{ width: 'auto' }} />
-                    <RadioButton value="miles" label="miles" style={{ width: 'auto' }} />
+                <RadioButtonGroup name="distType" defaultSelected={consts.distanceTypes.KM} onChange={this.handleChange.bind(this)} style={{ display: 'flex' }}>
+                    <RadioButton value={consts.distanceTypes.METER} label="m" style={{ width: 'auto' }} />
+                    <RadioButton value={consts.distanceTypes.FEET} label="ft" style={{ width: 'auto' }} />
+                    <RadioButton value={consts.distanceTypes.KM} label="km" style={{ width: 'auto' }} />
+                    <RadioButton value={consts.distanceTypes.MILE} label="miles" style={{ width: 'auto' }} />
                 </RadioButtonGroup>
             </div>
         </div>

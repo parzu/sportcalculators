@@ -18,11 +18,15 @@ class SpeedCalculator extends React.Component {
   }
 
   onTimeChange(totalSecs) {
-    this.setState({time: totalSecs, speed: calculateSpeed(this.state.time, this.state.distance)});
+    this.setState({time: totalSecs}, this.setSpeed);
   }
 
   onDistanceChange(dist) {
-    this.setState({distance: dist, speed: calculateSpeed(this.state.time, this.state.distance)});
+    this.setState({distance: dist}, this.setSpeed);
+  }
+
+  setSpeed() {
+    this.setState({speed: calculateSpeed(this.state.time, this.state.distance)});
   }
 
   render() {

@@ -1,7 +1,9 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-//import './TimeSelector.css';
+import DistanceInput from './DistanceInput.js';
+import {distanceToMeters} from '../services/distanceService.js';
+import * as consts from '../services/unitConstants.js';
 
 class DistanceSelector extends React.Component {
   constructor(props) {
@@ -9,7 +11,7 @@ class DistanceSelector extends React.Component {
     this.state = { 
         dist: '0',
         selectedDist: '5000',
-        distType: 'km',
+        distType: consts.distanceTypes.KM,
         customVisible: false,
      };
      this.props.onDistanceChange(this.state.selectedDist);
@@ -19,21 +21,17 @@ class DistanceSelector extends React.Component {
     this.setState({[event.target.name]: event.target.value}, this.distChanged);
   }
 
+  handleCustomChange(distance) {
+    this.setState({dist: distance}, this.props.onDistanceChange(distance));
+  }
+
   distChanged() {
     let distance = 5000;
     if (this.state.selectedDist == 'custom') {
-        let multiple = 1;
-        switch (this.state.distType) {
-            case 'ft': multiple=0.3048; break;
-            case 'km': multiple=1000; break;
-            case 'miles': multiple=1.609344; break;
-            default: multiple=1; break;
-        } 
-        distance = parseFloat(this.state.dist) * multiple;
+        distance = distanceToMeters(this.state.dist, this.state.distType);
     } else {
         distance = this.state.selectedDist;
     }
-    console.log('distChanged', distance);
     this.props.onDistanceChange(distance);
   }
 
@@ -69,8 +67,8 @@ class DistanceSelector extends React.Component {
                     <RadioButton value="custom" label="custom" style={{ width: 'auto' }} />
                 </RadioButtonGroup>
             </div>
-            
-                <div className='distanceSelecterChild'>
+                <DistanceInput distance={this.state.dist} onDistanceChange={this.handleCustomChange.bind(this)}/> 
+                {/* <div className='distanceSelecterChild'>
                     <TextField floatingLabelText='distance' hintText="distance" name="dist" type='text' onChange={this.handleChange.bind(this)} />
                 </div>
                 <div className='distanceSelecterChild'>
@@ -80,7 +78,7 @@ class DistanceSelector extends React.Component {
                         <RadioButton value="km" label="km" style={{ width: 'auto' }} />
                         <RadioButton value="miles" label="miles" style={{ width: 'auto' }} />
                     </RadioButtonGroup>
-                </div>
+                </div> */}
             
         </div>
     );
