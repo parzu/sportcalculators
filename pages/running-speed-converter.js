@@ -1,4 +1,4 @@
-import SpeedCalculator from '../components/speed_calculator/.js';
+import SpeedCalculator from '../components/SpeedCalculator.js';
 import Layout from '../components/Layout.js';
 import Head from 'next/head';
 

@@ -10,11 +10,10 @@ class DistanceSelector extends React.Component {
     super(props);
     this.state = { 
         dist: '0',
-        selectedDist: '5000',
+        selectedDist: this.props.initialDistance,
         distType: consts.distanceTypes.KM,
         customVisible: false,
      };
-     this.props.onDistanceChange(this.state.selectedDist);
   }
 
   handleChange(event) {
@@ -64,10 +63,10 @@ class DistanceSelector extends React.Component {
                     <RadioButton value="16093.4" label="10 mi" style={{ width: 'auto' }} />
                     <RadioButton value="21097.5" label="1/2 marathon" style={{ width: 'auto' }} />
                     <RadioButton value="42195" label="marathon" style={{ width: 'auto' }} />
-                    <RadioButton value="custom" label="custom" style={{ width: 'auto' }} />
+                    {/* <RadioButton value="custom" label="custom" style={{ width: 'auto' }} /> */}
                 </RadioButtonGroup>
             </div>
-                <DistanceInput distance={this.state.dist} onDistanceChange={this.handleCustomChange.bind(this)}/> 
+                {/* <DistanceInput distance={this.state.dist} onDistanceChange={this.handleCustomChange.bind(this)}/>  */}
                 {/* <div className='distanceSelecterChild'>
                     <TextField floatingLabelText='distance' hintText="distance" name="dist" type='text' onChange={this.handleChange.bind(this)} />
                 </div>

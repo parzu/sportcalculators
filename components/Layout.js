@@ -42,6 +42,7 @@ export default class DrawerSimpleExample extends React.Component {
 
   render() {
     return (
+
       <MuiThemeProvider muiTheme={muiThemeConfig}>
         <div>            
             <Head>
@@ -100,7 +101,7 @@ export default class DrawerSimpleExample extends React.Component {
                 <Drawer  
                     open={this.state.open} 
                     docked={this.state.docked}
-                    onRequestChange={(open) => this.setState({open})}
+                    onRequestChange={this.handleToggle.bind(this)}
                 >
                         <AppBar showMenuIconButton={false} title='SportCalculators'/>
                         <List>
@@ -147,6 +148,7 @@ export default class DrawerSimpleExample extends React.Component {
             </div>
         </div>
       </MuiThemeProvider>
+
     );
   }
 }

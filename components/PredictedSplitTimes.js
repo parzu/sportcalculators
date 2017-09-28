@@ -6,6 +6,7 @@ import {
   TableHeaderColumn,
   TableRow,
   TableRowColumn,
+  Paper,
 } from 'material-ui/Table';
 import {formatTime} from '../services/timeService.js'
 
@@ -30,12 +31,18 @@ class SplitRow extends React.Component {
   render() {
     let prericted = this.predictedTime(this.props.time, this.props.oldDist, this.props.newDist);
     return (
-        <TableRow>
-            <TableRowColumn>{this.props.text}</TableRowColumn>
-            <TableRowColumn>{prericted.time}</TableRowColumn>
-            <TableRowColumn>{prericted.paceKm}</TableRowColumn>
-            <TableRowColumn>{prericted.paceMi}</TableRowColumn>
-        </TableRow>
+        <Paper zDepth={1}>
+        <div>{this.props.text}</div>
+        <div>{prericted.time}</div>
+        <div>{prericted.paceKm}</div>
+        <div>{prericted.paceMi}</div>
+        </Paper>
+        // <TableRow>
+        //     <TableRowColumn>{this.props.text}</TableRowColumn>
+        //     <TableRowColumn>{prericted.time}</TableRowColumn>
+        //     <TableRowColumn>{prericted.paceKm}</TableRowColumn>
+        //     <TableRowColumn>{prericted.paceMi}</TableRowColumn>
+        // </TableRow>
     );
   }
 }
@@ -60,6 +67,8 @@ class PredictedSplitTimes extends React.Component {
                         <TableRowColumn>Pace (min/km)</TableRowColumn>
                         <TableRowColumn>Pace (min/mi)</TableRowColumn>
                     </TableRow>
+                    </TableBody>
+            </Table>
                     <SplitRow text='1 500 m' newDist='1500' oldDist={this.props.distance} time={this.props.time}/>
                     <SplitRow text='1 mi' newDist='1609.344' oldDist={this.props.distance} time={this.props.time}/>
                     <SplitRow text='3 mi' newDist='4828.03' oldDist={this.props.distance} time={this.props.time}/>
@@ -70,8 +79,7 @@ class PredictedSplitTimes extends React.Component {
                     <SplitRow text='10 mi' newDist='16093.4' oldDist={this.props.distance} time={this.props.time}/>
                     <SplitRow text='1/2 marathon' newDist='21097.5' oldDist={this.props.distance} time={this.props.time}/>
                     <SplitRow text='marathon' newDist='42195' oldDist={this.props.distance} time={this.props.time}/>
-                </TableBody>
-            </Table>
+           
         </div>
     </div>
     );

@@ -12,17 +12,21 @@ class RaceTimeCalculator extends React.Component {
     super(props);
     this.state = {
       time: 0,
-      distance: 0,
+      distance: 5000,
       speed: 0,
     };
   }
 
   onTimeChange(totalSecs) {
-    this.setState({time: totalSecs, speed: calculateSpeed(this.state.time, this.state.distance)});
+    this.setState({time: totalSecs}, this.setSpeed);
   }
 
   onDistanceChange(dist) {
-    this.setState({distance: dist, speed: calculateSpeed(this.state.time, this.state.distance)});
+    this.setState({distance: dist}, this.setSpeed);
+  }
+
+  setSpeed() {
+    this.setState({speed: calculateSpeed(this.state.time, this.state.distance)});
   }
 
   render() {
@@ -48,16 +52,19 @@ class RaceTimeCalculator extends React.Component {
           .raceTimeCalculatorTime {
             margin-bottom: 20px;
           }
+          .distanceSelector {
+            margin: 40px;
+          }
         `}</style>
         
 
       
         <Paper className='calculatorBox' style={style} zDepth={3}>
           <div className='raceTimeCalculatorTime raceTimeCalculatorChild'>
-            <TimeInput  time={this.state.time} onTimeChange={this.onTimeChange.bind(this)}/> 
+            <TimeInput onTimeChange={this.onTimeChange.bind(this)}/> 
           </div>
-          <div>
-            <DistanceSelector onDistanceChange={this.onDistanceChange.bind(this)}/>
+          <div className='distanceSelector'>
+            <DistanceSelector initialDistance={this.state.distance} onDistanceChange={this.onDistanceChange.bind(this)}/>
           </div>
           <div>
             <PredictedSplitTimes time={this.state.time} distance={this.state.distance} />
