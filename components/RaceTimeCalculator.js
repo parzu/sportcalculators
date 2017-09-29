@@ -5,6 +5,7 @@ import PredictedSplitTimes from './PredictedSplitTimes.js';
 import Head from 'next/head'
 import Paper from 'material-ui/Paper';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import Subheader from 'material-ui/Subheader';
 import {calculateSpeed} from '../services/speedService.js'
 
 class RaceTimeCalculator extends React.Component {
@@ -55,16 +56,29 @@ class RaceTimeCalculator extends React.Component {
           .distanceSelector {
             margin: 40px;
           }
+          .subheader {
+            text-align: left;
+            margin-left: -16px;
+          }
         `}</style>
         
 
       
         <Paper className='calculatorBox' style={style} zDepth={3}>
+          <div className="subheader">
+            <Subheader>Recent race time</Subheader>
+          </div>
           <div className='raceTimeCalculatorTime raceTimeCalculatorChild'>
             <TimeInput onTimeChange={this.onTimeChange.bind(this)}/> 
           </div>
+          <div className="subheader">
+            <Subheader>Recent race distance</Subheader>
+          </div>
           <div className='distanceSelector'>
             <DistanceSelector initialDistance={this.state.distance} onDistanceChange={this.onDistanceChange.bind(this)}/>
+          </div>
+          <div className="subheader">
+            <Subheader>Predicted times for races</Subheader>
           </div>
           <div>
             <PredictedSplitTimes time={this.state.time} distance={this.state.distance} />

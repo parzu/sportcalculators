@@ -5,6 +5,7 @@ import SpeedDisplay from './SpeedDisplay.js';
 import Head from 'next/head'
 import Paper from 'material-ui/Paper';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import Subheader from 'material-ui/Subheader';
 import {calculateSpeed} from '../services/speedService.js';
 
 class SpeedCalculator extends React.Component {
@@ -55,16 +56,29 @@ class SpeedCalculator extends React.Component {
         .speedCalculatorDistance {
           margin-bottom: 40px;
         }
+        .subheader {
+            text-align: left;
+            margin-left: -16px;
+        }
     `}</style>
 
 
       
         <Paper className='calculatorBox' style={style} zDepth={3}>
+          <div className="subheader">
+            <Subheader>Race time</Subheader>
+          </div>
           <div className='speedCalculatorTime speedCalculatorChild'>
             <TimeInput  time={this.state.time} onTimeChange={this.onTimeChange.bind(this)}/> 
           </div>
+          <div className="subheader">
+            <Subheader>Race distance</Subheader>
+          </div>
           <div className='speedCalculatorDistance speedCalculatorChild'>
             <DistanceInput distance={this.state.distance} onDistanceChange={this.onDistanceChange.bind(this)}/> 
+          </div>
+          <div className="subheader">
+            <Subheader>Race speed & pace</Subheader>
           </div>
           <div className='speedCalculatorChild'>
             <SpeedDisplay speed={this.state.speed} /> 

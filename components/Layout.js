@@ -105,6 +105,15 @@ export default class DrawerSimpleExample extends React.Component {
                 >
                         <AppBar showMenuIconButton={false} title='SportCalculators'/>
                         <List>
+                            <Subheader>Bowling</Subheader>
+                            <Link href="/bowling-score-calculator">
+                                <ListItem
+                                    primaryText="Bowling Score Calculator"
+                                    leftIcon={<WidgetsIcon />}
+                                />
+                            </Link>
+                        </List>
+                        <List>
                             <Subheader>Running</Subheader>
                             <Link href="/running-speed-calculator">
                                 <ListItem

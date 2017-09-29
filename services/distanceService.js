@@ -9,5 +9,6 @@ export function distanceToMeters(distance, distType) {
         case consts.distanceTypes.MILE: multiple=consts.mileToMeter; break;
         default: multiple=1; break;
     }
-    return parseFloat(distance) * multiple;
+    let parsedDistance = distance.replace(',', '.');
+    return parseFloat(parsedDistance) * multiple;
 }

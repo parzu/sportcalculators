@@ -6,8 +6,9 @@ import {
   TableHeaderColumn,
   TableRow,
   TableRowColumn,
-  Paper,
 } from 'material-ui/Table';
+import Paper from 'material-ui/Paper';
+import Subheader from 'material-ui/Subheader';
 import {formatTime} from '../services/timeService.js'
 
 class SplitRow extends React.Component {
@@ -31,18 +32,89 @@ class SplitRow extends React.Component {
   render() {
     let prericted = this.predictedTime(this.props.time, this.props.oldDist, this.props.newDist);
     return (
-        <Paper zDepth={1}>
-        <div>{this.props.text}</div>
-        <div>{prericted.time}</div>
-        <div>{prericted.paceKm}</div>
-        <div>{prericted.paceMi}</div>
-        </Paper>
-        // <TableRow>
-        //     <TableRowColumn>{this.props.text}</TableRowColumn>
-        //     <TableRowColumn>{prericted.time}</TableRowColumn>
-        //     <TableRowColumn>{prericted.paceKm}</TableRowColumn>
-        //     <TableRowColumn>{prericted.paceMi}</TableRowColumn>
-        // </TableRow>
+        <div className="paperDiv">
+          <style jsx >{`
+            .paperDiv {
+              margin-bottom: 20px;
+            }
+            .parentDiv {
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              padding: 10px;
+            }
+            .childDiv {
+              margin: auto;
+              flex-basis: 25%;
+            }
+            .raceName {
+              font-weight: bold;
+              color: gray;
+              margin: 15px;
+              text-align: left;
+              align-self: flex-start;
+            }
+            .timeDivParent {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+            }
+            .timeDivChild {
+                          
+            }
+            @media (max-width: 650px) {
+              .parentDiv {
+                flex-direction: column;
+                padding: 0px;
+              }
+              .childDiv {
+                margin: 0px;
+                                
+              }
+              .timeDivParent {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                flex-wrap: wrap;
+              }
+              .timeDivChild {
+                flex-basis: 50%;
+              }
+              .raceName {
+                font-size: larger;
+                margin: 15px;
+              }
+
+            }              
+          `}</style>
+
+
+          <Paper zDepth={1}>
+            <div className="parentDiv">
+              <div className="childDiv raceName">{this.props.text}</div>
+              <div className="childDiv">
+                <div className="timeDivParent">
+                  <div className="timeDivChild"><Subheader>Race time</Subheader></div>
+                  <div className="timeDivChild">{prericted.time}</div>
+                </div>
+              </div>
+              <div className="childDiv">
+                <div className="timeDivParent">
+                  <div className="timeDivChild"><Subheader>Pace (min/km)</Subheader></div>
+                  <div className="timeDivChild">{prericted.paceKm}</div>
+                </div>
+              </div>
+              <div className="childDiv">
+                <div className="timeDivParent">
+                  <div className="timeDivChild"><Subheader>Pace (min/mi)</Subheader></div>
+                  <div className="timeDivChild">{prericted.paceMi}</div>
+                </div>
+              </div>
+            </div>
+          </Paper>
+        </div>
     );
   }
 }
@@ -58,29 +130,16 @@ class PredictedSplitTimes extends React.Component {
   render() {
     return (
     <div>
-        <div>
-             <Table style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                <TableBody displayRowCheckbox={false}>
-                    <TableRow style={{borderBottom: '2px solid #e0e0e0', fontWeight: 'bold'}}>
-                        <TableRowColumn>Split Distance</TableRowColumn>
-                        <TableRowColumn>Split Time</TableRowColumn>
-                        <TableRowColumn>Pace (min/km)</TableRowColumn>
-                        <TableRowColumn>Pace (min/mi)</TableRowColumn>
-                    </TableRow>
-                    </TableBody>
-            </Table>
-                    <SplitRow text='1 500 m' newDist='1500' oldDist={this.props.distance} time={this.props.time}/>
-                    <SplitRow text='1 mi' newDist='1609.344' oldDist={this.props.distance} time={this.props.time}/>
-                    <SplitRow text='3 mi' newDist='4828.03' oldDist={this.props.distance} time={this.props.time}/>
-                    <SplitRow text='5 km' newDist='5000' oldDist={this.props.distance} time={this.props.time}/>
-                    <SplitRow text='5 mi' newDist='8046.72' oldDist={this.props.distance} time={this.props.time}/>
-                    <SplitRow text='10 km' newDist='10000' oldDist={this.props.distance} time={this.props.time}/>
-                    <SplitRow text='15 km' newDist='15000' oldDist={this.props.distance} time={this.props.time}/>
-                    <SplitRow text='10 mi' newDist='16093.4' oldDist={this.props.distance} time={this.props.time}/>
-                    <SplitRow text='1/2 marathon' newDist='21097.5' oldDist={this.props.distance} time={this.props.time}/>
-                    <SplitRow text='marathon' newDist='42195' oldDist={this.props.distance} time={this.props.time}/>
-           
-        </div>
+      <SplitRow text='1 500 m' newDist='1500' oldDist={this.props.distance} time={this.props.time}/>
+      <SplitRow text='1 mi' newDist='1609.344' oldDist={this.props.distance} time={this.props.time}/>
+      <SplitRow text='3 mi' newDist='4828.03' oldDist={this.props.distance} time={this.props.time}/>
+      <SplitRow text='5 km' newDist='5000' oldDist={this.props.distance} time={this.props.time}/>
+      <SplitRow text='5 mi' newDist='8046.72' oldDist={this.props.distance} time={this.props.time}/>
+      <SplitRow text='10 km' newDist='10000' oldDist={this.props.distance} time={this.props.time}/>
+      <SplitRow text='15 km' newDist='15000' oldDist={this.props.distance} time={this.props.time}/>
+      <SplitRow text='10 mi' newDist='16093.4' oldDist={this.props.distance} time={this.props.time}/>
+      <SplitRow text='1/2 marathon' newDist='21097.5' oldDist={this.props.distance} time={this.props.time}/>
+      <SplitRow text='marathon' newDist='42195' oldDist={this.props.distance} time={this.props.time}/>           
     </div>
     );
   }
