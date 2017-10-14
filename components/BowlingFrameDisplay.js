@@ -34,14 +34,14 @@ class BowlingFrameDisplay extends React.Component {
                         border: 1px solid black;
                         display: flex;
                         flex-flow: row wrap;
-                        height: 50px;
-                        width: 77px;
+                        height: 70px;
+                        width: 100%;
+                        font-size: 1em;
                     }
                     .throw {
-                        flex: 1 auto;
-                        height: 25px;
-                        width: 25px;
-                        
+                        flex: 1 10%;
+                        height: 35px;
+
                     }
                     .throw-2 {
                         border-left: 1px solid black;
@@ -54,7 +54,7 @@ class BowlingFrameDisplay extends React.Component {
                         
                     }
                     .result {
-                        height: 25px;
+                        height: 35px;
                         flex: 1 100%;
                     }
 
@@ -86,13 +86,13 @@ class BowlingFrameDisplay extends React.Component {
                         border-bottom: 1px solid black;
                         display: flex;
                         flex-flow: row wrap;
-                        width: 51px;
-                        height: 50px;
+                        width: 100%;
+                        height: 70px;
+                        font-size: 1em;
                     }
                     .throw {
-                        flex: 1 auto;
-                        height: 25px;
-                        width: 25px;
+                        flex: 1 1 10%;
+                        height: 35px;
                         
                     }
                     .throw-2 {
@@ -101,8 +101,8 @@ class BowlingFrameDisplay extends React.Component {
                         
                     }
                     .result {
-                        height: 25px;
-                        flex: 1 100%;
+                        height: 35px;
+                        flex: 1 1 99%;
                     }
 
                 `}</style>

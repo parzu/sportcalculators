@@ -81,6 +81,7 @@ class BowlingScoreCalculator extends React.Component {
 
   calculateResults() {
     let res = this.state.results;
+    let totalRes = 0;
     for (var i = 0; i <= this.state.frame-1; i++) {
       let sum = 0;
       if (i == 0) {
@@ -97,9 +98,10 @@ class BowlingScoreCalculator extends React.Component {
       } else {
         res[i] = sum + this.calculateOpenFrame(i);
       }
-      
+      totalRes = res[i];
     }
     this.setState({results: res});
+    this.setState({totalResult: totalRes});
     this.setState({frame: this.state.frame+1}, this.checkGameEnd);
 
   }
@@ -177,7 +179,7 @@ class BowlingScoreCalculator extends React.Component {
   }
 
   calculateOpenFrame(frameIndex) {
-    this.state.throws[frameIndex][0] + this.state.throws[frameIndex][1];
+    return (parseInt(this.state.throws[frameIndex][0]) + parseInt(this.state.throws[frameIndex][1]));
   }
 
   isStrike(frameIndex, throwIndex = 0) {
@@ -203,15 +205,39 @@ class BowlingScoreCalculator extends React.Component {
     };
 
     return (
-      <div>
+      <div className="bowlingFrame">
         <style jsx >{`
+          .bowlingFrame {
+            display: flex;
+            justify-content: center;
+          }
           .frameParent {
             display: flex;
             justify-content: flex-start;
             flex-direction: row;
+            width: 100%;
+            line-height: 35px;
+
           }
           .frameChild {
-           
+            width: 8%;
+          }
+          .frame10 {
+            width: 12% !important;
+          }
+          .result {
+            width: 18% !important;
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+            border-top: 1px solid black;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding-top: 17px;
+          }
+          @media (max-width: 450px) {
+            .frameParent {
+              font-size: 12px;    
+            }
           }
 
           `}
@@ -248,8 +274,11 @@ class BowlingScoreCalculator extends React.Component {
             <div className="frameChild">
               <BowlingFrameDisplay frameNum='9' throws={this.state.throws[8]} result={this.state.results[8]}/>
             </div>
-            <div className="frameChild">
+            <div className="frameChild frame10">
               <BowlingFrameDisplay frameNum='10' throws={this.state.throws[9]} result={this.state.results[9]}/>
+            </div>
+            <div className="frameChild result">
+              <div>{this.state.totalResult}</div>
             </div>
           </div>
           <BowlingScoreButtons running={this.state.running} throwNum={this.state.throw} lastThrow={this.state.lastThrow} frameNum={this.state.frame} onClick={this.handleClick.bind(this)} />
