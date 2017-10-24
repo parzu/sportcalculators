@@ -113,6 +113,17 @@ export default class DrawerSimpleExample extends React.Component {
                                 />
                             </Link>
                         </List>
+                        <Divider />
+                        <List>
+                            <Subheader>Combined Events</Subheader>
+                            <Link href="/heptathlon-calculator">
+                                <ListItem
+                                    primaryText="Heptathlon Calculator"
+                                    leftIcon={<WidgetsIcon />}
+                                />
+                            </Link>
+                        </List>
+                        <Divider />
                         <List>
                             <Subheader>Running</Subheader>
                             <Link href="/running-speed-calculator">
