@@ -93,10 +93,6 @@ export default class DrawerSimpleExample extends React.Component {
                 iconClassNameRight="muidocs-icon-navigation-expand-more"
                 onLeftIconButtonTouchTap={this.handleToggle}
             />
-            {/*<RaisedButton
-                label="Toggle Drawer"
-                onClick={this.handleToggle}
-            />*/}
             <div className="navigation">
                 <Drawer  
                     open={this.state.open} 
@@ -109,7 +105,6 @@ export default class DrawerSimpleExample extends React.Component {
                             <Link href="/bowling-score-calculator">
                                 <ListItem
                                     primaryText="Bowling Score Calculator"
-                                    leftIcon={<WidgetsIcon />}
                                 />
                             </Link>
                         </List>
@@ -119,7 +114,6 @@ export default class DrawerSimpleExample extends React.Component {
                             <Link href="/heptathlon-calculator">
                                 <ListItem
                                     primaryText="Heptathlon Calculator"
-                                    leftIcon={<WidgetsIcon />}
                                 />
                             </Link>
                         </List>
@@ -129,13 +123,11 @@ export default class DrawerSimpleExample extends React.Component {
                             <Link href="/running-speed-calculator">
                                 <ListItem
                                     primaryText="Running Speed Calculator"
-                                    leftIcon={<WidgetsIcon />}
                                 />
                             </Link>
                             <Link href="/race-time-calculator">
                                 <ListItem
                                     primaryText="Race Time Calculator"
-                                    leftIcon={<WidgetsIcon />}
                                 />
                             </Link>
                         </List>
@@ -145,12 +137,17 @@ export default class DrawerSimpleExample extends React.Component {
                             <Link href="/cycling-speed-calculator">
                                 <ListItem
                                     primaryText="Cycling Speed Calculator"
-                                    leftIcon={<WidgetsIcon />}
                                 />
                             </Link>
                         </List>
                         <Divider />
                         <List>
+                            <Link href="/">
+                                <ListItem 
+                                    primaryText="Home"
+                                    leftIcon={<FontIcon/>}
+                                />
+                            </Link>
                             <Link href="/about">
                                 <ListItem primaryText="About" />
                             </Link>

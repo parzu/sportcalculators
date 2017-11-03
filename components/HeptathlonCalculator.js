@@ -1,63 +1,82 @@
 import React from 'react';
-import TimeInput from './TimeInput.js';
-import DistanceSelector from './DistanceSelector.js';
-import PredictedSplitTimes from './PredictedSplitTimes.js';
-import Head from 'next/head'
+
 import Paper from 'material-ui/Paper';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import TextField from 'material-ui/TextField';
+import Toggle from 'material-ui/Toggle';
 import Subheader from 'material-ui/Subheader';
+import CombinedEventRow from './CombinedEventRow.js'
+
 import {calculateSpeed} from '../services/speedService.js'
-import {heptathlonConsts} from '../services/unitConstants.js'
-import {calculateHeptathlonPoints} from '../services/combinedEventsService.js'
+import {calculateHeptathlonResult, calculateHeptathlonPoints, heptathlonConsts} from '../services/combinedEventsService.js'
 
 class HeptathlonCalculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      heptathlon: [
-      {
-        'result': 0,
-        'points': 0
-      },
-      {
-        'result': 0,
-        'points': 0
-      },
-      {
-        'result': 0,
-        'points': 0
-      },
-      {
-        'result': 0,
-        'points': 0
-      },
-      {
-        'result': 0,
-        'points': 0
-      },
-      {
-        'result': 0,
-        'points': 0
-      },
-      {
-        'result': 0,
-        'points': 0
-      }
-    ]
+      heptathlon: {
+        events: [
+        {
+          'result': '',
+          'points': '',
+          'manual': false
+        },
+        {
+          'result': '',
+          'points': ''
+        },
+        {
+          'result': '',
+          'points': ''
+        },
+        {
+          'result': '',
+          'points': '',
+          'manual': false
+        },
+        {
+          'result': '',
+          'points': ''
+        },
+        {
+          'result': '',
+          'points': ''
+        },
+        {
+          'result': '',
+          'points': ''
+        }],
+        'firstDayPoints': '',
+        'secondDayPoints': '',
+        'totalPoints': ''
+      } 
   };
 }
 
   handleResultChange(event) {
-    console.log(this.state.heptathlon); 
-    let hept = this.state.heptahtlon;
-    hept[event.target.id].result = event.target.value;
+    let hept = this.state.heptathlon;
+    hept.events[event.target.id].result = event.target.value;
     this.setState({heptathlon: hept}, this.calculatePoints(event.target.id));
   }
 
-  calculatePoints(index) {
-    console.log("before all:", this.state.heptahtlon);
-    this.setState({heptathlon: calculateHeptathlonPoints(this.state.heptathlon)}, console.log(this.state.heptahtlon));
+  handleToggleChange(event, state) {
+    let hept = this.state.heptathlon;
+    hept.events[event.target.id].manual = state;
+    this.setState({heptathlon: hept}, this.calculatePoints(event.target.id));
+  }
+
+  handlePointsChange(event) {
+    let hept = this.state.heptathlon;
+    hept.events[event.target.id].points = event.target.value;
+    this.setState({heptathlon: hept}, this.calculateResult(event.target.id));
+  }
+
+  calculatePoints(id) {
+    this.setState({heptathlon: calculateHeptathlonPoints(this.state.heptathlon, id)}, console.log('All done ', this.state.heptathlon));
+  }
+
+  calculateResult(id) {
+    this.setState({heptathlon: calculateHeptathlonResult(this.state.heptathlon, id)}, console.log('All done ', this.state.heptathlon));
   }
 
 
@@ -82,14 +101,7 @@ class HeptathlonCalculator extends React.Component {
             text-align: left;
             margin-left: -16px;
           }
-          .heptRow {
-            display: flex;
-            flex-flow: row;
-          }
-          .heptCol {
-            align-self: baseline;
-            margin: 10px;
-          }
+
         `}</style>
         
 
@@ -98,16 +110,47 @@ class HeptathlonCalculator extends React.Component {
           <div className="subheader">
             <Subheader>Recent race time</Subheader>
           </div>
+            <CombinedEventRow 
+              event={this.state.heptathlon.events[0]} 
+              consts={heptathlonConsts[0]} 
+              id='0' 
+              showManual={true} 
+              onResultChange={this.handleResultChange.bind(this)} 
+              onPointsChange={this.handlePointsChange.bind(this)} 
+              onToggle={this.handleToggleChange.bind(this)} 
+            />
+            <CombinedEventRow 
+              event={this.state.heptathlon.events[1]} 
+              consts={heptathlonConsts[1]} 
+              id='1' 
+              showManual={false} 
+              onResultChange={this.handleResultChange.bind(this)} 
+              onPointsChange={this.handlePointsChange.bind(this)} 
+              onToggle={this.handleToggleChange.bind(this)} 
+            />  
+            <CombinedEventRow 
+              event={this.state.heptathlon.events[2]} 
+              consts={heptathlonConsts[2]} 
+              id='2' 
+              showManual={false} 
+              onResultChange={this.handleResultChange.bind(this)} 
+              onPointsChange={this.handlePointsChange.bind(this)} 
+              onToggle={this.handleToggleChange.bind(this)} 
+            />  
+            <CombinedEventRow 
+              event={this.state.heptathlon.events[3]} 
+              consts={heptathlonConsts[3]} 
+              id='3' 
+              showManual={true} 
+              onResultChange={this.handleResultChange.bind(this)} 
+              onPointsChange={this.handlePointsChange.bind(this)} 
+              onToggle={this.handleToggleChange.bind(this)} 
+            />  
+           <div>
+             {this.state.heptathlon.firstDayPoints}
+          </div>
           <div className="heptRow">
-            <div className="heptCol">
-              100m hurdles
-            </div>
-            <div className="heptCol">
-              <TextField floatingLabelText='time (s)' fullWidth={true} hintText="time" name='time' id='0' type='text' onChange={this.handleResultChange.bind(this)} />
-            </div>
-            <div className="heptCol">
-              <TextField floatingLabelText='points' fullWidth={true} hintText="points" name='points' type='text'  />
-            </div>
+           
           </div>
         </Paper>
       </div>

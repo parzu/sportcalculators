@@ -210,6 +210,7 @@ class BowlingScoreCalculator extends React.Component {
           .bowlingFrame {
             display: flex;
             justify-content: center;
+            flex-direction: row;
           }
           .frameParent {
             display: flex;
@@ -246,6 +247,9 @@ class BowlingScoreCalculator extends React.Component {
 
 
         <Paper style={paperStyle} zDepth={3}>
+          <div>
+            TiltIcon
+          </div>
           <div className="frameParent">
             <div className="frameChild">
               <BowlingFrameDisplay frameNum='1' throws={this.state.throws[0]} result={this.state.results[0]}/>
