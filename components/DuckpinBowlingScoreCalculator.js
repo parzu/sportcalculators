@@ -1,28 +1,29 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
-import BowlingScoreButtons from './BowlingScoreButtons.js'
-import BowlingFrameDisplay from './BowlingFrameDisplay.js'
+import DuckpinBowlingScoreButtons from './DuckpinBowlingScoreButtons.js'
+import DuckpinBowlingFrameDisplay from './DuckpinBowlingFrameDisplay.js'
 
-class BowlingScoreCalculator extends React.Component {
+class DuckpinBowlingScoreCalculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       frame: 1,
       throw: 1,
       lastThrow: -1,
+      frameSum: 0, //used only for the open frame's third throw in buttons
       totalResult: 0,
       running: true,
       throws: [
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
+              ['','',''],
+              ['','',''],
+              ['','',''],
+              ['','',''],
+              ['','',''],
+              ['','',''],
+              ['','',''],
+              ['','',''],
+              ['','',''],
               ['','',''],
               ],
       results: ['','','','','','','','','','']
@@ -44,6 +45,13 @@ class BowlingScoreCalculator extends React.Component {
       this.setState({throw: 2});
     } else if (this.state.frame == 10 && this.state.throw == 2 && (value == '/' || this.state.lastThrow == 'x')) {
       this.setState({throw: 3});
+    } else if (this.state.throw == 2) {
+      if (value == '/') {
+        this.nextFrame();
+      } else {
+        this.setState({throw: 3});
+        this.setState({frameSum: this.state.lastThrow + value});
+      }
     } else {
       this.nextFrame();
     }
@@ -64,15 +72,15 @@ class BowlingScoreCalculator extends React.Component {
       totalResult: 0,
       running: true,
       throws: [
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
+              ['','',''],
+              ['','',''],
+              ['','',''],
+              ['','',''],
+              ['','',''],
+              ['','',''],
+              ['','',''],
+              ['','',''],
+              ['','',''],
               ['','',''],
               ],
       results: ['','','','','','','','','','']
@@ -161,7 +169,7 @@ class BowlingScoreCalculator extends React.Component {
     } else if (this.isSpare(frame+1)) {
       result = 20;
     } else {
-      result = 10 + this.calculateOpenFrame(frame+1);
+      result = 10 + parseInt(this.state.throws[frame+1][0]) + parseInt(this.state.throws[frame+1][1]);
     }
     return result;
   }
@@ -179,7 +187,7 @@ class BowlingScoreCalculator extends React.Component {
   }
 
   calculateOpenFrame(frameIndex) {
-    return (parseInt(this.state.throws[frameIndex][0]) + parseInt(this.state.throws[frameIndex][1]));
+    return (parseInt(this.state.throws[frameIndex][0]) + parseInt(this.state.throws[frameIndex][1]) + parseInt(this.state.throws[frameIndex][2]));
   }
 
   isStrike(frameIndex, throwIndex = 0) {
@@ -223,14 +231,9 @@ class BowlingScoreCalculator extends React.Component {
           .frameChild {
             width: 8%;
           }
-          .frame10 {
-            width: 12% !important;
-          }
           .result {
             width: 18% !important;
-            border-right: 1px solid black;
-            border-bottom: 1px solid black;
-            border-top: 1px solid black;
+            border: 1px solid black;
             font-weight: bold;
             font-size: 1.2em;
             padding-top: 17px;
@@ -249,40 +252,40 @@ class BowlingScoreCalculator extends React.Component {
         <Paper style={paperStyle} zDepth={3}>
           <div className="frameParent">
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='1' throws={this.state.throws[0]} result={this.state.results[0]}/>
+              <DuckpinBowlingFrameDisplay frameNum='1' throws={this.state.throws[0]} result={this.state.results[0]}/>
             </div>
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='2' throws={this.state.throws[1]} result={this.state.results[1]}/>
+              <DuckpinBowlingFrameDisplay frameNum='2' throws={this.state.throws[1]} result={this.state.results[1]}/>
             </div>
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='3' throws={this.state.throws[2]} result={this.state.results[2]}/>
+              <DuckpinBowlingFrameDisplay frameNum='3' throws={this.state.throws[2]} result={this.state.results[2]}/>
             </div>
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='4' throws={this.state.throws[3]} result={this.state.results[3]}/>
+              <DuckpinBowlingFrameDisplay frameNum='4' throws={this.state.throws[3]} result={this.state.results[3]}/>
             </div>
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='5' throws={this.state.throws[4]} result={this.state.results[4]}/>
+              <DuckpinBowlingFrameDisplay frameNum='5' throws={this.state.throws[4]} result={this.state.results[4]}/>
             </div>
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='6' throws={this.state.throws[5]} result={this.state.results[5]}/>
+              <DuckpinBowlingFrameDisplay frameNum='6' throws={this.state.throws[5]} result={this.state.results[5]}/>
             </div>
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='7' throws={this.state.throws[6]} result={this.state.results[6]}/>
+              <DuckpinBowlingFrameDisplay frameNum='7' throws={this.state.throws[6]} result={this.state.results[6]}/>
             </div>
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='8' throws={this.state.throws[7]} result={this.state.results[7]}/>
+              <DuckpinBowlingFrameDisplay frameNum='8' throws={this.state.throws[7]} result={this.state.results[7]}/>
             </div>
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='9' throws={this.state.throws[8]} result={this.state.results[8]}/>
+              <DuckpinBowlingFrameDisplay frameNum='9' throws={this.state.throws[8]} result={this.state.results[8]}/>
             </div>
-            <div className="frameChild frame10">
-              <BowlingFrameDisplay frameNum='10' throws={this.state.throws[9]} result={this.state.results[9]}/>
+            <div className="frameChild">
+              <DuckpinBowlingFrameDisplay frameNum='10' throws={this.state.throws[9]} result={this.state.results[9]}/>
             </div>
             <div className="frameChild result">
               <div>{this.state.totalResult}</div>
             </div>
           </div>
-          <BowlingScoreButtons running={this.state.running} throwNum={this.state.throw} lastThrow={this.state.lastThrow} frameNum={this.state.frame} onClick={this.handleClick.bind(this)} />
+          <DuckpinBowlingScoreButtons frameSum={this.state.frameSum} running={this.state.running} throwNum={this.state.throw} lastThrow={this.state.lastThrow} frameNum={this.state.frame} onClick={this.handleClick.bind(this)} />
         </Paper>
         
       </div>
@@ -290,4 +293,4 @@ class BowlingScoreCalculator extends React.Component {
   }
 }
 
-export default BowlingScoreCalculator;
+export default DuckpinBowlingScoreCalculator;

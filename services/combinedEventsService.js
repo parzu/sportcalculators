@@ -1,14 +1,134 @@
 import * as consts from './unitConstants.js';
+import {formatTime} from './timeService.js';
+
+
+export const decathlonConsts = [
+    {
+        'name': '100m',
+        'resultUnit': 's',
+        'resultExample': 'eg. 11.85',
+        'eventType': 'track',
+        'day': 'first',
+        'decimals': 2,
+        'manualTime': 0.24,
+        'a': 25.4347,
+        'b': 18,
+        'c': 1.81
+    },
+    {
+        'name': 'Long jump',
+        'resultUnit': 'cm',
+        'resultExample': 'eg. 798',
+        'eventType': 'field',
+        'day': 'first',
+        'decimals': 2,
+        'a': 0.14354,
+        'b': 220,
+        'c': 1.4,
+    },
+    {
+        'name': 'Shot put',
+        'resultUnit': 'm',
+        'resultExample': 'eg. 19.85',
+        'eventType': 'field',
+        'day': 'first',
+        'decimals': 2,
+        'a': 51.39,
+        'b': 1.5,
+        'c': 1.05
+    },
+    {
+        'name': 'High jump',
+        'resultUnit': 'cm',
+        'resultExample': 'eg. 189',
+        'eventType': 'field',
+        'day': 'first',
+        'decimals': 2,
+        'a': 0.8465,
+        'b': 75,
+        'c': 1.42
+    },
+    {
+        'name': '400m',
+        'resultUnit': 's',
+        'resultExample': 'eg. 44.85',
+        'eventType': 'track',
+        'day': 'first',
+        'decimals': 2,
+        'manualTime': 0.14,
+        'a': 1.53775,
+        'b': 82,
+        'c': 1.81
+    },
+    {
+        'name': '110m hurdles',
+        'resultUnit': 's',
+        'resultExample': 'eg. 13.85',
+        'eventType': 'track',
+        'day': 'second',
+        'decimals': 2,
+        'manualTime': 0.24,
+        'a': 5.74352,
+        'b': 28.5,
+        'c': 1.92
+    },
+    {
+        'name': 'Discus throw',
+        'resultUnit': 'm',
+        'resultExample': 'eg. 63.85',
+        'eventType': 'field',
+        'day': 'second',
+        'decimals': 2,
+        'a': 12.91,
+        'b': 4,
+        'c': 1.1
+    },
+    {
+        'name': 'Pole vault',
+        'resultUnit': 'cm',
+        'resultExample': 'eg. 547',
+        'eventType': 'field',
+        'day': 'second',
+        'decimals': 2,
+        'a': 0.2797,
+        'b': 100,
+        'c': 1.35
+    },
+    {
+        'name': 'Javelin throw',
+        'resultUnit': 'm',
+        'resultExample': 'eg. 76.85',
+        'eventType': 'field',
+        'day': 'second',
+        'decimals': 2,
+        'a': 10.14,
+        'b': 7,
+        'c': 1.08
+    },
+    {
+        'name': '1500m',
+        'resultUnit': 'm:ss',
+        'resultExample': 'eg. 2:13.85',
+        'eventType': 'track',
+        'day': 'second',
+        'decimals': 2,
+        'a': 0.03768,
+        'b': 480,
+        'c': 1.85
+    }
+];
+
 
 export const heptathlonConsts = [
     {
         'order': 1,
         'name': '100m hurdles',
-        'resultName': 'time',
         'resultUnit': 's',
+        'resultExample': 'eg. 13.85',
         'eventType': 'track',
         'day': 'first',
         'decimals': 2,
+        'manualTime': 0.24,
         'a': 9.23076,
         'b': 26.7,
         'c': 1.835
@@ -16,11 +136,11 @@ export const heptathlonConsts = [
     {
         'order': 2,
         'name': 'High jump',
-        'resultName': 'height',
         'resultUnit': 'cm',
+        'resultExample': 'eg. 182',
         'eventType': 'field',
         'day': 'first',
-        'decimals': 0,
+        'decimals': 2,
         'a': 1.84523,
         'b': 75.0,
         'c': 1.348
@@ -28,8 +148,8 @@ export const heptathlonConsts = [
     {
         'order': 3,
         'name': 'Shot put',
-        'resultName': 'distance',
         'resultUnit': 'm',
+        'resultExample': 'eg. 17.06',
         'eventType': 'field',
         'day': 'first',
         'decimals': 2,
@@ -40,68 +160,97 @@ export const heptathlonConsts = [
     {
         'order': 4,
         'name': '200m',
-        'resultName': 'time',
         'resultUnit': 's',
+        'resultExample': 'eg. 23.80',
         'eventType': 'track',
         'day': 'first',
         'decimals': 2,
+        'manualTime': 0.24,
         'a': 4.99087,
         'b': 42.5,
         'c': 1.81
     },
     {
-        'name': 'longjump',
+        'order': 5,
+        'name': 'Long jump',
+        'resultUnit': 'cm',
+        'resultExample': 'eg. 647',
+        'eventType': 'field',
         'day': 'second',
+        'decimals': 2,
         'a': 0.188807,
         'b': 210,
         'c': 1.41
     },
     {
-        'name': 'javelin',
+        'order': 6,
+        'name': 'Javelin throw',
+        'resultUnit': 'm',
+        'resultExample': 'eg. 57.17',
+        'eventType': 'field',
         'day': 'second',
+        'decimals': 2,
         'a': 15.9803,
         'b': 3.80,
         'c': 1.04
     },
     {
-        'name': 'run800m',
+        'order': 7,
+        'name': '800m',
+        'resultUnit': 'm:ss',
+        'resultExample': 'eg. 2:07.64',
+        'eventType': 'track',
         'day': 'second',
+        'decimals': 2,
+        'manualTime': 0,
         'a': 0.11193,
         'b': 254,
         'c': 1.88
     }
 ];
 
-export function calculateHeptathlonPoints(heptathlon, index) {
-    if (heptathlon.events[index].result == '') {
-        heptathlon.events[index].points = '';
+export function calculateCombinedEventsPoints(combinedEvents, index, combEvent) {
+    let allConsts = heptathlonConsts;
+    if (combEvent == 'decathlon') {
+        allConsts = decathlonConsts;
+    }
+    let eventConsts = allConsts[index];
+    console.log('jejejej', eventConsts);
+
+    if (combinedEvents.events[index].result == '') {
+        combinedEvents.events[index].points = '';
     } else {
-        let consts = heptathlonConsts[index];
-        if (consts.eventType == "track") {
-            heptathlon.events[index].points = getTrackPoints(consts, heptathlon.events[index]);
+        
+        if (eventConsts.eventType == "track") {
+            combinedEvents.events[index].points = getTrackPoints(eventConsts, combinedEvents.events[index]);
         } else {
-            heptathlon.events[index].points = getFieldPoints(consts, heptathlon.events[index]);
+            combinedEvents.events[index].points = getFieldPoints(eventConsts, combinedEvents.events[index]);
         }
     }
-    heptathlon = calculateTotals(heptathlon, heptathlonConsts);
-    console.log('All calculated:', heptathlon);
-    return heptathlon;
+    combinedEvents = calculateTotals(combinedEvents, allConsts);
+    console.log('All calculated:', combinedEvents);
+    return combinedEvents;
 }
 
-export function calculateHeptathlonResult(heptathlon, index) {
-    if (heptathlon.events[index].points == '') {
-        heptathlon.events[index].result = '';
+export function calculateCombinedEventsResult(combindedEvents, index, combEvent) {
+    let allConsts = heptathlonConsts;
+    if (combEvent == 'decathlon') {
+        allConsts = decathlonConsts;
+    }
+    let eventConsts = allConsts[index];
+
+    if (combindedEvents.events[index].points == '') {
+        combindedEvents.events[index].result = '';
     } else {
-        let consts = heptathlonConsts[index];
-        if (consts.eventType == "track") {
-            heptathlon.events[index].result = getTrackResult(consts, heptathlon.events[index]);
+        if (eventConsts.eventType == "track") {
+            combindedEvents.events[index].result = getTrackResult(eventConsts, combindedEvents.events[index]);
         } else {
-            heptathlon.events[index].result = getFieldResult(consts, heptathlon.events[index]);
+            combindedEvents.events[index].result = getFieldResult(eventConsts, combindedEvents.events[index]);
         }
     }
-    heptathlon = calculateTotals(heptathlon, heptathlonConsts);
-    console.log('All calculated:', heptathlon);
-    return heptathlon;
+    combindedEvents = calculateTotals(combindedEvents, allConsts);
+    console.log('All calculated:', combindedEvents);
+    return combindedEvents;
 }
 
 function calculateTotals(competition, consts) {
@@ -111,6 +260,7 @@ function calculateTotals(competition, consts) {
     for (let i = 0; i < competition.events.length; i++) {
         console.log('event ', i, ' points: ', competition.events[i].points);
         if (competition.events[i].points != '') {
+            console.log('before day ', consts);
             if (consts[i].day == 'first') {
                 console.log('incresed first day from ', firstDay, ' to ', firstDay+competition.events[i].points);
                 firstDay = firstDay + parseInt(competition.events[i].points);
@@ -120,19 +270,26 @@ function calculateTotals(competition, consts) {
         }
     }
     competition.firstDayPoints = firstDay;
-    competition.seconDayPoints = secondDay;
+    competition.secondDayPoints = secondDay;
     competition.totalPoints = firstDay + secondDay;
     return competition;
 }
 
 function getTrackPoints(consts, event) {
     let points = '';
+    let time = event.result;
+    console.log(consts);
+    console.log(event);
+
+    if (isNaN(event.result)) {
+        time = parseTime(event.result);
+    }
     if (event.manual == true) {
-        let manualTime = parseFloat(event.result) + getManualTime(event);
-        console.log('time: ', event.result, ', manual time for calc: ', manualTime);
+        let manualTime = parseFloat(time) + consts.manualTime;
+        console.log('time: ', time, ', manual time for calc: ', manualTime);
         points = Math.floor(consts.a*(Math.pow(consts.b-manualTime, consts.c)));                    
     } else {
-        points = Math.floor(consts.a*(Math.pow((consts.b-event.result), consts.c)));
+        points = Math.floor(consts.a*(Math.pow((consts.b-time), consts.c)));
     }
     console.log('TrackPoints result: ', points);
     if (isNaN(points)) {
@@ -143,20 +300,34 @@ function getTrackPoints(consts, event) {
 
 function getTrackResult(consts, event) {
     let result = '';
-    result = -(Math.pow((event.points/consts.a), (1/consts.c))-consts.b).toFixed(event.decimals);
+    result = -(Math.pow((event.points/consts.a), (1/consts.c))-consts.b);
     if (event.manual == true) {
-       result = result - getManualTime(event);
+       result = result - consts.manualTime;
     } 
     console.log('TrackResult result: ', result);
     if (isNaN(result)) {
         result = 0;
+    }
+    if (result >= 60) {
+        let min = parseInt(result/60);
+        let sec = parseInt(result-min*60)
+        let ms = ((result-(min*60)-sec)*100).toFixed();
+        if (sec < 10) {
+            sec = '0'+sec.toPrecision(1);
+        }
+        if (ms < 10 ) {
+            ms = '0'+ms;   
+        }
+        result = min+':'+sec+'.'+ms;
+    } else {
+        result = result.toFixed(consts.decimals);
     }
     return result;
 }
 
 function getFieldResult(consts, event) {
     let result = '';
-    result = (Math.pow((event.points/consts.a), (1/consts.c))+consts.b).toFixed(event.decimals);
+    result = (Math.pow((event.points/consts.a), (1/consts.c))+consts.b).toFixed(consts.decimals);
     if (isNaN(result)) {
         result = 0;
     }
@@ -173,6 +344,12 @@ function getFieldPoints(consts, event) {
     return points;
 }
 
-function getManualTime(event) {
-    return 0.24; //for now, create logic later.
+function parseTime(time) {
+    console.log(time);
+    let result = 0;
+    let ind = time.indexOf(':');
+    let mins = parseInt(time.substr(0, ind));
+    let secs = parseFloat(time.substr(ind+1, time.length));
+    console.log(mins, secs);
+    return parseFloat(mins*60+secs);
 }

@@ -72,14 +72,15 @@ export default class DrawerSimpleExample extends React.Component {
                 .calculatorBox {
                     margin: 20px;
                 }
+           
                 @media (max-width: 600px) {
                     .container {
-                        margin-left: 15px;
-                        margin-right: 15px;
+                        margin-left: 5px;
+                        margin-right: 5px;
                     }
                     .calculatorBox {
-                        margin-left: 15px;
-                        margin-right: 15px;
+                        margin-left: 5px;
+                        margin-right: 5px;
                     }
                 }
                 @media (min-width: 900px) {
@@ -107,6 +108,11 @@ export default class DrawerSimpleExample extends React.Component {
                                     primaryText="Bowling Score Calculator"
                                 />
                             </Link>
+                            <Link href="/duckpin-bowling-score-calculator">
+                                <ListItem
+                                    primaryText="Duckpin Bowling Score Calculator"
+                                />
+                            </Link>
                         </List>
                         <Divider />
                         <List>
@@ -114,6 +120,11 @@ export default class DrawerSimpleExample extends React.Component {
                             <Link href="/heptathlon-calculator">
                                 <ListItem
                                     primaryText="Heptathlon Calculator"
+                                />
+                            </Link>
+                            <Link href="/decathlon-calculator">
+                                <ListItem
+                                    primaryText="Decathlon Calculator"
                                 />
                             </Link>
                         </List>

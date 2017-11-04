@@ -9,13 +9,13 @@ import CombinedEventRow from './CombinedEventRow.js'
 import CombinedTotalRow from './CombinedTotalRow.js'
 
 import {calculateSpeed} from '../services/speedService.js'
-import {calculateCombinedEventsPoints, calculateCombinedEventsResult, heptathlonConsts} from '../services/combinedEventsService.js'
+import {calculateCombinedEventsPoints, calculateCombinedEventsResult, decathlonConsts} from '../services/combinedEventsService.js'
 
-class HeptathlonCalculator extends React.Component {
+class DecathlonCalculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      heptathlon: {
+      decathlon: {
         events: [
         {
           'result': '',
@@ -32,8 +32,21 @@ class HeptathlonCalculator extends React.Component {
         },
         {
           'result': '',
+          'points': ''
+        },
+        {
+          'result': '',
           'points': '',
           'manual': false
+        },
+        {
+          'result': '',
+          'points': '',
+          'manual': false
+        },
+        {
+          'result': '',
+          'points': ''
         },
         {
           'result': '',
@@ -55,29 +68,29 @@ class HeptathlonCalculator extends React.Component {
 }
 
   handleResultChange(event) {
-    let hept = this.state.heptathlon;
-    hept.events[event.target.id].result = event.target.value;
-    this.setState({heptathlon: hept}, this.calculatePoints(event.target.id));
+    let decth = this.state.decathlon;
+    decth.events[event.target.id].result = event.target.value;
+    this.setState({decathlon: decth}, this.calculatePoints(event.target.id));
   }
 
   handleToggleChange(event, state) {
-    let hept = this.state.heptathlon;
-    hept.events[event.target.id].manual = state;
-    this.setState({heptathlon: hept}, this.calculatePoints(event.target.id));
+    let decth = this.state.decathlon;
+    decth.events[event.target.id].manual = state;
+    this.setState({decathlon: decth}, this.calculatePoints(event.target.id));
   }
 
   handlePointsChange(event) {
-    let hept = this.state.heptathlon;
-    hept.events[event.target.id].points = event.target.value;
-    this.setState({heptathlon: hept}, this.calculateResult(event.target.id));
+    let decth = this.state.decathlon;
+    decth.events[event.target.id].points = event.target.value;
+    this.setState({decathlon: decth}, this.calculateResult(event.target.id));
   }
 
   calculatePoints(id) {
-    this.setState({heptathlon: calculateCombinedEventsPoints(this.state.heptathlon, id)}, console.log('All done ', this.state.heptathlon));
+    this.setState({decathlon: calculateCombinedEventsPoints(this.state.decathlon, id, 'decathlon')}, console.log('All done ', this.state.decathlon));
   }
 
   calculateResult(id) {
-    this.setState({heptathlon: calculateCombinedEventsResult(this.state.heptathlon, id)}, console.log('All done ', this.state.heptathlon));
+    this.setState({decathlon: calculateCombinedEventsResult(this.state.decathlon, id, 'decathlon')}, console.log('All done ', this.state.decathlon));
   }
 
 
@@ -92,9 +105,9 @@ class HeptathlonCalculator extends React.Component {
     };
 
     return (
-<div className='heptathlonCalculatorParent'>
+<div className='DecathlonCalculatorParent'>
         <style jsx >{`
-          .heptathlonCalculatorParent {
+          .DecathlonCalculatorParent {
             display: flex;
             justify-content: center;
           }
@@ -109,8 +122,8 @@ class HeptathlonCalculator extends React.Component {
       
         <Paper className='calculatorBox' style={style} zDepth={3}>
             <CombinedEventRow 
-              event={this.state.heptathlon.events[0]} 
-              consts={heptathlonConsts[0]} 
+              event={this.state.decathlon.events[0]} 
+              consts={decathlonConsts[0]} 
               id='0' 
               showManual={true} 
               onResultChange={this.handleResultChange.bind(this)} 
@@ -118,8 +131,8 @@ class HeptathlonCalculator extends React.Component {
               onToggle={this.handleToggleChange.bind(this)} 
             />
             <CombinedEventRow 
-              event={this.state.heptathlon.events[1]} 
-              consts={heptathlonConsts[1]} 
+              event={this.state.decathlon.events[1]} 
+              consts={decathlonConsts[1]} 
               id='1' 
               showManual={false} 
               onResultChange={this.handleResultChange.bind(this)} 
@@ -127,8 +140,8 @@ class HeptathlonCalculator extends React.Component {
               onToggle={this.handleToggleChange.bind(this)} 
             />  
             <CombinedEventRow 
-              event={this.state.heptathlon.events[2]} 
-              consts={heptathlonConsts[2]} 
+              event={this.state.decathlon.events[2]} 
+              consts={decathlonConsts[2]} 
               id='2' 
               showManual={false} 
               onResultChange={this.handleResultChange.bind(this)} 
@@ -136,9 +149,18 @@ class HeptathlonCalculator extends React.Component {
               onToggle={this.handleToggleChange.bind(this)} 
             />  
             <CombinedEventRow 
-              event={this.state.heptathlon.events[3]} 
-              consts={heptathlonConsts[3]} 
+              event={this.state.decathlon.events[3]} 
+              consts={decathlonConsts[3]} 
               id='3' 
+              showManual={false} 
+              onResultChange={this.handleResultChange.bind(this)} 
+              onPointsChange={this.handlePointsChange.bind(this)} 
+              onToggle={this.handleToggleChange.bind(this)} 
+            />  
+            <CombinedEventRow 
+              event={this.state.decathlon.events[4]} 
+              consts={decathlonConsts[4]} 
+              id='4' 
               showManual={true} 
               onResultChange={this.handleResultChange.bind(this)} 
               onPointsChange={this.handlePointsChange.bind(this)} 
@@ -146,30 +168,48 @@ class HeptathlonCalculator extends React.Component {
             />  
             <CombinedTotalRow
               text='1st day points'
-              points={this.state.heptathlon.firstDayPoints}
+              points={this.state.decathlon.firstDayPoints}
             />
             <CombinedEventRow 
-              event={this.state.heptathlon.events[4]} 
-              consts={heptathlonConsts[4]} 
-              id='4' 
-              showManual={false} 
-              onResultChange={this.handleResultChange.bind(this)} 
-              onPointsChange={this.handlePointsChange.bind(this)} 
-              onToggle={this.handleToggleChange.bind(this)} 
-            />  
-            <CombinedEventRow 
-              event={this.state.heptathlon.events[5]} 
-              consts={heptathlonConsts[5]} 
+              event={this.state.decathlon.events[5]} 
+              consts={decathlonConsts[5]} 
               id='5' 
+              showManual={true} 
+              onResultChange={this.handleResultChange.bind(this)} 
+              onPointsChange={this.handlePointsChange.bind(this)} 
+              onToggle={this.handleToggleChange.bind(this)} 
+            />  
+            <CombinedEventRow 
+              event={this.state.decathlon.events[6]} 
+              consts={decathlonConsts[6]} 
+              id='6' 
               showManual={false} 
               onResultChange={this.handleResultChange.bind(this)} 
               onPointsChange={this.handlePointsChange.bind(this)} 
               onToggle={this.handleToggleChange.bind(this)} 
             />  
             <CombinedEventRow 
-              event={this.state.heptathlon.events[6]} 
-              consts={heptathlonConsts[6]} 
-              id='6' 
+              event={this.state.decathlon.events[7]} 
+              consts={decathlonConsts[7]} 
+              id='7' 
+              showManual={false} 
+              onResultChange={this.handleResultChange.bind(this)} 
+              onPointsChange={this.handlePointsChange.bind(this)} 
+              onToggle={this.handleToggleChange.bind(this)} 
+            />  
+            <CombinedEventRow 
+              event={this.state.decathlon.events[8]} 
+              consts={decathlonConsts[8]} 
+              id='8' 
+              showManual={false} 
+              onResultChange={this.handleResultChange.bind(this)} 
+              onPointsChange={this.handlePointsChange.bind(this)} 
+              onToggle={this.handleToggleChange.bind(this)} 
+            />  
+            <CombinedEventRow 
+              event={this.state.decathlon.events[9]} 
+              consts={decathlonConsts[9]} 
+              id='9' 
               showManual={false} 
               onResultChange={this.handleResultChange.bind(this)} 
               onPointsChange={this.handlePointsChange.bind(this)} 
@@ -177,11 +217,11 @@ class HeptathlonCalculator extends React.Component {
             />  
             <CombinedTotalRow
               text='2nd day points'
-              points={this.state.heptathlon.secondDayPoints}
+              points={this.state.decathlon.secondDayPoints}
             />
             <CombinedTotalRow
               text='Total points'
-              points={this.state.heptathlon.totalPoints}
+              points={this.state.decathlon.totalPoints}
             />
         </Paper>
       </div>
@@ -189,4 +229,4 @@ class HeptathlonCalculator extends React.Component {
   }
 }
 
-export default HeptathlonCalculator;
+export default DecathlonCalculator;
