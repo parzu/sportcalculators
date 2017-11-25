@@ -89,7 +89,7 @@ class CombinedEventRow extends React.Component {
             fullWidth={true} hintText="points" 
             name='points' 
             id={this.props.id} 
-            type='text'
+            type='number'
             value={this.props.event.points}
             onChange={this.props.onPointsChange.bind(this)}
           />

@@ -40,7 +40,7 @@ class DistanceInput extends React.Component {
 
           
             <div className='distanceInputChild'>
-                <TextField floatingLabelText='distance' hintText="distance" name="dist" type='text' onChange={this.handleChange.bind(this)} />
+                <TextField floatingLabelText='distance' hintText="distance" name="dist" type='number' onChange={this.handleChange.bind(this)} />
             </div>
             <div className='distanceInputChild'>
                 <RadioButtonGroup name="distType" defaultSelected={consts.distanceTypes.KM} onChange={this.handleChange.bind(this)} style={{ display: 'flex' }}>

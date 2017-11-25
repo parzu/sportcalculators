@@ -3,7 +3,17 @@ import * as consts from './unitConstants.js';
 // Each function does conversion and formating
 
 export function timeToSeconds (hours, mins, secs) {
-    return parseInt(hours, 10) * 3600 + parseInt(mins, 10) * 60 + parseInt(secs, 10);
+    if (isNaN(hours) || hours == '') {
+        hours = 0;
+    }
+    if (isNaN(mins) || mins == '') {
+        mins = 0;
+    }
+    if (isNaN(secs) || secs == '') {
+        secs = 0;
+    }
+    let totalSecs = parseInt((parseInt(hours) * 3600) + (parseInt(mins) * 60) + parseInt(secs));
+    return totalSecs;   
 }
 
 export function formatTime(secs, format) {
@@ -12,8 +22,8 @@ export function formatTime(secs, format) {
     secs = secs-(hours*3600);
     let mins = parseInt(secs/60);
     let sec = parseInt(secs-(mins*60));
+    console.log('sec', sec);
     let ms = parseInt((secs-sec)*100);    
-    console.log(ms);
     if (mins < 10) {
         mins = '0'+mins.toPrecision(1);
     }
@@ -25,11 +35,11 @@ export function formatTime(secs, format) {
     } else {
         ms = ms.toFixed(2);
     }
-
-    let result = hours+':'+mins+':'+secs;
+    console.log('sec', sec);
+    let result = hours+':'+mins+':'+sec;
     if (format == 'mm:ss.ms') {
         result = mins+':'+sec+'.'+ms;
     } 
-
+    console.log(result);
     return result;
   }

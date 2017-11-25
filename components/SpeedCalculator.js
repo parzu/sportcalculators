@@ -18,7 +18,7 @@ class SpeedCalculator extends React.Component {
     };
   }
 
-  onTimeChange(totalSecs) {
+  onTimeChange(event, totalSecs) {
     this.setState({time: totalSecs}, this.setSpeed);
   }
 
@@ -69,7 +69,7 @@ class SpeedCalculator extends React.Component {
             <Subheader>Race time</Subheader>
           </div>
           <div className='speedCalculatorTime speedCalculatorChild'>
-            <TimeInput  time={this.state.time} onTimeChange={this.onTimeChange.bind(this)}/> 
+            <TimeInput onTimeChange={this.onTimeChange.bind(this)}/> 
           </div>
           <div className="subheader">
             <Subheader>Race distance</Subheader>

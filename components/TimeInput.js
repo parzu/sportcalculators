@@ -7,22 +7,67 @@ class TimeInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-        hours: '0',
-        minutes: '0',
-        seconds: '0',
+        hours: '',
+        minutes: '',
+        seconds: '',
+        tag: '',
      };
   }
 
-  handleChange(event) {
+  handleTimeChange(event) {
     this.setState({[event.target.name]: event.target.value}, this.timeChanged);
   }
 
   timeChanged() {
-    this.props.onTimeChange(time.timeToSeconds(this.state.hours, this.state.minutes, this.state.seconds));
+      console.log('timeInput ', this.state);
+    this.props.onTimeChange(event, time.timeToSeconds(this.state.hours, this.state.minutes, this.state.seconds), this.state.tag);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps != this.props) {
+        if (this.props.values) {
+            this.setState({hours: this.props.values.hours});
+            this.setState({minutes: this.props.values.minutes});
+            this.setState({seconds: this.props.values.seconds});
+        }
+        if (this.props.tag) {
+            this.setState({tag: this.props.tag});
+        }
+    }
+  }
+
+  buildInputField(name, shortName, id, useShortNames, timeValue) {
+    let valueProp = '';
+    if (timeValue) {
+        valueProp = {value: this.state[name]};
+    }
+    if (!useShortNames) {
+        shortName = name;
+    }
+    let html = (
+        <div style={{flexBasis: '30%'}} key={name+id} className='timeIntputChild'>
+        <TextField 
+            floatingLabelText={shortName} 
+            fullWidth={true} 
+            hintText={shortName} 
+            {...valueProp}
+            name={name} 
+            type='number' 
+            key={id}
+            onChange ={this.handleTimeChange.bind(this)}
+        />
+        </div>
+        );
+    return html;
   }
 
   render() {
-
+    let html = [];
+    if (!this.props.hideHours) {
+        html.push(this.buildInputField('hours', 'hrs', this.props.tag+'1', this.props.shortNames, this.props.values));
+    }
+    html.push(this.buildInputField('minutes', 'mins', this.props.tag+'2', this.props.shortNames, this.props.values));
+    html.push(this.buildInputField('seconds', 'secs', this.props.tag+'3', this.props.shortNames, this.props.values));
 
 
     return (
@@ -31,23 +76,11 @@ class TimeInput extends React.Component {
     .timeInputParent {
         display: flex;
         flex-flow: row nowrap;
-    }
-
-    .timeIntputChild {
-        margin: auto;  /* Magic! */
-        width: 30%;
+        justify-content: space-between;
     }
 
     `}</style>
-            <div className='timeIntputChild'>
-                <TextField floatingLabelText='hours' fullWidth={true} hintText="hours" name='hours' type='text' onChange={this.handleChange.bind(this)} />
-            </div>
-            <div className='timeIntputChild'>
-                <TextField floatingLabelText='minutes' fullWidth={true} hintText="minutes" name='minutes' type='text' onChange={this.handleChange.bind(this)}/>
-            </div>
-            <div className='timeIntputChild'>
-                <TextField floatingLabelText='seconds' fullWidth={true} hintText="seconds" name='seconds' type='text' onChange={this.handleChange.bind(this)}/>
-            </div>
+            {html}
         </div>
     );
   }

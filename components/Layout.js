@@ -13,6 +13,7 @@ import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
 import FontIcon from 'material-ui/FontIcon';
 import WidgetsIcon from 'material-ui/svg-icons/device/widgets';
+import Navigation from './Navigation.js';
 
 
 const muiThemeConfig = getMuiTheme({}, {userAgent: 'all'});
@@ -21,18 +22,23 @@ export default class DrawerSimpleExample extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {open: false, docked: false};
+    this.state = {
+        menuOpen: false,
+        menuDocked: false
+    };
   }
 
-  handleToggle = () => this.setState({open: !this.state.open});
-
-  handleWindowResize() {
-    if(window.innerWidth < 900) {
-      this.setState({ open: false, docked: false});
-    } else {
-      this.setState({ open: true, docked: true});
+    handleToggle() {
+        this.setState({menuOpen: true});
     }
-  }
+
+    handleWindowResize() {
+        if(window.innerWidth < 900) {
+            this.setState({ menuOpen: false, menuDocked: false});
+        } else {
+            this.setState({ menuOpen: true, menuDocked: true});
+        }
+    }
 
   componentDidMount() {
     this.handleWindowResize();
@@ -56,6 +62,12 @@ export default class DrawerSimpleExample extends React.Component {
                     font-family: 'Roboto', sans-serif;
 
                 }
+
+                .appBarLink {
+                    text-decoration: none;
+                    color: white;
+                }
+
                 h3 {
                     font-weight: normal;
                 }
@@ -90,87 +102,12 @@ export default class DrawerSimpleExample extends React.Component {
                 }
             `}</style>
             <AppBar
-                title="SportCalculators"
+                title={<a className="appBarLink" href="/">SportCalculators</a>}
+                style={{ backgroundColor: '#034f84' }}
                 iconClassNameRight="muidocs-icon-navigation-expand-more"
-                onLeftIconButtonTouchTap={this.handleToggle}
+                onLeftIconButtonTouchTap={this.handleToggle.bind(this)}
             />
-            <div className="navigation">
-                <Drawer  
-                    open={this.state.open} 
-                    docked={this.state.docked}
-                    onRequestChange={this.handleToggle.bind(this)}
-                >
-                        <AppBar showMenuIconButton={false} title='SportCalculators'/>
-                        <List>
-                            <Subheader>Bowling</Subheader>
-                            <Link href="/bowling-score-calculator">
-                                <ListItem
-                                    primaryText="Bowling Score Calculator"
-                                />
-                            </Link>
-                            <Link href="/duckpin-bowling-score-calculator">
-                                <ListItem
-                                    primaryText="Duckpin Bowling Score Calculator"
-                                />
-                            </Link>
-                        </List>
-                        <Divider />
-                        <List>
-                            <Subheader>Combined Events</Subheader>
-                            <Link href="/heptathlon-calculator">
-                                <ListItem
-                                    primaryText="Heptathlon Calculator"
-                                />
-                            </Link>
-                            <Link href="/decathlon-calculator">
-                                <ListItem
-                                    primaryText="Decathlon Calculator"
-                                />
-                            </Link>
-                        </List>
-                        <Divider />
-                        <List>
-                            <Subheader>Running</Subheader>
-                            <Link href="/running-speed-calculator">
-                                <ListItem
-                                    primaryText="Running Speed Calculator"
-                                />
-                            </Link>
-                            <Link href="/race-time-calculator">
-                                <ListItem
-                                    primaryText="Race Time Calculator"
-                                />
-                            </Link>
-                        </List>
-                        <Divider />
-                        <List>
-                            <Subheader>Cycling</Subheader>
-                            <Link href="/cycling-speed-calculator">
-                                <ListItem
-                                    primaryText="Cycling Speed Calculator"
-                                />
-                            </Link>
-                        </List>
-                        <Divider />
-                        <List>
-                            <Link href="/">
-                                <ListItem 
-                                    primaryText="Home"
-                                    leftIcon={<FontIcon/>}
-                                />
-                            </Link>
-                            <Link href="/about">
-                                <ListItem primaryText="About" />
-                            </Link>
-                            <Link href="/contact">
-                                <ListItem primaryText="Contact" />
-                            </Link>
-                            <Link href="/privacy">
-                                <ListItem primaryText="Privacy" />
-                            </Link>
-                        </List>
-                    </Drawer>
-            </div>
+            <Navigation menuOpen={this.state.menuOpen} menuDocked={this.state.menuDocked}/>
             <div className='container'>
                 {this.props.children}
             </div>
