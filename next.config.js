@@ -1,3 +1,7 @@
+module.exports = {
+    distDir: 'build'
+  };
+
 // module.exports = {
 //   webpack: (config, { dev }) => {
 //     // Perform customizations to webpack config
