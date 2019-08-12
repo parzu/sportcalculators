@@ -1,6 +1,3 @@
-module.exports = {
-    distDir: 'build'
-  };
 
 // module.exports = {
 //   webpack: (config, { dev }) => {
