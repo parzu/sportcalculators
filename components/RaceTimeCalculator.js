@@ -4,7 +4,6 @@ import DistanceSelector from './DistanceSelector.js';
 import PredictedSplitTimes from './PredictedSplitTimes.js';
 import Head from 'next/head'
 import Paper from '@material-ui/core/Paper';
-import {RadioButton, RadioButtonGroup} from '@material-ui/core/RadioButton';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import {calculateSpeed} from '../services/speedService.js'
 

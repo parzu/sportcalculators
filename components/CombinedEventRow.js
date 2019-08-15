@@ -1,6 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import Toggle from '@material-ui/core/Toggle';
+import ToggleButton from '@material-ui/lab/ToggleButton';
 
 class CombinedEventRow extends React.Component {
   constructor(props) {
@@ -96,7 +96,7 @@ class CombinedEventRow extends React.Component {
         </div>
         <div className="heptCol manual">
           {/* {this.props.showManual ? <p className="manualText">Manual timing</p>: null} */}
-          {this.props.showManual ? <Toggle labelStyle={labelStyle} label="Manual timing" labelPosition='right' id={this.props.id} onToggle={this.props.onToggle.bind(this)}/>: null}
+          {this.props.showManual ? <ToggleButton labelStyle={labelStyle} label="Manual timing" labelPosition='right' id={this.props.id} onToggle={this.props.onToggle.bind(this)}/>: null}
           
         </div>
         
