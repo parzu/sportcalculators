@@ -1,119 +1,166 @@
+/****
+ * Layout for all the pages.
+ * Creates navigation drawer and the appbar on top.
+ * 
+ * 
+ */
+
 import React from 'react';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import Link from 'next/link';
-import AppBar from 'material-ui/AppBar';
-import Head from 'next/head';
-import Avatar from 'material-ui/Avatar';
-import {List, ListItem} from 'material-ui/List';
-import Subheader from 'material-ui/Subheader';
-import Divider from 'material-ui/Divider';
-import FontIcon from 'material-ui/FontIcon';
-import WidgetsIcon from 'material-ui/svg-icons/device/widgets';
-import Navigation from './Navigation.js';
+import AppBar from '@material-ui/core/AppBar';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
+import Hidden from '@material-ui/core/Hidden';
+import IconButton from '@material-ui/core/IconButton';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import MenuIcon from '@material-ui/icons/Menu';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 
+const drawerWidth = 240;
 
-const muiThemeConfig = getMuiTheme({}, {userAgent: 'all'});
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+  },
+  drawer: {
+    [theme.breakpoints.up('sm')]: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
+  },
+  appBar: {
+    marginLeft: drawerWidth,
+    [theme.breakpoints.up('sm')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+    },
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+  },
+  toolbar: theme.mixins.toolbar,
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+  nested: {
+    paddingLeft: theme.spacing(2),
+  },
+}));
 
-export default class DrawerSimpleExample extends React.Component {
+function Layout(props) {
+  const { container } = props;
+  const classes = useStyles();
+  const theme = useTheme();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-        menuOpen: false,
-        menuDocked: false
-    };
+  function handleDrawerToggle() {
+    setMobileOpen(!mobileOpen);
   }
 
-    handleToggle() {
-        this.setState({menuOpen: true});
-    }
-
-    handleWindowResize() {
-        if(window.innerWidth < 900) {
-            this.setState({ menuOpen: false, menuDocked: false});
-        } else {
-            this.setState({ menuOpen: true, menuDocked: true});
-        }
-    }
-
-  componentDidMount() {
-    this.handleWindowResize();
-    window.addEventListener("resize", this.handleWindowResize.bind(this));
-  }
-
-
-  render() {
+  function ListItemLink(props) {
     return (
-
-      <MuiThemeProvider muiTheme={muiThemeConfig}>
-        <div>            
-            <Head>
-                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                <script src="https://use.fontawesome.com/4a9aa864c0.js"></script>
-                <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" />
-            </Head>
-           <style jsx global>{`
-                body {
-                    margin: 0;
-                    font-family: 'Roboto', sans-serif;
-
-                }
-
-                .appBarLink {
-                    text-decoration: none;
-                    color: white;
-                }
-
-                h3 {
-                    font-weight: normal;
-                }
-                .calculator {
-                    font-weight: normal;
-                    border-bottom: 1px solid #eee;
-                    margin-bottom: 40px;
-
-                }
-                .container {
-                    margin: 40px;
-                   
-                }
-                .calculatorBox {
-                    margin: 20px;
-                }
-           
-                @media (max-width: 600px) {
-                    .container {
-                        margin-left: 5px;
-                        margin-right: 5px;
-                    }
-                    .calculatorBox {
-                        margin-left: 5px;
-                        margin-right: 5px;
-                    }
-                }
-                @media (min-width: 900px) {
-                    .container {
-                        margin-left: 296px;
-                    }
-                }
-            `}</style>
-            <AppBar
-                title={<a className="appBarLink" href="/">SportCalculators</a>}
-                style={{ backgroundColor: '#034f84' }}
-                iconClassNameRight="muidocs-icon-navigation-expand-more"
-                onLeftIconButtonTouchTap={this.handleToggle.bind(this)}
-            />
-            <Navigation menuOpen={this.state.menuOpen} menuDocked={this.state.menuDocked}/>
-            <div className='container'>
-                {this.props.children}
-            </div>
-        </div>
-      </MuiThemeProvider>
-
+        <ListItem button component="a" href={props.href} >
+            <Typography className={classes.nested} variant="caption" noWrap>
+                {props.linkText}
+            </Typography>
+        </ListItem>
     );
   }
+
+  function ListItemHeader(props) {
+      return (
+      <ListItem>
+        <Typography variant="subtitle2" noWrap>
+            {props.title}
+        </Typography>
+      </ListItem>
+      );
+  }
+/*Navigation contents so that they could be reused*/
+  const drawer = (
+    <div>
+      <div className={classes.toolbar} />
+      <Divider />
+        <List>
+            <ListItemHeader title="Bowling" />
+            <ListItemLink  href="/bowling-score-calculator" linkText="Bowling Score Calculator" />
+        </List>
+        <List>
+            <ListItemHeader title="Cycling" />
+            <ListItemLink  href="/cycling-speed-calculator" linkText="Cycling Speed Calculator" />
+        </List>
+        <Divider />
+    </div>
+  );
+
+  return (
+    <div className={classes.root}>
+      <CssBaseline />
+      <AppBar position="fixed" className={classes.appBar}>
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            className={classes.menuButton}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" noWrap>
+            SportCalculators
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <nav className={classes.drawer} aria-label="mailbox folders">
+        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        <Hidden smUp implementation="js">
+          <Drawer
+            container={container}
+            variant="temporary"
+            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </Hidden>
+        <Hidden xsDown implementation="js">
+          <Drawer
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            variant="permanent"
+            open
+          >
+            {drawer}
+          </Drawer>
+        </Hidden>
+      </nav>
+      
+      <Container>
+      <div className={classes.toolbar} />
+          {props.children}
+      </Container>
+    </div>
+  );
 }
+
+
+export default Layout;

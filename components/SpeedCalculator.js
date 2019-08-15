@@ -3,9 +3,8 @@ import TimeInput from './TimeInput.js';
 import DistanceInput from './DistanceInput.js';
 import SpeedDisplay from './SpeedDisplay.js';
 import Head from 'next/head'
-import Paper from 'material-ui/Paper';
-import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import Subheader from 'material-ui/Subheader';
+import Paper from '@material-ui/core/Paper';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import {calculateSpeed} from '../services/speedService.js';
 
 class SpeedCalculator extends React.Component {
@@ -56,7 +55,7 @@ class SpeedCalculator extends React.Component {
         .speedCalculatorDistance {
           margin-bottom: 40px;
         }
-        .subheader {
+        .ListSubheader {
             text-align: left;
             margin-left: -16px;
         }
@@ -65,20 +64,20 @@ class SpeedCalculator extends React.Component {
 
       
         <Paper className='calculatorBox' style={style} zDepth={3}>
-          <div className="subheader">
-            <Subheader>Race time</Subheader>
+          <div className="ListSubheader">
+            <ListSubheader>Race time</ListSubheader>
           </div>
           <div className='speedCalculatorTime speedCalculatorChild'>
             <TimeInput onTimeChange={this.onTimeChange.bind(this)}/> 
           </div>
-          <div className="subheader">
-            <Subheader>Race distance</Subheader>
+          <div className="ListSubheader">
+            <ListSubheader>Race distance</ListSubheader>
           </div>
           <div className='speedCalculatorDistance speedCalculatorChild'>
             <DistanceInput distance={this.state.distance} onDistanceChange={this.onDistanceChange.bind(this)}/> 
           </div>
-          <div className="subheader">
-            <Subheader>Race speed & pace</Subheader>
+          <div className="ListSubheader">
+            <ListSubheader>Race speed & pace</ListSubheader>
           </div>
           <div className='speedCalculatorChild'>
             <SpeedDisplay speed={this.state.speed} /> 

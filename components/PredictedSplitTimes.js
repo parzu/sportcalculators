@@ -6,9 +6,9 @@ import {
   TableHeaderColumn,
   TableRow,
   TableRowColumn,
-} from 'material-ui/Table';
-import Paper from 'material-ui/Paper';
-import Subheader from 'material-ui/Subheader';
+} from '@material-ui/core/Table';
+import Paper from '@material-ui/core/Paper';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import {formatTime} from '../services/timeService.js'
 
 class SplitRow extends React.Component {
@@ -96,19 +96,19 @@ class SplitRow extends React.Component {
               <div className="childDiv raceName">{this.props.text}</div>
               <div className="childDiv">
                 <div className="timeDivParent">
-                  <div className="timeDivChild"><Subheader>Race time</Subheader></div>
+                  <div className="timeDivChild"><ListSubheader>Race time</ListSubheader></div>
                   <div className="timeDivChild">{prericted.time}</div>
                 </div>
               </div>
               <div className="childDiv">
                 <div className="timeDivParent">
-                  <div className="timeDivChild"><Subheader>Pace (min/km)</Subheader></div>
+                  <div className="timeDivChild"><ListSubheader>Pace (min/km)</ListSubheader></div>
                   <div className="timeDivChild">{prericted.paceKm}</div>
                 </div>
               </div>
               <div className="childDiv">
                 <div className="timeDivParent">
-                  <div className="timeDivChild"><Subheader>Pace (min/mi)</Subheader></div>
+                  <div className="timeDivChild"><ListSubheader>Pace (min/mi)</ListSubheader></div>
                   <div className="timeDivChild">{prericted.paceMi}</div>
                 </div>
               </div>

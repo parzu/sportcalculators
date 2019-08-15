@@ -1,6 +1,6 @@
 import React from 'react';
-import TextField from 'material-ui/TextField';
-import Toggle from 'material-ui/Toggle';
+import TextField from '@material-ui/core/TextField';
+import Toggle from '@material-ui/core/Toggle';
 
 class CombinedEventRow extends React.Component {
   constructor(props) {

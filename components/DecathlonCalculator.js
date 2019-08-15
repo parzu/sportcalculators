@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Paper from 'material-ui/Paper';
-import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import TextField from 'material-ui/TextField';
-import Toggle from 'material-ui/Toggle';
-import Subheader from 'material-ui/Subheader';
+import Paper from '@material-ui/core/Paper';
+import {RadioButton, RadioButtonGroup} from '@material-ui/core/RadioButton';
+import TextField from '@material-ui/core/TextField';
+import Toggle from '@material-ui/core/Toggle';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import CombinedEventRow from './CombinedEventRow.js'
 import CombinedTotalRow from './CombinedTotalRow.js'
 
@@ -111,7 +111,7 @@ class DecathlonCalculator extends React.Component {
             display: flex;
             justify-content: center;
           }
-          .subheader {
+          .ListSubheader {
             text-align: left;
             margin-left: -16px;
           }

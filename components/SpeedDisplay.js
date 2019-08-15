@@ -1,12 +1,10 @@
 import React from 'react';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
+
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 //import Speed from '../services/speedConversions.js';
 import * as Speed from '../services/speedService.js';
 
@@ -33,20 +31,20 @@ class SpeedDisplay extends React.Component {
                 <TableBody displayRowCheckbox={false}>
                     <TableRow className='speedDisplayTableHeaderRow'>
                     {/* <TableRow className='headerRow' style={{borderBottom: '2px solid #e0e0e0', fontWeight: 'bold'}}> */}
-                        <TableRowColumn>Metric</TableRowColumn>
-                        <TableRowColumn>Imperial</TableRowColumn>
+                        <TableCell>Metric</TableCell>
+                        <TableCell>Imperial</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableRowColumn>{Speed.mps(this.props.speed)} m/s</TableRowColumn>
-                        <TableRowColumn>{Speed.mpsToFps(this.props.speed)} ft/s</TableRowColumn>
+                        <TableCell>{Speed.mps(this.props.speed)} m/s</TableCell>
+                        <TableCell>{Speed.mpsToFps(this.props.speed)} ft/s</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableRowColumn>{Speed.mpsToKmPace(this.props.speed)} min/km</TableRowColumn>
-                        <TableRowColumn>{Speed.mpsToMilePace(this.props.speed)} min/mi</TableRowColumn>
+                        <TableCell>{Speed.mpsToKmPace(this.props.speed)} min/km</TableCell>
+                        <TableCell>{Speed.mpsToMilePace(this.props.speed)} min/mi</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableRowColumn>{Speed.mpsToKmh(this.props.speed)} km/h</TableRowColumn>
-                        <TableRowColumn>{Speed.mpsToMph(this.props.speed)} mph</TableRowColumn>
+                        <TableCell>{Speed.mpsToKmh(this.props.speed)} km/h</TableCell>
+                        <TableCell>{Speed.mpsToMph(this.props.speed)} mph</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

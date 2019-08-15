@@ -1,6 +1,6 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 import DuckpinBowlingScoreButtons from './DuckpinBowlingScoreButtons.js'
 import DuckpinBowlingFrameDisplay from './DuckpinBowlingFrameDisplay.js'
 

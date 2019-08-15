@@ -1,6 +1,7 @@
 import React from 'react';
-import TextField from 'material-ui/TextField';
-import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import TextField from '@material-ui/core/TextField';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
 import {distanceToMeters} from '../services/distanceService.js'
 import * as consts from '../services/unitConstants.js';
 
@@ -43,12 +44,12 @@ class DistanceInput extends React.Component {
                 <TextField floatingLabelText='distance' hintText="distance" name="dist" type='number' onChange={this.handleChange.bind(this)} />
             </div>
             <div className='distanceInputChild'>
-                <RadioButtonGroup name="distType" defaultSelected={consts.distanceTypes.KM} onChange={this.handleChange.bind(this)} style={{ display: 'flex' }}>
-                    <RadioButton value={consts.distanceTypes.METER} label="m" style={{ width: 'auto' }} />
-                    <RadioButton value={consts.distanceTypes.FEET} label="ft" style={{ width: 'auto' }} />
-                    <RadioButton value={consts.distanceTypes.KM} label="km" style={{ width: 'auto' }} />
-                    <RadioButton value={consts.distanceTypes.MILE} label="miles" style={{ width: 'auto' }} />
-                </RadioButtonGroup>
+                <RadioGroup name="distType" defaultSelected={consts.distanceTypes.KM} onChange={this.handleChange.bind(this)} style={{ display: 'flex' }}>
+                    <Radio value={consts.distanceTypes.METER} label="m" style={{ width: 'auto' }} />
+                    <Radio value={consts.distanceTypes.FEET} label="ft" style={{ width: 'auto' }} />
+                    <Radio value={consts.distanceTypes.KM} label="km" style={{ width: 'auto' }} />
+                    <Radio value={consts.distanceTypes.MILE} label="miles" style={{ width: 'auto' }} />
+                </RadioGroup>
             </div>
         </div>
     );

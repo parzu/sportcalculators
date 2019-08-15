@@ -1,6 +1,6 @@
 import React from 'react';
-import TextField from 'material-ui/TextField';
-import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import TextField from '@material-ui/core/TextField';
+import {RadioButton, RadioButtonGroup} from '@material-ui/core/RadioButton';
 import DistanceInput from './DistanceInput.js';
 import {distanceToMeters} from '../services/distanceService.js';
 import * as consts from '../services/unitConstants.js';
