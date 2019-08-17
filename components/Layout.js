@@ -19,6 +19,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { calculators } from '../src/calculators.js';
 
 const drawerWidth = 240;
 
@@ -27,20 +28,20 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
   },
   drawer: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: drawerWidth,
       flexShrink: 0,
     },
   },
   appBar: {
     marginLeft: drawerWidth,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: `calc(100% - ${drawerWidth}px)`,
     },
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       display: 'none',
     },
   },
@@ -124,7 +125,7 @@ function Layout(props) {
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        <Hidden smUp implementation="js">
+        <Hidden mdUp implementation="js">
           <Drawer
             container={container}
             variant="temporary"
@@ -141,7 +142,7 @@ function Layout(props) {
             {drawer}
           </Drawer>
         </Hidden>
-        <Hidden xsDown implementation="js">
+        <Hidden smDown implementation="js">
           <Drawer
             classes={{
               paper: classes.drawerPaper,

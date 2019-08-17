@@ -12,6 +12,7 @@
     "@material-ui/styles": "^4.3.0",
     "clsx": "latest",
     "lodash": "^4.17.15",
+    "mdi-material-ui": "^6.4.0",
     "next": "^9.0.3",
     "prop-types": "latest",
     "react": "^16.9.0",
