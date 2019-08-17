@@ -14,7 +14,12 @@ import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
+import InformationOutline from 'mdi-material-ui/InformationOutline';
+import EmailOutline from 'mdi-material-ui/EmailOutline';
+import ShieldKeyOutline from 'mdi-material-ui/ShieldKeyOutline'
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -56,6 +61,9 @@ const useStyles = makeStyles(theme => ({
   nested: {
     paddingLeft: theme.spacing(2),
   },
+  menuHeader: {
+    fontWeight: theme.typography.fontWeightBold,
+  },
 }));
 
 function Layout(props) {
@@ -71,7 +79,7 @@ function Layout(props) {
   function ListItemLink(props) {
     return (
         <ListItem button component="a" href={props.href} >
-            <Typography className={classes.nested} variant="caption" noWrap>
+            <Typography className={classes.nested} variant="Subtitle1" noWrap>
                 {props.linkText}
             </Typography>
         </ListItem>
@@ -81,28 +89,59 @@ function Layout(props) {
   function ListItemHeader(props) {
       return (
       <ListItem>
-        <Typography variant="subtitle2" noWrap>
+        <ListItemText 
+          primary={props.title}
+          classes={{
+            primary: classes.menuHeader
+          }}
+        />
+        {/* <Typography variant="subtitle2" noWrap>
             {props.title}
-        </Typography>
+        </Typography> */}
       </ListItem>
       );
   }
 /*Navigation contents so that they could be reused*/
+  const calcList = calculators.map((item) =>
+    <List>
+      <ListItemHeader title={item.sport} />
+      {item.calculators.map((calc) =>
+        <ListItemLink  href={calc.href} linkText={calc.title} />
+      )}
+    </List>
+  );
+
+
   const drawer = (
     <div>
       <div className={classes.toolbar} />
       <Divider />
-        <List>
-            <ListItemHeader title="Bowling" />
-            <ListItemLink  href="/bowling-score-calculator" linkText="Bowling Score Calculator" />
-        </List>
-        <List>
-            <ListItemHeader title="Cycling" />
-            <ListItemLink  href="/cycling-speed-calculator" linkText="Cycling Speed Calculator" />
-        </List>
-        <Divider />
+        {calcList}
+      <Divider />
+      <List component="nav" aria-label="main mailbox folders">
+      <ListItem button component="a" href="about">
+        <ListItemIcon>
+          <InformationOutline />
+        </ListItemIcon>
+        <ListItemText primary="About" />
+      </ListItem>
+      <ListItem button component="a" href="contact">
+        <ListItemIcon>
+        <EmailOutline />
+        </ListItemIcon>
+        <ListItemText primary="Contact" />
+      </ListItem>
+      <ListItem button component="a" href="privacy">
+        <ListItemIcon>
+        <ShieldKeyOutline />
+        </ListItemIcon>
+        <ListItemText primary="Privacy" />
+      </ListItem>
+
+    </List>
+
     </div>
-  );
+   );
 
   return (
     <div className={classes.root}>

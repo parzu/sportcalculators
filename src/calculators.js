@@ -1,6 +1,7 @@
 import Bowling from 'mdi-material-ui/Bowling'
 import Bike from 'mdi-material-ui/Bike'
 import HumanHandsup from 'mdi-material-ui/HumanHandsup'
+import Run from 'mdi-material-ui/Run'
 
 export const calculators = [
     {
@@ -17,6 +18,11 @@ export const calculators = [
                 href: "bowling-handicap-calculator",
                 description: "Lorem Ipsum"        
             },
+            {
+                title: "Duckpin Score Calculator",
+                href: "duckpin-bowling-score-calculator",
+                description: "Lorem Ipsum"        
+            },
         ]
     },
     {
@@ -31,14 +37,50 @@ export const calculators = [
         ]
     },
     {
+        sport: "Running",
+        icon: <Run  fontSize="large"/>,
+        calculators: [
+            {
+                title: "Marathon Calculator",
+                href: "marathon-calculator",
+                description: "Lorem Ipsum",        
+            },
+            {
+                title: "Race Time Calculator",
+                href: "race-time-calculator",
+                description: "Lorem Ipsum",        
+            },
+            {
+                title: "Running Speed Calculator",
+                href: "running-speed-calculator",
+                description: "Lorem Ipsum",        
+            },
+            {
+                title: "Running Speed Converter",
+                href: "running-speed-converter",
+                description: "Lorem Ipsum",        
+            },
+        ]
+    },
+    {
         sport: "Other",
         icon: <HumanHandsup  fontSize="large"/>,
         calculators: [
             {
+                title: "Decathlon Calculator",
+                href: "decathlon-calculator",
+                description: "Lorem Ipsum",        
+            },
+            {
+                title: "Heptathlon Calculator",
+                href: "heptathlon-calculator",
+                description: "Lorem Ipsum",        
+            },
+            {
                 title: "Triathlon Calculator",
                 href: "triathlon-calculator",
                 description: "Lorem Ipsum",        
-            }
+            },
         ]
     },
 
