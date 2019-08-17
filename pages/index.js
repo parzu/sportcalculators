@@ -21,8 +21,8 @@ const useStyles = makeStyles(theme => ({
   },
   headline: {
       fontWeight: theme.typography.fontWeightLight,  
-      letterSpacing: ".4rem",
-      fontSize: theme.typography.pxToRem(24),
+      letterSpacing: ".3rem",
+      fontSize: theme.typography.pxToRem(18),
       [theme.breakpoints.up("sm")]: {
         fontSize: theme.typography.pxToRem(32),
         letterSpacing: ".7rem",
@@ -48,7 +48,13 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
   },
   card: {
-    fontSize: ".7rem",
+    fontSize: theme.typography.pxToRem(9),
+    [theme.breakpoints.up("sm")]: {
+      fontSize: theme.typography.pxToRem(12),
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: theme.typography.pxToRem(16)
+    },
     color: theme.palette.primary.main,
   },
 }));
@@ -56,11 +62,16 @@ const useStyles = makeStyles(theme => ({
 function CalculatorCard(props) {
   const classes = useStyles();
   return (
-    <Grid item xs={6} md={4} lg={3} className={classes.cardgrid}>
+    <Grid item xs={6} md={4} className={classes.cardgrid}>
       <Card className={classes.card}>
          <CardActionArea href={props.calc.href}>
           <CardHeader
-            titleTypographyProps={{variant:'caption' }}
+            titleTypographyProps={{
+              variant:'caption',
+              classes: {
+                caption: classes.card
+              }
+            }}
             avatar={props.icon}
             title={props.calc.title}
           />
