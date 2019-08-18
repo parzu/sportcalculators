@@ -197,6 +197,7 @@ function Layout(props) {
       <Container>
       <div className={classes.toolbar} />
           {props.children}
+      <div className={classes.toolbar} />    
       </Container>
     </div>
   );
