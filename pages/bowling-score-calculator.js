@@ -22,7 +22,10 @@ return (
     <h3>Bowling</h3>
  
     <div>
-      <img style={{float: "left", paddingRight: "10px"}} src="../static/bowling_salvatore_vuono.jpg" />
+      <div style={{float: "left", paddingRight: "10px"}}>
+        <img src="../static/bowling_salvatore_vuono.jpg" />
+        <p style={{fontSize: "8px"}}>Image courtesy of Salvatore Vuono / FreeDigitalPhotos.net</p>
+      </div>
       <div style={{display: "inline"}}>        
         <p>Bowling is an indoor-game played usually in special bowling alleys. The are many variations of the game but the most common one is the ten pin bowling (for the other variations see resource links in the end of the page). The gaming equipment consists of a bowling ball and ten bowling pins. Pins are placed in a triangle shaped formation in the other end of the bowling lane, which is 60 feet (~18 meters) long. The bowling ball is thrown from the other end of the line and the goal is to knock down as many pins as possible. Matches consists of games played by each player. One game consists of ten frames and each frame, except the tenth frame, consists of two throws. The tenth frame can have two or three throws depending on previous throws.</p>
       </div>
@@ -45,7 +48,7 @@ return (
     <div style={{textAlign: "center"}}>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/kLD9KOqWWVw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-
+    
   </Layout>
 );
 }
