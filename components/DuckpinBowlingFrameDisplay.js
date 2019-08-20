@@ -33,7 +33,7 @@ class DuckpinBowlingFrameDisplay extends React.Component {
                         flex-flow: row wrap;
                         height: 70px;
                         width: 100%;
-                        font-size: 1em;
+                        font-size: 0.8em;
                     }
                     .throw {
                         flex: 1 10%;

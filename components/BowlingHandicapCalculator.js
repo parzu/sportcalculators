@@ -81,6 +81,7 @@ class BowlingHandicapCalculator extends React.Component {
               id="basis-score"
               name="basis"
               label="Basis Score"
+              type='number'
               value={this.state.basis}
               onChange={this.handleChange.bind(this)}
             />
@@ -90,6 +91,7 @@ class BowlingHandicapCalculator extends React.Component {
               id="factor"
               name="factor"
               label="Factor"
+              type='number'
               value={this.state.factor}
               onChange={this.handleChange.bind(this)}
               InputProps={{
@@ -102,6 +104,7 @@ class BowlingHandicapCalculator extends React.Component {
               id="average"
               name="average"
               label="Your Average"
+              type='number'
               value={this.state.average}
               onChange={this.handleChange.bind(this)}
             />
@@ -111,6 +114,7 @@ class BowlingHandicapCalculator extends React.Component {
               id="score"
               name="score"
               label="Game Score"
+              type='number'
               value={this.state.score}
               onChange={this.handleChange.bind(this)}
             />
