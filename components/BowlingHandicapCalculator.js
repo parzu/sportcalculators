@@ -1,7 +1,7 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
-import {calculateSpeed} from '../services/speedService.js';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 class BowlingHandicapCalculator extends React.Component {
   constructor(props) {
@@ -77,16 +77,43 @@ class BowlingHandicapCalculator extends React.Component {
         <Paper className='calculatorBox' style={style} zDepth={3}>
         <div className='calculatorParent'>
           <div className='calculatorChild'>
-            <TextField floatingLabelText='Basis Score' fullWidth={true} hintText="Basis Score" name='basis' type='text' value={this.state.basis} onChange={this.handleChange.bind(this)} />
+            <TextField
+              id="basis-score"
+              name="basis"
+              label="Basis Score"
+              value={this.state.basis}
+              onChange={this.handleChange.bind(this)}
+            />
           </div>
           <div className='calculatorChild'>
-            <TextField floatingLabelText='Factor (%)' fullWidth={true} hintText="Factor (%)" name='factor' type='text' value={this.state.factor} onChange={this.handleChange.bind(this)} />
+            <TextField
+              id="factor"
+              name="factor"
+              label="Factor"
+              value={this.state.factor}
+              onChange={this.handleChange.bind(this)}
+              InputProps={{
+                endAdornment: <InputAdornment position="end">%</InputAdornment>,
+              }}
+            />
           </div>
           <div className='calculatorChild'>
-            <TextField floatingLabelText='Your Average' fullWidth={true} hintText="Your Average" name='average' type='text' value={this.state.average} onChange={this.handleChange.bind(this)} />
+            <TextField
+              id="average"
+              name="average"
+              label="Your Average"
+              value={this.state.average}
+              onChange={this.handleChange.bind(this)}
+            />
           </div>
           <div className='calculatorChild'>
-            <TextField floatingLabelText='Game Score' fullWidth={true} hintText="Game Score" name='score' type='text' value={this.state.score} onChange={this.handleChange.bind(this)} />
+            <TextField
+              id="score"
+              name="score"
+              label="Game Score"
+              value={this.state.score}
+              onChange={this.handleChange.bind(this)}
+            />
           </div>
           <div className='calculatorChild result'>
             <div>Your Handicap</div>

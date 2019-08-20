@@ -88,21 +88,24 @@ class BowlingScoreButtons extends React.Component {
             direction="row"
             justify="center"
             alignItems="center"
+            spacing={0}
         >
-            <Grid item xs={12}>
+            <Grid item xs={'auto'}>
                 <Button variant="outlined" disabled={this.state.disabled[0]} style={btnStyle} onClick={() => this.handleClick(0)}>0</Button>
                 <Button variant="outlined" disabled={this.state.disabled[1]} style={btnStyle} onClick={() => this.handleClick(1)}>1</Button>
                 <Button variant="outlined" disabled={this.state.disabled[2]} style={btnStyle} onClick={() => this.handleClick(2)}>2</Button>
-                <Button variant="outlined" disabled={this.state.disabled[3]} style={btnStyle} onClick={() => this.handleClick(3)}>3</Button>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={'auto'}>
+                <Button variant="outlined" disabled={this.state.disabled[3]} style={btnStyle} onClick={() => this.handleClick(3)}>3</Button>
                 <Button variant="outlined" disabled={this.state.disabled[4]} style={btnStyle} onClick={() => this.handleClick(4)}>4</Button>
                 <Button variant="outlined" disabled={this.state.disabled[5]} style={btnStyle} onClick={() => this.handleClick(5)}>5</Button>
+            </Grid>
+            <Grid item xs={'auto'}>
                 <Button variant="outlined" disabled={this.state.disabled[6]} style={btnStyle} onClick={() => this.handleClick(6)}>6</Button>
                 <Button variant="outlined" disabled={this.state.disabled[7]} style={btnStyle} onClick={() => this.handleClick(7)}>7</Button>
-            </Grid>
-            <Grid item xs={12}>
                 <Button variant="outlined" disabled={this.state.disabled[8]} style={btnStyle} onClick={() => this.handleClick(8)}>8</Button>
+            </Grid>
+            <Grid item xs={'auto'}>
                 <Button variant="outlined" disabled={this.state.disabled[9]} style={btnStyle} onClick={() => this.handleClick(9)}>9</Button>
                 <Button variant="outlined" disabled={this.state.spareDisabled} style={btnStyle} onClick={() => this.handleClick('/')}>/</Button>
                 <Button variant="outlined" disabled={this.state.strikeDisabled} style={btnStyle} onClick={() => this.handleClick('x')}>X</Button>

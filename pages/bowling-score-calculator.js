@@ -45,8 +45,16 @@ return (
     <p>Getting strikes in a row makes the players score higher very fast. Let's say the player gets three strikes in a row. This makes the score of the first frame to be 30, which is also a maximum for a frame. And if the player throws to his/hers fourth frame 3 and 2, the bonus ends and after four frames his/hers score will be 73. Try this out with the bowling score calculator above!</p>
     <p>This calculator and article is for ten-pin-bowling. See Wikipedia for much detailed article about ten-pin-bowling and other types of bowling.</p>
     <p>If you get tired of chasing that 300 game you can also try these trickshots for a change. Enjoy!</p>
-    <div style={{textAlign: "center"}}>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/kLD9KOqWWVw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div style={{textAlign: "center", position: "relative", overflow: "hidden", paddingTop: "56.25%"}}>
+    <iframe style={{
+      position: "absolute",
+      top: "0",
+      left: "0",
+      width: "100%",
+      height: "100%",
+      maxWidth: "560px",
+      maxHeight: "315px",
+      border: "0"}} width="560" height="315" src="https://www.youtube.com/embed/kLD9KOqWWVw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     
   </Layout>
