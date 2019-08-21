@@ -2,6 +2,7 @@ import * as consts from './unitConstants.js';
 
 
 export function distanceToMeters(distance, distType) {
+    console.log(distance, distType);
     let multiple = 1;
     switch (parseInt(distType)) {
         case consts.distanceTypes.FEET: multiple=consts.feetToMeter; break;
@@ -9,6 +10,6 @@ export function distanceToMeters(distance, distType) {
         case consts.distanceTypes.MILE: multiple=consts.mileToMeter; break;
         default: multiple=1; break;
     }
-    let parsedDistance = distance.replace(',', '.');
-    return parseFloat(parsedDistance) * multiple;
+    //let parsedDistance = distance.replace(',', '.');
+    return distance * multiple;
 }

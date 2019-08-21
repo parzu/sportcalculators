@@ -2,9 +2,9 @@ import React from 'react';
 import TimeInput from './TimeInput.js';
 import DistanceInput from './DistanceInput.js';
 import SpeedDisplay from './SpeedDisplay.js';
-import Head from 'next/head'
 import Paper from '@material-ui/core/Paper';
 import ListSubheader from '@material-ui/core/ListSubheader';
+import Typography from '@material-ui/core/Typography';
 import {calculateSpeed} from '../services/speedService.js';
 
 class SpeedCalculator extends React.Component {
@@ -56,8 +56,11 @@ class SpeedCalculator extends React.Component {
           margin-bottom: 40px;
         }
         .ListSubheader {
-            text-align: left;
-            margin-left: -16px;
+          text-align: left;
+          margin-left: -20px;
+          margin-right: -20px;
+          background: #f5f5f5;
+          padding-left: 20px;
         }
     `}</style>
 
@@ -65,19 +68,22 @@ class SpeedCalculator extends React.Component {
       
         <Paper className='calculatorBox' style={style} zDepth={3}>
           <div className="ListSubheader">
-            <ListSubheader>Race time</ListSubheader>
+            {/* <ListSubheader>Race time</ListSubheader> */}
+            <Typography variant="overline">Race time</Typography>
           </div>
           <div className='speedCalculatorTime speedCalculatorChild'>
             <TimeInput onTimeChange={this.onTimeChange.bind(this)}/> 
           </div>
           <div className="ListSubheader">
-            <ListSubheader>Race distance</ListSubheader>
+            {/* <ListSubheader>Race distance</ListSubheader> */}
+            <Typography variant="overline">Race distance</Typography>
           </div>
           <div className='speedCalculatorDistance speedCalculatorChild'>
             <DistanceInput distance={this.state.distance} onDistanceChange={this.onDistanceChange.bind(this)}/> 
           </div>
           <div className="ListSubheader">
-            <ListSubheader>Race speed & pace</ListSubheader>
+            {/* <ListSubheader>Race speed & pace</ListSubheader> */}
+            <Typography variant="overline">Race speed & pace</Typography>
           </div>
           <div className='speedCalculatorChild'>
             <SpeedDisplay speed={this.state.speed} /> 

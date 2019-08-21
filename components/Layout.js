@@ -22,6 +22,7 @@ import EmailOutline from 'mdi-material-ui/EmailOutline';
 import ShieldKeyOutline from 'mdi-material-ui/ShieldKeyOutline'
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { calculators } from '../src/calculators.js';
@@ -64,6 +65,10 @@ const useStyles = makeStyles(theme => ({
   menuHeader: {
     fontWeight: theme.typography.fontWeightBold,
   },
+  homeLink: {
+    color: "white",
+    textDecoration: "none"
+  }
 }));
 
 function Layout(props) {
@@ -114,7 +119,11 @@ function Layout(props) {
 
   const drawer = (
     <div>
-      <div className={classes.toolbar} />
+      <div className={classes.toolbar}>
+        {/* <Link href="/" variant="h6" color="textSecondary" className={classes.homeLink}>
+          SportCalculators
+        </Link> */}
+      </div>
       <Divider />
         {calcList}
       <Divider />
@@ -157,9 +166,9 @@ function Layout(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Link href="/" variant="h6" noWrap className={classes.homeLink}>
             SportCalculators
-          </Typography>
+          </Link>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">

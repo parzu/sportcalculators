@@ -18,9 +18,9 @@ export default () => (
   
   <h3>Bowling Handicap</h3>
    
-  <p>A handicap system is used in various sports to equalize the chance of winning for players with different skills. You can read more about handicapping in general for example from <a href="https://en.wikipedia.org/wiki/Handicapping" target="_blank">Wikipedia</a>. In bowling a calculated handicap value is added to the game score to adjust the result. The handicap value is based on previous games bowled by the player. The lower the average score of previous games the higher the handicap value. This way making it possible for players at any level to compete in same competitions.</p>
+  <p>A handicap system is used in various sports to equalize the chance of winning for players with different skills. You can read more about handicapping in general for example from <a rel="noopener" href="https://en.wikipedia.org/wiki/Handicapping" target="_blank">Wikipedia</a>. In bowling a calculated handicap value is added to the game score to adjust the result. The handicap value is based on previous games bowled by the player. The lower the average score of previous games the higher the handicap value. This way making it possible for players at any level to compete in same competitions.</p>
 
-  <p>You can read more about bowling handicap in <a href="https://www.bowlingball.com/BowlVersity/handicap-in-bowling" target="_blank">here</a>.</p>
+  <p>You can read more about bowling handicap in <a rel="noopener" href="https://www.bowlingball.com/BowlVersity/handicap-in-bowling" target="_blank">here</a>.</p>
 
   <h3>Calculating Bowling Handicap</h3>
   <p>A bowling handicap is a percentage of the difference between your average and a basis average. So for calculating you need to know the used basis average and the used percentage factor. You get these from your league or tournament officials. If you are not competing in either of those, you can decide those values with your competitors. Usual values are 200, 210 or 220 for basis average and 80%, 90% or 100% for percentage factor. The basis average is intended to be more than any individual bowler’s average.</p>

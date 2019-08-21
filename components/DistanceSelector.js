@@ -53,7 +53,12 @@ class DistanceSelector extends React.Component {
 
         
             <div className='distanceSelecterChild'>
-                <RadioGroup name="selectedDist" defaultSelected="5000" onChange={this.handleChange.bind(this)} style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
+                <RadioGroup 
+                    name="selectedDist" 
+                    defaultSelected="5000" 
+                    onChange={this.handleChange.bind(this)} 
+                    style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}
+                >
                     <Radio value="1500" label="1 500 m" style={{ width: 'auto' }} />
                     <Radio value="1609.34" label="1 mi" style={{ width: 'auto' }} />
                     <Radio value="4828.03" label="3 mi" style={{ width: 'auto' }} />

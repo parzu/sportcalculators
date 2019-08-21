@@ -24,12 +24,12 @@ export default () => (
       <p style={{fontSize: "8px"}}>Image: Valerie Everett / Wikimedia Commons / CC-BY-SA-2.0</p>
     </div>
     <div style={{display: "inline"}}>        
-      <p>Duckpin bowling is a variation of more popular 10-pin bowling. It is played mainly on the east coast of the United States. The balls used in duckpin bowling are significantly smaller than in 10-pin bowling and lack finger holes. The pins are arranged in a similar triangular shape than in 10-pin bowling. However, pins are shorter, smaller and lighter. This makes achieving a strike extremely difficult. For these reasons the player is allowed to use three throws per frame in every frame. See this <a href="http://www.duckpins.com/" target="_blank">great site</a> for much more detailed information about duckpin bowling.</p>
+      <p>Duckpin bowling is a variation of more popular 10-pin bowling. It is played mainly on the east coast of the United States. The balls used in duckpin bowling are significantly smaller than in 10-pin bowling and lack finger holes. The pins are arranged in a similar triangular shape than in 10-pin bowling. However, pins are shorter, smaller and lighter. This makes achieving a strike extremely difficult. For these reasons the player is allowed to use three throws per frame in every frame. See this <a href="http://www.duckpins.com/" rel="noopener" target="_blank">great site</a> for much more detailed information about duckpin bowling.</p>
     </div>
   </div>
 
   <h3>How to score a duckpin bowling game?</h3>
-  <p>The scoring is quite similar than in ten-pin bowling. (<a href="bowling-score-calculator">See the explanation for scoring a ten-pin bowling game.</a>) The scoring in candlepin bowling is similar than in duckpin bowling. This means that the calculator above can also be used for candlepin bowling.</p>
+  <p>The scoring is quite similar than in ten-pin bowling. (<a href="bowling-score-calculator" rel="noreferrer">See the explanation for scoring a ten-pin bowling game.</a>) The scoring in candlepin bowling is similar than in duckpin bowling. This means that the calculator above can also be used for candlepin bowling.</p>
   <p>The only difference is that there are three throws in each frame. Strike and spare are similar than in ten-pin bowling. The third throw is scored always as an open frame. So if you knock out all the pins with three throws you get 10 points for that frame. The next frame won't affect on the score of that frame like it does on strikes and spares. Try this out with the duckpin bowling score calculator above and you see what happens.</p>
   
 </Layout>

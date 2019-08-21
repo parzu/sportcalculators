@@ -2,58 +2,77 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Grid from '@material-ui/core/Grid';
 import {distanceToMeters} from '../services/distanceService.js'
 import * as consts from '../services/unitConstants.js';
 
-class DistanceInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-        dist: '0',
-        distType: consts.distanceTypes.KM,
-     };
-  }
 
-  handleChange(event) {
-    this.setState({[event.target.name]: event.target.value}, this.distChanged);
-  }
+export default function DistanceInput(props) {
+    const [distanceUnit, setUnitValue] = React.useState(consts.distanceTypes.KM);
+    const [distance, setDistanceValue] = React.useState();
+  
+    React.useEffect(() => {
+        distChanged();
+      }, [distance, distanceUnit])
 
-  distChanged() {
-    this.props.onDistanceChange(distanceToMeters(this.state.dist, this.state.distType));    
-  }
+    function handleUnitChange(event) {
+        setUnitValue(parseInt(event.target.value));
+    }
 
+    function handleDistanceChange(event) {
+        setDistanceValue(event.target.value);      
+    }
+  
+    function distChanged() {
+        props.onDistanceChange(distanceToMeters(distance, distanceUnit));    
+    }
 
-  render() {
     return (
-        <div className='distanceInputParent'>  
-        <style jsx >{`
-        .distanceInputParent {
-            display: flex;
-            flex-flow: column;
-        }
-
-        .distanceInputChild {
-            margin: auto;
-            
-        }
-
-        `}</style>
-
-          
-            <div className='distanceInputChild'>
-                <TextField floatingLabelText='distance' hintText="distance" name="dist" type='number' onChange={this.handleChange.bind(this)} />
-            </div>
-            <div className='distanceInputChild'>
-                <RadioGroup name="distType" defaultSelected={consts.distanceTypes.KM} onChange={this.handleChange.bind(this)} style={{ display: 'flex' }}>
-                    <Radio value={consts.distanceTypes.METER} label="m" style={{ width: 'auto' }} />
-                    <Radio value={consts.distanceTypes.FEET} label="ft" style={{ width: 'auto' }} />
-                    <Radio value={consts.distanceTypes.KM} label="km" style={{ width: 'auto' }} />
-                    <Radio value={consts.distanceTypes.MILE} label="miles" style={{ width: 'auto' }} />
+        <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+        >
+            <Grid item xs={12} sm={6}>
+                <TextField
+                    id="distance"
+                    name='distance'
+                    label="distance"
+                    type='number'
+                    value={distance}
+                    onChange={handleDistanceChange} 
+                />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+                <RadioGroup
+                    aria-label="distance unit"
+                    name="distanceUnit" 
+                    value={distanceUnit}
+                    onChange={handleUnitChange}
+                >
+                    <Grid 
+                        container
+                        direction="row"
+                        justify="center"
+                        alignItems="center"
+                    >
+                        <Grid item xs={3}>
+                            <FormControlLabel value={consts.distanceTypes.METER} labelPlacement='bottom' control={<Radio />} label="m" />
+                        </Grid>
+                        <Grid item xs={3}>
+                            <FormControlLabel value={consts.distanceTypes.FEET} labelPlacement='bottom' control={<Radio />} label="ft" />
+                        </Grid>
+                        <Grid item xs={3}>
+                            <FormControlLabel value={consts.distanceTypes.KM} labelPlacement='bottom' control={<Radio />} label="km" />
+                        </Grid>
+                        <Grid item xs={3}>
+                            <FormControlLabel value={consts.distanceTypes.MILE} labelPlacement='bottom' control={<Radio />} label="miles" />
+                        </Grid>
+                    </Grid>
                 </RadioGroup>
-            </div>
-        </div>
+            </Grid>
+        </Grid>
     );
-  }
 }
-
-export default DistanceInput;

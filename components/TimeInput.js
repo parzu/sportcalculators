@@ -46,14 +46,13 @@ class TimeInput extends React.Component {
     }
     let html = (
         <div style={{flexBasis: '30%'}} key={name+id} className='timeIntputChild'>
-        <TextField 
-            floatingLabelText={shortName} 
-            fullWidth={true} 
-            hintText={shortName} 
+        <TextField
+            id={id}
+            name={name}
+            label={shortName}
             {...valueProp}
-            name={name} 
-            type='number' 
-            key={id}
+            type='number'
+            value={this.state.average}
             onChange ={this.handleTimeChange.bind(this)}
         />
         </div>
