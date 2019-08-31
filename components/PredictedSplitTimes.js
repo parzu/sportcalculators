@@ -1,12 +1,4 @@
 import React from 'react';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-} from '@material-ui/core/Table';
 import Paper from '@material-ui/core/Paper';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import {formatTime} from '../services/timeService.js'
@@ -42,6 +34,7 @@ class SplitRow extends React.Component {
               flex-direction: row;
               justify-content: center;
               padding: 10px;
+              margin-top: 20px;
             }
             .childDiv {
               margin: auto;
@@ -80,7 +73,10 @@ class SplitRow extends React.Component {
                 flex-wrap: wrap;
               }
               .timeDivChild {
-                flex-basis: 50%;
+                flex-basis: 60%;
+              }
+              .timeDivChild2 {
+                flex-basis: 40%;
               }
               .raceName {
                 font-size: larger;
@@ -97,19 +93,19 @@ class SplitRow extends React.Component {
               <div className="childDiv">
                 <div className="timeDivParent">
                   <div className="timeDivChild"><ListSubheader>Race time</ListSubheader></div>
-                  <div className="timeDivChild">{prericted.time}</div>
+                  <div className="timeDivChild2">{prericted.time}</div>
                 </div>
               </div>
               <div className="childDiv">
                 <div className="timeDivParent">
                   <div className="timeDivChild"><ListSubheader>Pace (min/km)</ListSubheader></div>
-                  <div className="timeDivChild">{prericted.paceKm}</div>
+                  <div className="timeDivChild2">{prericted.paceKm}</div>
                 </div>
               </div>
               <div className="childDiv">
                 <div className="timeDivParent">
                   <div className="timeDivChild"><ListSubheader>Pace (min/mi)</ListSubheader></div>
-                  <div className="timeDivChild">{prericted.paceMi}</div>
+                  <div className="timeDivChild2">{prericted.paceMi}</div>
                 </div>
               </div>
             </div>

@@ -17,12 +17,12 @@ export function timeToSeconds (hours, mins, secs) {
 }
 
 export function formatTime(secs, format) {
-    console.log(secs);
+    
     let hours = parseInt(secs / 3600);
     secs = secs-(hours*3600);
     let mins = parseInt(secs/60);
     let sec = parseInt(secs-(mins*60));
-    console.log('sec', sec);
+    
     let ms = parseInt((secs-sec)*100);    
     if (mins < 10) {
         mins = '0'+mins.toPrecision(1);
@@ -35,11 +35,11 @@ export function formatTime(secs, format) {
     } else {
         ms = ms.toFixed(2);
     }
-    console.log('sec', sec);
+    
     let result = hours+':'+mins+':'+sec;
     if (format == 'mm:ss.ms') {
         result = mins+':'+sec+'.'+ms;
     } 
-    console.log(result);
+    
     return result;
   }

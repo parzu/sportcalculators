@@ -3,7 +3,6 @@ import TimeInput from './TimeInput.js';
 import DistanceInput from './DistanceInput.js';
 import SpeedDisplay from './SpeedDisplay.js';
 import Paper from '@material-ui/core/Paper';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import Typography from '@material-ui/core/Typography';
 import {calculateSpeed} from '../services/speedService.js';
 
@@ -31,8 +30,6 @@ class SpeedCalculator extends React.Component {
 
   render() {
     const style = {
-      // height: 100,
-      // width: 100,
       padding: 20,
       textAlign: 'center',
       maxWidth: '600px',
@@ -68,21 +65,18 @@ class SpeedCalculator extends React.Component {
       
         <Paper className='calculatorBox' style={style} zDepth={3}>
           <div className="ListSubheader">
-            {/* <ListSubheader>Race time</ListSubheader> */}
             <Typography variant="overline">Race time</Typography>
           </div>
           <div className='speedCalculatorTime speedCalculatorChild'>
             <TimeInput onTimeChange={this.onTimeChange.bind(this)}/> 
           </div>
           <div className="ListSubheader">
-            {/* <ListSubheader>Race distance</ListSubheader> */}
             <Typography variant="overline">Race distance</Typography>
           </div>
           <div className='speedCalculatorDistance speedCalculatorChild'>
             <DistanceInput distance={this.state.distance} onDistanceChange={this.onDistanceChange.bind(this)}/> 
           </div>
           <div className="ListSubheader">
-            {/* <ListSubheader>Race speed & pace</ListSubheader> */}
             <Typography variant="overline">Race speed & pace</Typography>
           </div>
           <div className='speedCalculatorChild'>
