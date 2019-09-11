@@ -1,5 +1,12 @@
 
 export const distanceTypes = Object.freeze({METER: 0, FEET: 1, KM: 2, MILE: 3});
+export const paceTypes = Object.freeze({MIN_KM: 0, KM_H: 1, MIN_MI: 2, MPH: 3});
+
+//meters
+export const minkmToMps = 16.6667;
+export const kmhToMps = 0.2778;
+export const minmiToMps = 26.8224;
+export const mphToMps = 0.44704;
 
 // Kilometers
 export const mpsToKmh = 3.6;

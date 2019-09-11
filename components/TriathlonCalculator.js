@@ -12,7 +12,7 @@ import {formatTime} from '../services/timeService.js'
 import {calculateSpeed} from '../services/speedService.js'
 import {calculateCombinedEventsPoints, calculateCombinedEventsResult, heptathlonConsts} from '../services/combinedEventsService.js'
 
-class HeptathlonCalculator extends React.Component {
+class TriathlonCalculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -145,6 +145,15 @@ class HeptathlonCalculator extends React.Component {
         </div>
         <div className="heptCol">
           <TextField 
+            label='min/100m' 
+            fullWidth={true} 
+            name='min/100m' 
+            id='1'
+            type='number'
+            value={this.state.swimSplit}
+            //onChange={props.onPointsChange.bind(this)}
+          />
+          {/* <TextField 
             floatingLabelText='min/100m'
             fullWidth={true} 
             hintText='min/100m'
@@ -152,7 +161,7 @@ class HeptathlonCalculator extends React.Component {
             id='1' type='text' 
             value={this.state.swimSplit} 
             //onChange={this.onSplitChange.bind(this)} 
-          />
+          /> */}
         </div>
         <div className="heptCol">
           <TimeInput shortNames={true} tag='swimTime' values={this.state.swimTime} onTimeChange={this.onTimeChange.bind(this)}/>
@@ -225,4 +234,4 @@ class HeptathlonCalculator extends React.Component {
   }
 }
 
-export default HeptathlonCalculator;
+export default TriathlonCalculator;

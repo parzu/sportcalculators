@@ -9,6 +9,26 @@ export function calculateSpeed(time, distance) {
     return speed;
 }
 
+export function paceToSpeed(pace, unit) {
+    let speed = 0;
+    switch (unit) {
+        case consts.paceTypes.MIN_KM:
+            speed = consts.minkmToMps / pace;
+            break;
+        case consts.paceTypes.KM_H:
+            speed = pace * consts.kmhToMps;
+            break;
+        case consts.paceTypes.MIN_MI:
+            speed = consts.minmiToMps / pace;
+            break;
+        case consts.paceTypes.MPH:
+            speed = pace * consts.mphToMps;
+            break;
+        default:
+            break;
+    }
+    return speed;
+}
 
 // Each function does conversion and formating
 

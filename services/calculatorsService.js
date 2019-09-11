@@ -45,17 +45,13 @@ export const calculatorList = [
 ];
 
 export function calculateHeptathlonPoints(heptathlon) {
-    console.log('--calculate hepthatlon points---');
     for (let i = 0; i < heptathlon.length; i++) {
         let consts = heptathlonConsts[i];
-        console.log('event before ', heptathlon[i]);
         if (heptathlon[i].result == '') {
             heptathlon[i].points = '';
         } else {
-            console.log('result: ', consts.a*(Math.pow((consts.b-heptathlon[i].result), consts.c)).toFixed(0));
             heptathlon[i].points = (consts.a*(Math.pow((consts.b-heptathlon[i].result), consts.c))).toFixed(0);
         }
-        console.log('event after ', heptathlon[i]);
     }
     return heptathlon;
 }
