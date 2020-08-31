@@ -18,8 +18,13 @@ class SportCalculators extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <Container>
+      <div>
         <Head>
+          {/* Use minimum-scale=1 to enable GPU rasterization */}
+          <meta
+            name="viewport"
+            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+          />
           <title>SportCalculators</title>
         </Head>
         <ThemeProvider theme={theme}>
@@ -27,7 +32,7 @@ class SportCalculators extends App {
           <CssBaseline />
           <Component {...pageProps} />
         </ThemeProvider>
-      </Container>
+      </div>
     );
   }
 }

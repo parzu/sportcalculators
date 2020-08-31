@@ -107,11 +107,11 @@ function Layout(props) {
       );
   }
 /*Navigation contents so that they could be reused*/
-  const calcList = calculators.map((item) =>
-    <List>
+  const calcList = calculators.map((item, index) =>
+    <List key={index}>
       <ListItemHeader title={item.sport} />
-      {item.calculators.map((calc) =>
-        <ListItemLink  href={calc.href} linkText={calc.title} />
+      {item.calculators.map((calc, index) =>
+        <ListItemLink  key={index} href={calc.href} linkText={calc.title} />
       )}
     </List>
   );

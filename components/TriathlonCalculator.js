@@ -3,7 +3,7 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import CombinedEventRow from './CombinedEventRow.js'
+import TriathlonRow from './TriathlonRow.js'
 import CombinedTotalRow from './CombinedTotalRow.js'
 import TimeInput from './TimeInput.js'
 
@@ -139,7 +139,39 @@ class TriathlonCalculator extends React.Component {
       `}</style>
       
       <Paper className='calculatorBox' style={style} zDepth={3}>
-      <div className="parent">
+        <TriathlonRow 
+            id={0}
+            name='Swim'
+            hidePace={false}
+            pace=''
+            paceUnit='/100m'
+            time=''
+            timeTag="SwimTime"
+            hideHours={false}
+           // onPaceChange={}//{this.handleResultChange.bind(this)} 
+           // onTimeChange={}//{this.handlePointsChange.bind(this)}
+        />
+        <TriathlonRow 
+            id={0}
+            name='Transit 1'
+            hidePace={true}
+            pace=''
+            paceUnit=''
+            time=''
+            timeTag="Transit1Time"
+            hideHours={true}
+           // onPaceChange={}//{this.handleResultChange.bind(this)} 
+           // onTimeChange={}//{this.handlePointsChange.bind(this)}
+        />
+      </Paper>
+      </div>
+    );
+  }
+}
+
+export default TriathlonCalculator;
+
+   {/* <div className="parent">
         <div className="heptCol text">
           Swim
         </div>
@@ -153,7 +185,7 @@ class TriathlonCalculator extends React.Component {
             value={this.state.swimSplit}
             //onChange={props.onPointsChange.bind(this)}
           />
-          {/* <TextField 
+           <TextField 
             floatingLabelText='min/100m'
             fullWidth={true} 
             hintText='min/100m'
@@ -161,7 +193,7 @@ class TriathlonCalculator extends React.Component {
             id='1' type='text' 
             value={this.state.swimSplit} 
             //onChange={this.onSplitChange.bind(this)} 
-          /> */}
+          /> 
         </div>
         <div className="heptCol">
           <TimeInput shortNames={true} tag='swimTime' values={this.state.swimTime} onTimeChange={this.onTimeChange.bind(this)}/>
@@ -227,11 +259,4 @@ class TriathlonCalculator extends React.Component {
           <TimeInput shortNames={true} tag='runTime' values={this.state.runTime} onTimeChange={this.onTimeChange.bind(this)}/>
         </div>
         </div>
-        <CombinedTotalRow text='Total' points={this.state.totalTimeText} />
-        </Paper>
-      </div>
-    );
-  }
-}
-
-export default TriathlonCalculator;
+        <CombinedTotalRow text='Total' points={this.state.totalTimeText} /> */}

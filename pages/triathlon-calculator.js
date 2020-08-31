@@ -2,7 +2,7 @@ import TriathlonCalculator from '../components/TriathlonCalculator.js';
 import Layout from '../components/Layout.js';
 import Head from 'next/head';
 
-export default () => (
+const ThriathlonCalculator = () => (
   <Layout>
     <Head>
       <title>Triathlon Calculator | SportCalculators</title>
@@ -16,3 +16,5 @@ export default () => (
     <p></p>
   </Layout>
 )
+
+export default ThriathlonCalculator;

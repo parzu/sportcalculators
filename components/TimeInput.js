@@ -36,7 +36,7 @@ class TimeInput extends React.Component {
     }
   }
 
-  buildInputField(name, shortName, id, useShortNames, timeValue) {
+  buildInputField(name, shortName, id, useShortNames, timeValue, hide) {
     let valueProp = '';
     if (timeValue) {
         valueProp = {value: this.state[name]};
@@ -57,14 +57,15 @@ class TimeInput extends React.Component {
         />
         </div>
         );
+    if (hide) {
+      html = (<div style={{flexBasis: '30%'}} key={name+id} className='timeIntputChild'></div>);
+    }
     return html;
   }
 
   render() {
     let html = [];
-    if (!this.props.hideHours) {
-        html.push(this.buildInputField('hours', 'hrs', this.props.tag+'1', this.props.shortNames, this.props.values));
-    }
+    html.push(this.buildInputField('hours', 'hrs', this.props.tag+'1', this.props.shortNames, this.props.values, this.props.hideHours));
     html.push(this.buildInputField('minutes', 'mins', this.props.tag+'2', this.props.shortNames, this.props.values));
     html.push(this.buildInputField('seconds', 'secs', this.props.tag+'3', this.props.shortNames, this.props.values));
 

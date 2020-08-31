@@ -95,8 +95,8 @@ function SportCards(props) {
           {props.item.sport}
         </Typography>
       </Grid>
-      {props.item.calculators.map((calc) =>
-        <CalculatorCard calc={calc} icon={props.item.icon} />
+      {props.item.calculators.map((calc, index) =>
+        <CalculatorCard key={index} calc={calc} icon={props.item.icon} />
       )}
     </Grid>
   );
@@ -122,8 +122,8 @@ export default function Index() {
           </Typography>
         </Grid>
       </Grid>
-      {calculators.map((item) =>              
-          <SportCards item={item} />
+      {calculators.map((item, index) =>              
+          <SportCards key={index} item={item} />
       )}
     </Layout>
   );

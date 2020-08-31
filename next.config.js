@@ -15,3 +15,7 @@
 //     return config
 //   }
 // }
+
+module.exports = {
+        /* configs here */
+}
