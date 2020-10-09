@@ -1,87 +1,124 @@
-import React from 'react';
-import { Grid, Row, Col, FormGroup, FormControl} from 'react-bootstrap';
-import TextField from '@material-ui/core/TextField';
-import * as time from '../services/timeService.js'
+import React from "react";
+import TextField from "@material-ui/core/TextField";
+import * as time from "../services/timeService.js";
 
 class TimeInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-        hours: '',
-        minutes: '',
-        seconds: '',
-        tag: '',
-     };
+    this.state = {
+      hours: "",
+      minutes: "",
+      seconds: "",
+    };
+
+    if (typeof this.props.defaultValues !== "undefined") {
+      if (typeof this.props.defaultValues.hours !== "undefined") {
+        this.state.hours = this.props.defaultValues.hours;
+      }
+      if (typeof this.props.defaultValues.minutes !== "undefined") {
+        this.state.minutes = this.props.defaultValues.minutes;
+      }
+      if (typeof this.props.defaultValues.seconds !== "undefined") {
+        this.state.seconds = this.props.defaultValues.seconds;
+      }
+    }
+    console.log(this.state);
+    console.log(this.props);
   }
 
   handleTimeChange(event) {
-    this.setState({[event.target.name]: event.target.value}, this.timeChanged);
+    this.setState(
+      { [event.target.name]: event.target.value },
+      this.timeChanged
+    );
   }
 
   timeChanged() {
-      console.log('timeInput ', this.state);
-    this.props.onTimeChange(event, time.timeToSeconds(this.state.hours, this.state.minutes, this.state.seconds), this.state.tag);
+    console.log("timeInput ", this.state);
+
+    this.props.onTimeChange(
+      event.target.id,
+      time.timeToSeconds(
+        this.state.hours,
+        this.state.minutes,
+        this.state.seconds
+      ),
+      event.target.name
+    );
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps != this.props) {
-        if (this.props.values) {
-            this.setState({hours: this.props.values.hours});
-            this.setState({minutes: this.props.values.minutes});
-            this.setState({seconds: this.props.values.seconds});
-        }
-        if (this.props.tag) {
-            this.setState({tag: this.props.tag});
-        }
-    }
-  }
-
-  buildInputField(name, shortName, id, useShortNames, timeValue, hide) {
-    let valueProp = '';
-    if (timeValue) {
-        valueProp = {value: this.state[name]};
-    }
+  buildInputField(name, shortName, tag, useShortNames, hide) {
     if (!useShortNames) {
-        shortName = name;
+      shortName = name;
     }
     let html = (
-        <div style={{flexBasis: '30%'}} key={name+id} className='timeIntputChild'>
+      <div style={{ flexBasis: "30%" }} key={name} className="timeIntputChild">
         <TextField
-            id={id}
-            name={name}
-            label={shortName}
-            {...valueProp}
-            type='number'
-            value={this.state.average}
-            onChange ={this.handleTimeChange.bind(this)}
+          id={tag}
+          name={name}
+          label={shortName}
+          type="number"
+          value={this.state[name]}
+          onChange={this.handleTimeChange.bind(this)}
+          style={{ verticalAlign: "inherit" }}
         />
-        </div>
-        );
+      </div>
+    );
     if (hide) {
-      html = (<div style={{flexBasis: '30%'}} key={name+id} className='timeIntputChild'></div>);
+      html = (
+        <div
+          style={{
+            flexBasis: "30%",
+            maxHeight: "40px",
+            verticalAlign: "inherit",
+          }}
+          key={name}
+          className="timeIntputChild"
+        ></div>
+      );
     }
     return html;
   }
 
   render() {
     let html = [];
-    html.push(this.buildInputField('hours', 'hrs', this.props.tag+'1', this.props.shortNames, this.props.values, this.props.hideHours));
-    html.push(this.buildInputField('minutes', 'mins', this.props.tag+'2', this.props.shortNames, this.props.values));
-    html.push(this.buildInputField('seconds', 'secs', this.props.tag+'3', this.props.shortNames, this.props.values));
-
+    html.push(
+      this.buildInputField(
+        "hours",
+        "hrs",
+        this.props.tag,
+        this.props.shortNames,
+        this.props.hideHours
+      )
+    );
+    html.push(
+      this.buildInputField(
+        "minutes",
+        "mins",
+        this.props.tag,
+        this.props.shortNames
+      )
+    );
+    html.push(
+      this.buildInputField(
+        "seconds",
+        "secs",
+        this.props.tag,
+        this.props.shortNames
+      )
+    );
 
     return (
-        <div className='timeInputParent'>
-                <style jsx >{`
-    .timeInputParent {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-    }
-
-    `}</style>
-            {html}
-        </div>
+      <div className="timeInputParent">
+        <style jsx>{`
+          .timeInputParent {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+          }
+        `}</style>
+        {html}
+      </div>
     );
   }
 }

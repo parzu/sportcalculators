@@ -84,7 +84,7 @@ function Layout(props) {
   function ListItemLink(props) {
     return (
         <ListItem button component="a" href={props.href} >
-            <Typography className={classes.nested} variant="Subtitle1" noWrap>
+            <Typography className={classes.nested} variant="subtitle1" noWrap>
                 {props.linkText}
             </Typography>
         </ListItem>

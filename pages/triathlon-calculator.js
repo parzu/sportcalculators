@@ -1,6 +1,10 @@
-import TriathlonCalculator from '../components/TriathlonCalculator.js';
-import Layout from '../components/Layout.js';
 import Head from 'next/head';
+
+//Omat
+import Layout from '../components/Layout.js';
+import TriathlonCalculator from '../calculators/TriathlonCalculator.js';
+
+
 
 const ThriathlonCalculator = () => (
   <Layout>

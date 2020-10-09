@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import SpeedCalculator from '../components/SpeedCalculator.js';
+import SpeedCalculator from '../calculators/SpeedCalculator.js';
 import Layout from '../components/Layout.js';
 
 export default () => (
