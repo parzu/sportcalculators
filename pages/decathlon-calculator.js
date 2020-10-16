@@ -7,6 +7,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import TableContainer from "@material-ui/core/TableContainer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -126,28 +127,30 @@ export default function DecathlonCalcPage(props) {
         B and C in the formula are taken from a table. Since 1984 the table has
         been the following:
       </p>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Event</TableCell>
-            <TableCell align="right">A</TableCell>
-            <TableCell align="right">B</TableCell>
-            <TableCell align="right">C</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.event}>
-              <TableCell component="th" scope="row">
-                {row.event}
-              </TableCell>
-              <TableCell align="right">{row.a}</TableCell>
-              <TableCell align="right">{row.b}</TableCell>
-              <TableCell align="right">{row.c}</TableCell>
+      <TableContainer>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell>Event</TableCell>
+              <TableCell align="right">A</TableCell>
+              <TableCell align="right">B</TableCell>
+              <TableCell align="right">C</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.event}>
+                <TableCell component="th" scope="row">
+                  {row.event}
+                </TableCell>
+                <TableCell align="right">{row.a}</TableCell>
+                <TableCell align="right">{row.b}</TableCell>
+                <TableCell align="right">{row.c}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <p>
         All times used should be automatically measured. If manual timing is
         used 0.24s is added to 100m and 110m hurdles and 0.14s to 400m race.

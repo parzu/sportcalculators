@@ -28,7 +28,7 @@ class SpeedDisplay extends React.Component {
         `}</style>
         <div>
              <Table style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                <TableBody displayRowCheckbox={false}>
+                <TableBody>
                     <TableRow className='speedDisplayTableHeaderRow'>
                     {/* <TableRow className='headerRow' style={{borderBottom: '2px solid #e0e0e0', fontWeight: 'bold'}}> */}
                         <TableCell>Metric</TableCell>

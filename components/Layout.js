@@ -1,54 +1,55 @@
 /****
  * Layout for all the pages.
  * Creates navigation drawer and the appbar on top.
- * 
- * 
+ *
+ *
  */
 
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MenuIcon from '@material-ui/icons/Menu';
-import InformationOutline from 'mdi-material-ui/InformationOutline';
-import EmailOutline from 'mdi-material-ui/EmailOutline';
-import ShieldKeyOutline from 'mdi-material-ui/ShieldKeyOutline'
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
-import Container from '@material-ui/core/Container';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { calculators } from '../src/calculators.js';
+import React from "react";
+import AppBar from "@material-ui/core/AppBar";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Divider from "@material-ui/core/Divider";
+import Drawer from "@material-ui/core/Drawer";
+import Hidden from "@material-ui/core/Hidden";
+import IconButton from "@material-ui/core/IconButton";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import MenuIcon from "@material-ui/icons/Menu";
+import InformationOutline from "mdi-material-ui/InformationOutline";
+import EmailOutline from "mdi-material-ui/EmailOutline";
+import ShieldKeyOutline from "mdi-material-ui/ShieldKeyOutline";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Link from "@material-ui/core/Link";
+import Container from "@material-ui/core/Container";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { calculators } from "../src/calculators.js";
+import { indigo } from "@material-ui/core/colors";
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: "flex",
   },
   drawer: {
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up("md")]: {
       width: drawerWidth,
       flexShrink: 0,
     },
   },
   appBar: {
     marginLeft: drawerWidth,
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up("md")]: {
       width: `calc(100% - ${drawerWidth}px)`,
     },
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    [theme.breakpoints.up('md')]: {
-      display: 'none',
+    [theme.breakpoints.up("md")]: {
+      display: "none",
     },
   },
   toolbar: theme.mixins.toolbar,
@@ -67,7 +68,15 @@ const useStyles = makeStyles(theme => ({
   },
   homeLink: {
     color: "white",
-    textDecoration: "none"
+    textDecoration: "none",
+  },
+  List: {
+    
+    margin: "0px",
+  },
+  ListItem: {
+    margin: "0px",
+    padding: "0px",
   }
 }));
 
@@ -83,39 +92,38 @@ function Layout(props) {
 
   function ListItemLink(props) {
     return (
-        <ListItem button component="a" href={props.href} >
-            <Typography className={classes.nested} variant="subtitle1" noWrap>
-                {props.linkText}
-            </Typography>
-        </ListItem>
+      <ListItem button component="a" href={props.href}>
+        <Typography className={classes.nested} variant="subtitle1" noWrap>
+          {props.linkText}
+        </Typography>
+      </ListItem>
     );
   }
 
   function ListItemHeader(props) {
-      return (
+    return (
       <ListItem>
-        <ListItemText 
+        <ListItemText
           primary={props.title}
           classes={{
-            primary: classes.menuHeader
+            primary: classes.menuHeader,
           }}
         />
         {/* <Typography variant="subtitle2" noWrap>
             {props.title}
         </Typography> */}
       </ListItem>
-      );
+    );
   }
-/*Navigation contents so that they could be reused*/
-  const calcList = calculators.map((item, index) =>
+  /*Navigation contents so that they could be reused*/
+  const calcList = calculators.map((item, index) => (
     <List key={index}>
       <ListItemHeader title={item.sport} />
-      {item.calculators.map((calc, index) =>
-        <ListItemLink  key={index} href={calc.href} linkText={calc.title} />
-      )}
+      {item.calculators.map((calc, index) => (
+        <ListItemLink key={index} href={calc.href} linkText={calc.title} />
+      ))}
     </List>
-  );
-
+  ));
 
   const drawer = (
     <div>
@@ -123,34 +131,43 @@ function Layout(props) {
         {/* <Link href="/" variant="h6" color="textSecondary" className={classes.homeLink}>
           SportCalculators
         </Link> */}
+        <h6
+          style={{
+            margin: "0px",
+            paddingTop: "20px",
+            paddingLeft: "15px",
+            textAlign: "left",
+            fontSize: "1em",
+          }}
+        >
+          MENU
+        </h6>
       </div>
       <Divider />
-        {calcList}
+      {calcList}
       <Divider />
       <List component="nav" aria-label="main mailbox folders">
-      <ListItem button component="a" href="about">
-        <ListItemIcon>
-          <InformationOutline />
-        </ListItemIcon>
-        <ListItemText primary="About" />
-      </ListItem>
-      <ListItem button component="a" href="contact">
-        <ListItemIcon>
-        <EmailOutline />
-        </ListItemIcon>
-        <ListItemText primary="Contact" />
-      </ListItem>
-      <ListItem button component="a" href="privacy">
-        <ListItemIcon>
-        <ShieldKeyOutline />
-        </ListItemIcon>
-        <ListItemText primary="Privacy" />
-      </ListItem>
-
-    </List>
-
+        <ListItem button component="a" href="about">
+          <ListItemIcon>
+            <InformationOutline />
+          </ListItemIcon>
+          <ListItemText primary="About" />
+        </ListItem>
+        <ListItem button component="a" href="contact">
+          <ListItemIcon>
+            <EmailOutline />
+          </ListItemIcon>
+          <ListItemText primary="Contact" />
+        </ListItem>
+        <ListItem button component="a" href="privacy">
+          <ListItemIcon>
+            <ShieldKeyOutline />
+          </ListItemIcon>
+          <ListItemText primary="Privacy" />
+        </ListItem>
+      </List>
     </div>
-   );
+  );
 
   return (
     <div className={classes.root}>
@@ -177,7 +194,7 @@ function Layout(props) {
           <Drawer
             container={container}
             variant="temporary"
-            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+            anchor={theme.direction === "rtl" ? "right" : "left"}
             open={mobileOpen}
             onClose={handleDrawerToggle}
             classes={{
@@ -202,15 +219,14 @@ function Layout(props) {
           </Drawer>
         </Hidden>
       </nav>
-      
+
       <Container>
-      <div className={classes.toolbar} />
-          {props.children}
-      <div className={classes.toolbar} />    
+        <div className={classes.toolbar} />
+        {props.children}
+        <div className={classes.toolbar} />
       </Container>
     </div>
   );
 }
-
 
 export default Layout;

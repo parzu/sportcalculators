@@ -74,7 +74,7 @@ class BowlingHandicapCalculator extends React.Component {
 
 
       
-        <Paper className='calculatorBox' style={style} zDepth={3}>
+        <Paper className='calculatorBox' style={style} elevation={3}>
         <div className='calculatorParent'>
           <div className='calculatorChild'>
             <TextField

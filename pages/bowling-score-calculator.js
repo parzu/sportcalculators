@@ -34,7 +34,7 @@ export default function BowlingScorePage() {
 
       <div>
         <div style={{ float: "left", paddingRight: "10px" }}>
-          <img src="../static/bowling_salvatore_vuono.jpg" />
+          <img style={{maxWidth: "250px"}} src="../static/bowling_salvatore_vuono.jpg" />
           <p style={{ fontSize: "8px" }}>
             Image courtesy of Salvatore Vuono / FreeDigitalPhotos.net
           </p>
@@ -141,9 +141,9 @@ export default function BowlingScorePage() {
           width="560"
           height="315"
           src="https://www.youtube.com/embed/kLD9KOqWWVw"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </div>
     </Layout>

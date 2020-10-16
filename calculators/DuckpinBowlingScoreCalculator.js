@@ -1,7 +1,7 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
-import DuckpinBowlingScoreButtons from './DuckpinBowlingScoreButtons.js'
-import DuckpinBowlingFrameDisplay from './DuckpinBowlingFrameDisplay.js'
+import DuckpinBowlingScoreButtons from '../components/DuckpinBowlingScoreButtons.js'
+import DuckpinBowlingFrameDisplay from '../components/DuckpinBowlingFrameDisplay.js'
 
 class DuckpinBowlingScoreCalculator extends React.Component {
   constructor(props) {
@@ -205,7 +205,10 @@ class DuckpinBowlingScoreCalculator extends React.Component {
 
   render() {
     const paperStyle = {
-      padding: 20,
+      paddingTop: 20,
+      paddingBottom: 20,
+      paddingLeft: 10,
+      paddingRight: 10,
       textAlign: 'center',
       maxWidth: '700px',
       diplay: 'flex',
@@ -225,6 +228,7 @@ class DuckpinBowlingScoreCalculator extends React.Component {
             flex-direction: row;
             width: 100%;
             line-height: 35px;
+
 
           }
           .frameChild {
@@ -248,7 +252,7 @@ class DuckpinBowlingScoreCalculator extends React.Component {
 
 
 
-        <Paper style={paperStyle} zDepth={3}>
+        <Paper style={paperStyle} elevation={3}>
           <div className="frameParent">
             <div className="frameChild">
               <DuckpinBowlingFrameDisplay frameNum='1' throws={this.state.throws[0]} result={this.state.results[0]}/>

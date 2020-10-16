@@ -87,7 +87,7 @@ class SplitRow extends React.Component {
           `}</style>
 
 
-          <Paper zDepth={1}>
+          <Paper elevation={1}>
             <div className="parentDiv">
               <div className="childDiv raceName">{this.props.text}</div>
               <div className="childDiv">

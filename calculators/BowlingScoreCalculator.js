@@ -198,7 +198,10 @@ class BowlingScoreCalculator extends React.Component {
 
   render() {
     const paperStyle = {
-      padding: 20,
+      paddingTop: 20,
+      paddingBottom: 20,
+      paddingLeft: 10,
+      paddingRight: 10,
       textAlign: 'center',
       maxWidth: '700px',
       diplay: 'flex',
@@ -246,7 +249,7 @@ class BowlingScoreCalculator extends React.Component {
 
 
 
-        <Paper style={paperStyle} zDepth={3}>
+        <Paper style={paperStyle} elevation={3}>
           <div className="frameParent">
             <div className="frameChild">
               <BowlingFrameDisplay frameNum='1' throws={this.state.throws[0]} result={this.state.results[0]}/>
