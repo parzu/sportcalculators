@@ -9,7 +9,7 @@ const NotFound = () => (
       <title>404 | SportCalculators</title>
     </Head>
 
-    <h2 className='calculator'>Page Not Found</h2>
+    <h2 className='calculator'>Page Not Found - 404</h2>
     <p>Uups.. Something went wrong. The page you are looking for cannot be found.</p>
     <p>If you typed in the address, please check the spelling.</p>
     <h3>Continue Here</h3>
