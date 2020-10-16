@@ -159,7 +159,7 @@ function Layout(props) {
           </ListItemIcon>
           <ListItemText primary="Contact" />
         </ListItem>
-        <ListItem button component="a" href="privacy">
+        <ListItem button component="a" href="privacy-policy">
           <ListItemIcon>
             <ShieldKeyOutline />
           </ListItemIcon>

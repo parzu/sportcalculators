@@ -38,7 +38,7 @@ class SportCalculators extends App {
             expires={180}
           >
             This website uses cookies to ensure you get the best experience on our website. By continuing to browse the site, you are agreeing to our use of cookies. {" "}
-            <a style={{color: "#00b0ff"}} href="/privacy">
+            <a style={{color: "#00b0ff"}} href="/privacy-policy">
               More info here
             </a>
           </CookieConsent>
