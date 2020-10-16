@@ -1,15 +1,14 @@
-import React from 'react';
-import Document, { Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheets } from '@material-ui/styles';
-import theme from '../src/theme';
+import React from "react";
+import Document, { Head, Main, NextScript } from "next/document";
+import { ServerStyleSheets } from "@material-ui/styles";
+import theme from "../src/theme";
 
 class MyDocument extends Document {
-
-  componentDidMount () {
+  componentDidMount() {
     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-9142841210062390",
-          enable_page_level_ads: true
-     });
+      google_ad_client: "ca-pub-9142841210062390",
+      enable_page_level_ads: true,
+    });
   }
 
   render() {
@@ -24,8 +23,11 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
+          <script
+            data-ad-client="ca-pub-3093798853216759"
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          ></script>
         </Head>
         <body>
           <Main />
@@ -36,7 +38,7 @@ class MyDocument extends Document {
   }
 }
 
-MyDocument.getInitialProps = async ctx => {
+MyDocument.getInitialProps = async (ctx) => {
   // Resolution order
   //
   // On the server:
@@ -65,7 +67,7 @@ MyDocument.getInitialProps = async ctx => {
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: App => props => sheets.collect(<App {...props} />),
+      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
     });
 
   const initialProps = await Document.getInitialProps(ctx);
