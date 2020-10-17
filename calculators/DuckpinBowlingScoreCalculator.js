@@ -55,7 +55,6 @@ class DuckpinBowlingScoreCalculator extends React.Component {
       this.nextFrame();
     }
     this.setState({lastThrow: value});
-    console.log(this.state.throws);
   }
 
   nextFrame() {

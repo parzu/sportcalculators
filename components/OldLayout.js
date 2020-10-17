@@ -86,7 +86,6 @@ class Navigation extends React.Component {
   */
   
 function Layout(props) {
-    console.log(props);
     const {container} = props;
     const classes = useStyles();
     const theme = useTheme();

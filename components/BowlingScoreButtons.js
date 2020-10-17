@@ -25,9 +25,7 @@ class BowlingScoreButtons extends React.Component {
   }
 
   setDisabledButtons() {
-      console.log(this.props.running);
     if (this.props.running == false) {
-        console.log("end");
         this.gameEnd();
     } else if (this.props.throwNum == 1) {
         this.setInitialButtons();

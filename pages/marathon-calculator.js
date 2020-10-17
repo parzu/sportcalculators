@@ -8,6 +8,10 @@ const MarathonCalculatorPage = () => (
   <Layout>
     <Head>
       <title>Marathon Calculator | SportCalculators</title>
+      <meta
+        name="description"
+        content="This marathon calculator tells how fast you have to run shorter distances to make your goal time at the marathon. It is good for setting goal times to be used during training."
+      ></meta>
     </Head>
 
     <h2 className="calculator">Marathon Calculator</h2>

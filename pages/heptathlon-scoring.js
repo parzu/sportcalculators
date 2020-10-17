@@ -52,6 +52,10 @@ export default function HeptathlonScoringPage(props) {
     <Layout>
       <Head>
         <title>Heptathlon Scoring | SportCalculators</title>
+        <meta
+          name="description"
+          content="Find out how the heptathlon scoring works for women's outdoor heptathlon and men's indoor heptathlon. Try it also out with our calculator."
+        ></meta>
       </Head>
 
       <h2 className="calculator">Heptathlon Scoring</h2>

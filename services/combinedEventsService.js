@@ -215,7 +215,6 @@ export function calculateCombinedEventsPoints(combinedEvents, index, combEvent) 
         allConsts = decathlonConsts;
     }
     let eventConsts = allConsts[index];
-    console.log('jejejej', eventConsts);
 
     if (combinedEvents.events[index].result == '') {
         combinedEvents.events[index].points = '';
@@ -228,7 +227,6 @@ export function calculateCombinedEventsPoints(combinedEvents, index, combEvent) 
         }
     }
     combinedEvents = calculateTotals(combinedEvents, allConsts);
-    console.log('All calculated:', combinedEvents);
     return combinedEvents;
 }
 
@@ -249,20 +247,15 @@ export function calculateCombinedEventsResult(combindedEvents, index, combEvent)
         }
     }
     combindedEvents = calculateTotals(combindedEvents, allConsts);
-    console.log('All calculated:', combindedEvents);
     return combindedEvents;
 }
 
 function calculateTotals(competition, consts) {
     let firstDay = 0;
     let secondDay = 0;
-    console.log('----calculating totals----');
     for (let i = 0; i < competition.events.length; i++) {
-        console.log('event ', i, ' points: ', competition.events[i].points);
         if (competition.events[i].points != '') {
-            console.log('before day ', consts);
             if (consts[i].day == 'first') {
-                console.log('incresed first day from ', firstDay, ' to ', firstDay+competition.events[i].points);
                 firstDay = firstDay + parseInt(competition.events[i].points);
             } else {
                 secondDay = secondDay + parseInt(competition.events[i].points);
@@ -278,20 +271,16 @@ function calculateTotals(competition, consts) {
 function getTrackPoints(consts, event) {
     let points = '';
     let time = event.result;
-    console.log(consts);
-    console.log(event);
 
     if (isNaN(event.result)) {
         time = parseTime(event.result);
     }
     if (event.manual == true) {
         let manualTime = parseFloat(time) + consts.manualTime;
-        console.log('time: ', time, ', manual time for calc: ', manualTime);
         points = Math.floor(consts.a*(Math.pow(consts.b-manualTime, consts.c)));                    
     } else {
         points = Math.floor(consts.a*(Math.pow((consts.b-time), consts.c)));
     }
-    console.log('TrackPoints result: ', points);
     if (isNaN(points)) {
         points = 0;
     }
@@ -304,7 +293,6 @@ function getTrackResult(consts, event) {
     if (event.manual == true) {
        result = result - consts.manualTime;
     } 
-    console.log('TrackResult result: ', result);
     if (isNaN(result)) {
         result = 0;
     }
@@ -337,7 +325,6 @@ function getFieldResult(consts, event) {
 function getFieldPoints(consts, event) {
     let points = '';
     points = Math.floor(consts.a*(Math.pow((event.result-consts.b), consts.c)));
-    console.log('FieldPoints result: ', points);
     if (isNaN(points)) {
         points = 0;
     }
@@ -345,11 +332,9 @@ function getFieldPoints(consts, event) {
 }
 
 function parseTime(time) {
-    console.log(time);
     let result = 0;
     let ind = time.indexOf(':');
     let mins = parseInt(time.substr(0, ind));
     let secs = parseFloat(time.substr(ind+1, time.length));
-    console.log(mins, secs);
     return parseFloat(mins*60+secs);
 }

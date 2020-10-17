@@ -13,7 +13,6 @@ const MarathonCalculator = () => {
   const [time, setTime] = useState(0);
 
   const onTimeChange = (id, totalSecs, name) => {
-    console.log(totalSecs);
     setTime(totalSecs);
   }
 

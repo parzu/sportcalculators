@@ -96,8 +96,7 @@ class DecathlonCalculator extends React.Component {
           id,
           "decathlon"
         ),
-      },
-      console.log("All done ", this.state.decathlon)
+      }
     );
   }
 
@@ -109,8 +108,7 @@ class DecathlonCalculator extends React.Component {
           id,
           "decathlon"
         ),
-      },
-      console.log("All done ", this.state.decathlon)
+      }
     );
   }
 

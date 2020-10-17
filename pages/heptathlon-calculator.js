@@ -43,6 +43,10 @@ export default function HeptathlonCalcPage(props) {
     <Layout>
       <Head>
         <title>Heptathlon Calculator | SportCalculators</title>
+        <meta
+          name="description"
+          content="A heptathlon calculator which calculates points from results and results from points. Do you know the results needed for 7000 points? Find them out with this heptathlon calculator."
+        ></meta>
       </Head>
 
       <h2 className="calculator">Heptathlon Calculator</h2>

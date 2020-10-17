@@ -9,6 +9,10 @@ export default function BowlingScorePage() {
     <Layout>
       <Head>
         <title>Bowling Score Calculator | SportCalculators</title>
+        <meta
+          name="description"
+          content="How one throw effects on bowling score? What would be the score if you throw 5 and spare for each frame? Find out with this bowling score calculator."
+        />
       </Head>
 
       <h2 className="calculator">Bowling Score Calculator</h2>
@@ -17,6 +21,22 @@ export default function BowlingScorePage() {
         throw 5 and spare for each frame? Find out the answers with this bowling
         score calculator.
       </p>
+
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+      ></script>
+
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-3093798853216759"
+        data-ad-slot="3770926620"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
       <div style={{ paddingTop: "40px", paddingBottom: "40px" }}>
         <BowlingScoreCalculator></BowlingScoreCalculator>
       </div>
@@ -34,7 +54,10 @@ export default function BowlingScorePage() {
 
       <div>
         <div style={{ float: "left", paddingRight: "10px" }}>
-          <img style={{maxWidth: "250px"}} src="../static/bowling_salvatore_vuono.jpg" />
+          <img
+            style={{ maxWidth: "250px" }}
+            src="../static/bowling_salvatore_vuono.jpg"
+          />
           <p style={{ fontSize: "8px" }}>
             Image courtesy of Salvatore Vuono / FreeDigitalPhotos.net
           </p>

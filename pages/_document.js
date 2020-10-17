@@ -4,12 +4,14 @@ import { ServerStyleSheets } from "@material-ui/styles";
 import theme from "../src/theme";
 
 class MyDocument extends Document {
-  componentDidMount() {
-    (adsbygoogle = window.adsbygoogle || []).push({
-      google_ad_client: "ca-pub-9142841210062390",
-      enable_page_level_ads: true,
-    });
-  }
+  // En muista lisänneeni alla olevaa. Voi olla että olen lisännyt joskus vuosia sitten. Publisher koodi ei ole minun.
+  // componentDidMount() {
+  //   (adsbygoogle = window.adsbygoogle || []).push({
+  //     google_ad_client: "ca-pub-9142841210062390",
+  //     enable_page_level_ads: true,
+  //   });
+  // }
+
 
   render() {
     return (

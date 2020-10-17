@@ -6,6 +6,10 @@ const DuckpinCalculator = () => (
   <Layout>
     <Head>
       <title>Duckpin Bowling Score Calculator | SportCalculators</title>
+      <meta
+        name="description"
+        content="The best and probably the only duckpin bowling score calculator on the internet. This calculator can also be used for candlepin bowling."
+      ></meta>
     </Head>
 
     <h2 className="calculator">Duckpin Bowling Score Calculator</h2>
@@ -30,7 +34,10 @@ const DuckpinCalculator = () => (
 
     <div>
       <div style={{ float: "left", paddingRight: "10px" }}>
-        <img style={{maxWidth: "250px"}} src="../static/Duckpins_closeup.jpg" />
+        <img
+          style={{ maxWidth: "250px" }}
+          src="../static/Duckpins_closeup.jpg"
+        />
         <p style={{ fontSize: "8px" }}>
           Image: Valerie Everett / Wikimedia Commons / CC-BY-SA-2.0
         </p>
@@ -73,6 +80,5 @@ const DuckpinCalculator = () => (
     </p>
   </Layout>
 );
-
 
 export default DuckpinCalculator;

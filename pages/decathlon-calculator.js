@@ -46,6 +46,10 @@ export default function DecathlonCalcPage(props) {
     <Layout>
       <Head>
         <title>Decathlon Calculator | SportCalculators</title>
+        <meta
+          name="description"
+          content="A decathlon calculator which calculates results to points and points to results. Do you know the performance needed to get 1000 points in each event? Find out with this decathlon calculator."
+        ></meta>
       </Head>
 
       <h2 className="calculator">Decathlon Calculator</h2>

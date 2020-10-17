@@ -6,6 +6,10 @@ const SpeedConv = () => (
   <Layout>
     <Head>
       <title>Running Speed Converter | SportCalculators</title>
+      <meta
+        name="description"
+        content="Convert running speed to running pace. Possible input units are km/h, mph, m/s or ft/s and output units are all the previous plus min/km and min/miles."
+      ></meta>
     </Head>
 
     <h2 className="calculator">Running Speed Converter</h2>

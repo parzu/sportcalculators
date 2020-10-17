@@ -6,6 +6,14 @@ const BowlingHandicapCalculatorPage = () => (
   <Layout>
     <Head>
       <title>Bowling Handicap Calculator | SportCalculators</title>
+      <meta
+        name="description"
+        content="A simple bowling handicap calculator and an explanation of the bowling handicap system. SportCalcualtors.com has all the sport related calculators you ever need."
+      ></meta>
+      <meta
+        name="keywords"
+        content="bowling handicap calculator, bowling handicap, bowling, bowling calculator, handicap"
+      ></meta>
     </Head>
 
     <h2 className="calculator">Bowling Handicap Calculator</h2>

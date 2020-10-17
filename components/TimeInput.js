@@ -22,8 +22,6 @@ class TimeInput extends React.Component {
         this.state.seconds = this.props.defaultValues.seconds;
       }
     }
-    console.log(this.state);
-    console.log(this.props);
   }
 
   handleTimeChange(event) {
@@ -34,8 +32,6 @@ class TimeInput extends React.Component {
   }
 
   timeChanged() {
-    console.log("timeInput ", this.state);
-
     this.props.onTimeChange(
       event.target.id,
       time.timeToSeconds(

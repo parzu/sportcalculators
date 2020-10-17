@@ -6,6 +6,10 @@ export default () => (
   <Layout>
     <Head>
       <title>Running Speed Calculator | SportCalculators</title>
+      <meta
+        name="description"
+        content="Calculate running speed from time and distance. Calculator shows the result in the most used units including minutes/km and minutes/mile. You can input distance in meters, feet, kilometers or miles."
+      ></meta>
     </Head>
 
     <h2 className="calculator">Running Speed Calculator</h2>

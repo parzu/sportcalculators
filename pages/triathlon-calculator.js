@@ -50,6 +50,10 @@ const ThriathlonCalculator = () => {
     <Layout>
       <Head>
         <title>Triathlon Calculator | SportCalculators</title>
+        <meta
+          name="description"
+          content="A mobile-friendly triathlon calculator with preset distances. Calculates event and total times and needed speeds for swimming, cycling and running."
+        ></meta>
       </Head>
 
       <h2 className="calculator">Triathlon Calculator</h2>

@@ -6,6 +6,10 @@ const RaceTimeCalculatorPage = () => (
   <Layout>
     <Head>
       <title>Race Time Calculator | SportCalculators</title>
+      <meta
+        name="description"
+        content="With this race time calculator you can predict a race time based on your recent run. Enter your time on one distance and see a prediction for another distance."
+      ></meta>
     </Head>
 
     <h2 className="calculator">Race Time Calculator</h2>

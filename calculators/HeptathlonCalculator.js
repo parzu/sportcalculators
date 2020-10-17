@@ -76,15 +76,13 @@ class HeptathlonCalculator extends React.Component {
 
   calculatePoints(id) {
     this.setState(
-      { heptathlon: calculateCombinedEventsPoints(this.state.heptathlon, id) },
-      console.log("All done ", this.state.heptathlon)
+      { heptathlon: calculateCombinedEventsPoints(this.state.heptathlon, id) }
     );
   }
 
   calculateResult(id) {
     this.setState(
-      { heptathlon: calculateCombinedEventsResult(this.state.heptathlon, id) },
-      console.log("All done ", this.state.heptathlon)
+      { heptathlon: calculateCombinedEventsResult(this.state.heptathlon, id) }
     );
   }
 
