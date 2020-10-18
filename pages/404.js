@@ -2,6 +2,7 @@ import Head from 'next/head';
 
 //Omat
 import Layout from '../components/Layout.js';
+import AdSenseWidget from "../components/AdSenseWidget.js";
 
 const NotFound = () => (
   <Layout>
@@ -14,6 +15,7 @@ const NotFound = () => (
     <p>If you typed in the address, please check the spelling.</p>
     <h3>Continue Here</h3>
     <p>You can find the page you are looking for from <a href="/">the homepage</a>.</p>
+    <AdSenseWidget />
   </Layout>
 )
 

@@ -2,6 +2,7 @@ import Head from "next/head";
 
 //Omat
 import Layout from "../components/Layout.js";
+import AdSenseWidget from "../components/AdSenseWidget.js";
 
 const About = () => (
   <Layout>
@@ -27,6 +28,7 @@ const About = () => (
       errors from the calculators, please <a href="/contact">let us know</a>.
     </p>
     <p>Thank you for visiting and welcome again!</p>
+    <AdSenseWidget />
   </Layout>
 );
 

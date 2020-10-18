@@ -1,6 +1,7 @@
 import SpeedConverter from "../calculators/SpeedConverter.js";
 import Layout from "../components/Layout.js";
 import Head from "next/head";
+import AdSenseWidget from "../components/AdSenseWidget.js";
 
 const SpeedConv = () => (
   <Layout>
@@ -18,9 +19,11 @@ const SpeedConv = () => (
       m/s or ft/s and output units are all the previous plus min/km and
       min/miles.
     </p>
+    <AdSenseWidget />
     <div style={{ paddingTop: "40px", paddingBottom: "40px" }}>
       <SpeedConverter></SpeedConverter>
     </div>
+    <AdSenseWidget />
     <h3>How to Use the Calculator?</h3>
     <p>
       Simply enter the value and choose the unit you want to convert from. Click

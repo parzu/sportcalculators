@@ -1,6 +1,7 @@
 import SpeedCalculator from "../calculators/SpeedCalculator.js";
 import Layout from "../components/Layout.js";
 import Head from "next/head";
+import AdSenseWidget from "../components/AdSenseWidget.js";
 
 export default () => (
   <Layout>
@@ -18,9 +19,13 @@ export default () => (
       result in the most used units including minutes/km and minutes/mile. You
       can input distance in meters, feet, kilometers or miles.
     </p>
+
+    <AdSenseWidget />
     <div style={{ paddingTop: "40px", paddingBottom: "40px" }}>
       <SpeedCalculator></SpeedCalculator>
     </div>
+    <AdSenseWidget />
+
     <h3>How to Use the Calculator?</h3>
     <p>
       Insert your total running time in hours, minutes and seconds fields.

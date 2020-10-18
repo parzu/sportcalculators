@@ -10,6 +10,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 //Omat
 import Layout from "../components/Layout.js";
 import TriathlonCalculator from "../calculators/TriathlonCalculator.js";
+import AdSenseWidget from "../components/AdSenseWidget.js";
 
 const useStyles = makeStyles((theme) => ({
   table: {
@@ -64,9 +65,11 @@ const ThriathlonCalculator = () => {
         transition times to get the total time. You can use preset race
         distances or your own custom distances.
       </p>
+      <AdSenseWidget />
       <div style={{ paddingTop: "40px", paddingBottom: "40px" }}>
         <TriathlonCalculator></TriathlonCalculator>
       </div>
+      <AdSenseWidget />
       <h3>How to Use the Calculator?</h3>
       <p>Using the triathlon calculator is easy.</p>
       <ul>

@@ -3,6 +3,7 @@ import Head from "next/head";
 //Omat
 import Layout from "../components/Layout.js";
 import MarathonCalculator from "../calculators/MarathonCalculator.js";
+import AdSenseWidget from "../components/AdSenseWidget.js";
 
 const MarathonCalculatorPage = () => (
   <Layout>
@@ -21,9 +22,13 @@ const MarathonCalculatorPage = () => (
       to be used during training. Find out how fast world record holder have to
       run the shorter distances. Can you keep up the pace for even a mile?
     </p>
+
+    <AdSenseWidget />
     <div style={{ paddingTop: "40px", paddingBottom: "40px" }}>
       <MarathonCalculator></MarathonCalculator>
     </div>
+    <AdSenseWidget />
+
     <h3>How to Use the Calculator?</h3>
     <p>
       Just enter your marathon goal time and press calculate. Split times for

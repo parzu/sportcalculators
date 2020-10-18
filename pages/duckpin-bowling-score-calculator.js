@@ -1,6 +1,7 @@
 import DuckpinBowlingScoreCalculator from "../calculators/DuckpinBowlingScoreCalculator.js";
 import Layout from "../components/Layout.js";
 import Head from "next/head";
+import AdSenseWidget from "../components/AdSenseWidget.js";
 
 const DuckpinCalculator = () => (
   <Layout>
@@ -17,9 +18,11 @@ const DuckpinCalculator = () => (
       The best and probably the only duckpin bowling score calculator on the
       internet. This calculator can also be used for candlepin bowling.
     </p>
+    <AdSenseWidget />
     <div style={{ paddingTop: "40px", paddingBottom: "40px" }}>
       <DuckpinBowlingScoreCalculator></DuckpinBowlingScoreCalculator>
     </div>
+    <AdSenseWidget />
     <h3>How to Use the Calculator?</h3>
     <p>
       Push the buttons for values for each frame throw by throw. The calculator

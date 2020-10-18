@@ -8,6 +8,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableContainer from "@material-ui/core/TableContainer";
+import AdSenseWidget from "../components/AdSenseWidget.js";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,9 +57,12 @@ export default function HeptathlonCalcPage(props) {
         to estimate needed performance for your target. This calculator is for
         women's outdoor heptathlon.
       </p>
+
+      <AdSenseWidget />
       <div style={{ paddingTop: "40px", paddingBottom: "40px" }}>
         <HeptathlonCalculator></HeptathlonCalculator>
       </div>
+      <AdSenseWidget />
 
       <h3>How to Use the Calculator?</h3>
       <p>

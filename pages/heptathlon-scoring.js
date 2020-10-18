@@ -7,6 +7,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableContainer from "@material-ui/core/TableContainer";
+import AdSenseWidget from "../components/AdSenseWidget.js";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -71,6 +72,8 @@ export default function HeptathlonScoringPage(props) {
         6500 points. So a very good score from one event is around 1000 points.
       </p>
 
+      <AdSenseWidget />
+
       <p>
         In the official competitions, scoring tables for each event is used. The
         scoring tables are issued by the{" "}
@@ -91,6 +94,8 @@ export default function HeptathlonScoringPage(props) {
         points marked for each result. In these cases the closest lower points
         are used as a result from an individual event.
       </p>
+
+      <AdSenseWidget />
 
       <p>
         Calculating the score for individual event is based on a formula and a
@@ -153,6 +158,9 @@ export default function HeptathlonScoringPage(props) {
           </TableBody>
         </Table>
       </TableContainer>
+
+      <AdSenseWidget />
+
 
       <h4>Men's heptathlon scoring table</h4>
 

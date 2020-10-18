@@ -1,6 +1,7 @@
 import BowlingHandicapCalculator from "../calculators/BowlingHandicapCalculator.js";
 import Layout from "../components/Layout.js";
 import Head from "next/head";
+import AdSenseWidget from "../components/AdSenseWidget.js";
 
 const BowlingHandicapCalculatorPage = () => (
   <Layout>
@@ -10,10 +11,6 @@ const BowlingHandicapCalculatorPage = () => (
         name="description"
         content="A simple bowling handicap calculator and an explanation of the bowling handicap system. SportCalcualtors.com has all the sport related calculators you ever need."
       ></meta>
-      <meta
-        name="keywords"
-        content="bowling handicap calculator, bowling handicap, bowling, bowling calculator, handicap"
-      ></meta>
     </Head>
 
     <h2 className="calculator">Bowling Handicap Calculator</h2>
@@ -22,9 +19,11 @@ const BowlingHandicapCalculatorPage = () => (
       together with our bowling score calculator and you don't need any other
       bowling related calculators.
     </p>
+    <AdSenseWidget />
     <div style={{ paddingTop: "40px", paddingBottom: "40px" }}>
       <BowlingHandicapCalculator></BowlingHandicapCalculator>
     </div>
+    <AdSenseWidget />
     <h3>How to Use the Calculator?</h3>
     <p>
       Just enter your bowling average, basis score and percentage factor and

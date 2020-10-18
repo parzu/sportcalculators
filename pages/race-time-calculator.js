@@ -1,6 +1,7 @@
 import RaceTimeCalculator from "../calculators/RaceTimeCalculator.js";
 import Layout from "../components/Layout.js";
 import Head from "next/head";
+import AdSenseWidget from "../components/AdSenseWidget.js";
 
 const RaceTimeCalculatorPage = () => (
   <Layout>
@@ -18,9 +19,13 @@ const RaceTimeCalculatorPage = () => (
       Enter your time on one distance and see a prediction for another distance.
       Just keep in mind that it's still a prediction.
     </p>
+
+    <AdSenseWidget />
     <div style={{ paddingTop: "40px", paddingBottom: "40px" }}>
       <RaceTimeCalculator></RaceTimeCalculator>
     </div>
+    <AdSenseWidget />
+    
     <h3>How to Use the Calculator?</h3>
     <p>
       Just enter a time of your run and select a distance. Press calculate and

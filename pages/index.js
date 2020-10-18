@@ -8,6 +8,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import { makeStyles } from "@material-ui/core/styles";
 import Layout from "../components/Layout.js";
 import { calculators } from "../src/calculators.js";
+import AdSenseWidget from "../components/AdSenseWidget.js";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -118,9 +119,11 @@ export default function Index() {
           </Typography>
         </Grid>
       </Grid>
+      <AdSenseWidget />
       {calculators.map((item, index) => (
         <SportCards key={index} item={item} />
       ))}
+      <AdSenseWidget />
     </Layout>
   );
 }
