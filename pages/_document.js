@@ -25,12 +25,13 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
-          <link rel="icon" href="../static/favicon.png"></link>
+          <link rel="icon" href="/favicon.png"></link>
           <script
             data-ad-client="ca-pub-3093798853216759"
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
           ></script>
+          <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
         </Head>
         <body>
           <Main />

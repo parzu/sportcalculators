@@ -22,20 +22,14 @@ export default function BowlingScorePage() {
         score calculator.
       </p>
 
-      <script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-      ></script>
-
-      <ins
-        className="adsbygoogle"
-        style={{ display: "block" }}
+      <amp-ad
+        layout="fixed"
+        width="300"
+        height="250"
+        type="adsense"
         data-ad-client="ca-pub-3093798853216759"
-        data-ad-slot="3770926620"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      ></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        data-ad-slot="2426474228"
+      ></amp-ad>
 
       <div style={{ paddingTop: "40px", paddingBottom: "40px" }}>
         <BowlingScoreCalculator></BowlingScoreCalculator>
