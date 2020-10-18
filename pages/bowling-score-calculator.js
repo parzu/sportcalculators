@@ -3,6 +3,8 @@ import Head from "next/head";
 //Components
 import Layout from "../components/Layout.js";
 import BowlingScoreCalculator from "../calculators/BowlingScoreCalculator.js";
+import AdSenseWidget from "../components/AdSenseWidget.js";
+
 
 export default function BowlingScorePage() {
   return (
@@ -22,18 +24,12 @@ export default function BowlingScorePage() {
         score calculator.
       </p>
 
-      <amp-ad
-        layout="fixed"
-        width="300"
-        height="250"
-        type="adsense"
-        data-ad-client="ca-pub-3093798853216759"
-        data-ad-slot="2426474228"
-      ></amp-ad>
 
+      <AdSenseWidget />
       <div style={{ paddingTop: "40px", paddingBottom: "40px" }}>
         <BowlingScoreCalculator></BowlingScoreCalculator>
       </div>
+      <AdSenseWidget />
       <h3>How to Use the Calculator?</h3>
       <p>
         Push the buttons for values for each frame throw by throw. The
