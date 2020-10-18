@@ -12,7 +12,6 @@ class MyDocument extends Document {
   //   });
   // }
 
-
   render() {
     return (
       <html lang="en">
@@ -21,17 +20,42 @@ class MyDocument extends Document {
 
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
+
+          {/* Global site tag (gtag.js) - Google Analytics */}
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-45614829-1"
+          ></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-45614829-1');
+        `,
+            }}
+          />
+
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
+
           <link rel="icon" href="/favicon.png"></link>
+
           <script
             data-ad-client="ca-pub-3093798853216759"
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
           ></script>
-          <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+
+          <script
+            async
+            custom-element="amp-ad"
+            src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"
+          ></script>
+        
         </Head>
         <body>
           <Main />

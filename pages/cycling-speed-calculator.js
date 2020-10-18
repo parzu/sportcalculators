@@ -2,7 +2,7 @@ import Head from "next/head";
 import SpeedCalculator from "../calculators/SpeedCalculator.js";
 import Layout from "../components/Layout.js";
 
-export default () => (
+const CyclingSpeedCalculatorPage = () => (
   <Layout>
     <Head>
       <title>Cycling Speed Calculator | SportCalculators</title>
@@ -43,3 +43,5 @@ export default () => (
     </p>
   </Layout>
 );
+
+export default CyclingSpeedCalculatorPage;
