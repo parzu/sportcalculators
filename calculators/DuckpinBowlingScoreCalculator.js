@@ -1,5 +1,5 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
+import Paper from '@mui/material/Paper';
 import DuckpinBowlingScoreButtons from '../components/DuckpinBowlingScoreButtons.js'
 import DuckpinBowlingFrameDisplay from '../components/DuckpinBowlingFrameDisplay.js'
 

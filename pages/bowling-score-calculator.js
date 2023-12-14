@@ -153,7 +153,7 @@ export default function BowlingScorePage() {
           }}
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/kLD9KOqWWVw"
+          src="https://www.youtube.com/embed/CACAmH4r1fw"
           frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen

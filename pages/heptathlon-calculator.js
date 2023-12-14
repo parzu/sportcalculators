@@ -1,27 +1,41 @@
 import HeptathlonCalculator from "../calculators/HeptathlonCalculator.js";
 import Layout from "../components/Layout.js";
 import Head from "next/head";
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import TableContainer from "@material-ui/core/TableContainer";
+import styled from '@emotion/styled';
+import { StyledEngineProvider } from "@mui/material/styles";
+import theme from "../src/theme";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TableContainer from "@mui/material/TableContainer";
 import AdSenseWidget from "../components/AdSenseWidget.js";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    marginTop: theme.spacing(1),
-    overflowX: "auto",
-    textAlign: "center",
-  },
-  table: {
-    minWidth: 300,
-    maxWidth: 600,
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     width: "100%",
+//     marginTop: theme.spacing(1),
+//     overflowX: "auto",
+//     textAlign: "center",
+//   },
+//   table: {
+//     minWidth: 300,
+//     maxWidth: 600,
+//   },
+// }));
+
+const RootContainer = styled.div`
+  width: 100%;
+  margin-top: ${({ theme }) => theme.spacing(1)};
+  overflow-x: auto;
+  text-align: left;
+`;
+
+const StyledTable = styled(Table)`
+  min-width: 300px;
+  max-width: 600px;
+`;
 
 function createData(event, a, b, c) {
   return { event, a, b, c };
@@ -38,10 +52,12 @@ const rows = [
 ];
 
 export default function HeptathlonCalcPage(props) {
-  const classes = useStyles();
+  //const classes = useStyles();
 
   return (
+    <StyledEngineProvider injectFirst>
     <Layout>
+      <RootContainer>
       <Head>
         <title>Heptathlon Calculator | SportCalculators</title>
         <meta
@@ -151,7 +167,7 @@ export default function HeptathlonCalcPage(props) {
         been the following:
       </p>
       <TableContainer>
-        <Table className={classes.table}>
+        <Table style={{ minWidth: "300px", maxWidth: "600px"}}>
           <TableHead>
             <TableRow>
               <TableCell>Event</TableCell>
@@ -178,6 +194,8 @@ export default function HeptathlonCalcPage(props) {
         All times used should be automatically measured. If manual timing is
         used 0.24s is added to 200m and 110m hurdles race.
       </p>
+      </RootContainer>
     </Layout>
+    </StyledEngineProvider>
   );
 }

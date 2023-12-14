@@ -10,21 +10,23 @@ Can be removed when the whole renewal is done.
 
 /*Top bar and left navigation for all pages*/
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Drawer from '@material-ui/core/Drawer';
-import Link from '@material-ui/core/Link';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import MenuIcon from '@material-ui/icons/Menu';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Drawer from '@mui/material/Drawer';
+import Link from '@mui/material/Link';
+import Hidden from '@mui/material/Hidden';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import MenuIcon from '@mui/icons-material/Menu';
 
-import ListSubheader from '@material-ui/core/ListSubheader';
-import Divider from '@material-ui/core/Divider';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import ListSubheader from '@mui/material/ListSubheader';
+import Divider from '@mui/material/Divider';
+import { useTheme } from '@mui/material/styles';
+
+import makeStyles from '@mui/styles/makeStyles';
 
 /*Component styles*/
 const drawerWidth = 240;
@@ -69,10 +71,10 @@ const useStyles = makeStyles(theme => ({
         
       },
   }));
-  
-  function ListItemLink(props) {
-    return <ListItem button component="a" {...props} />;
-  }
+
+function ListItemLink(props) {
+  return <ListItem button component="a" {...props} />;
+}
 
 
 /*Starts the created Navigation class which is exported
@@ -84,7 +86,7 @@ class Navigation extends React.Component {
      };
   }
   */
-  
+
 function Layout(props) {
     const {container} = props;
     const classes = useStyles();
@@ -205,7 +207,7 @@ const drawer = (
                         edge="start"
                         onClick={handleDrawerToggle}
                         className={classes.menuButton}
-                    >
+                        size="large">
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
@@ -232,7 +234,7 @@ const drawer = (
                     {drawer}
                 </Drawer>
                 </Hidden>
-                <Hidden smDown implementation="js">
+                <Hidden mdDown implementation="js">
                 <div className={classes.toolbar} />
                 <Drawer
                     classes={{
@@ -250,29 +252,29 @@ const drawer = (
             </div>
         </div>
     );
-};
+}
 
-    /*
-        <div className="navigation">
-            <style jsx global>{`
-                .appBarLink {
-                    text-decoration: none;
-                    color: white;
-                }
-            `}</style>
-                <Drawer  
-                    open={this.state.open} 
-                    docked={this.state.docked}
-                    onRequestChange={this.handleToggle.bind(this)}
-                >
-                        <AppBar 
-                            //showMenuIconButton={false} 
-                            //title={<a className="appBarLink" href="/">SportCalculators</a>}
-                            //style={{ backgroundColor: '#034f84' }}
-                            />
-                        
-                    </Drawer>
-            </div>*/
+/*
+    <div className="navigation">
+        <style jsx global>{`
+            .appBarLink {
+                text-decoration: none;
+                color: white;
+            }
+        `}</style>
+            <Drawer  
+                open={this.state.open} 
+                docked={this.state.docked}
+                onRequestChange={this.handleToggle.bind(this)}
+            >
+                    <AppBar 
+                        //showMenuIconButton={false} 
+                        //title={<a className="appBarLink" href="/">SportCalculators</a>}
+                        //style={{ backgroundColor: '#034f84' }}
+                        />
+                    
+                </Drawer>
+        </div>*/
 
 
 export default Layout;

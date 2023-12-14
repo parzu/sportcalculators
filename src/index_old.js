@@ -1,10 +1,10 @@
 /*import React from 'react';
 import ReactDOM from 'react-dom';
-// import Button from '@material-ui/core/Button';
+// import Button from '@mui/material/Button';
 import LandingLayout from '../components/LandingLayout.js';
 import CalculatorList from '../components/CalculatorList.js';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from '@material-ui/core/Card';
-// import FlatButton from '@material-ui/core/FlatButton';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from '@mui/material/Card';
+// import FlatButton from '@mui/material/FlatButton';
 
 
 const allCalculators = [

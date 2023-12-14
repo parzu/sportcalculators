@@ -1,23 +1,30 @@
 import Head from "next/head";
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import TableContainer from "@material-ui/core/TableContainer";
+import styled from '@emotion/styled';
+import { StyledEngineProvider } from "@mui/material/styles";
+import theme from "../src/theme";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TableContainer from "@mui/material/TableContainer";
 
 //Omat
 import Layout from "../components/Layout.js";
 import TriathlonCalculator from "../calculators/TriathlonCalculator.js";
 import AdSenseWidget from "../components/AdSenseWidget.js";
 
-const useStyles = makeStyles((theme) => ({
-  table: {
-    minWidth: 300,
-    maxWidth: 800,
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   table: {
+//     minWidth: 300,
+//     maxWidth: 800,
+//   },
+// }));
+
+const StyledTable = styled(Table)`
+  min-width: 300px;
+  max-width: 600px;
+`;
 
 function createData(event, swim, bike, run) {
   return { event, swim, bike, run };
@@ -46,7 +53,7 @@ const rows = [
 ];
 
 const ThriathlonCalculator = () => {
-  const classes = useStyles();
+ // const classes = useStyles();
   return (
     <Layout>
       <Head>
@@ -157,7 +164,7 @@ const ThriathlonCalculator = () => {
         distance combinations are the following:
       </p>
       <TableContainer>
-        <Table className={classes.table}>
+        <Table style={{ minWidth: "300px", maxWidth: "800px"}}>
           <TableHead>
             <TableRow>
               <TableCell>Competition Name</TableCell>

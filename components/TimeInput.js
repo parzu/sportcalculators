@@ -1,5 +1,5 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
+import TextField from "@mui/material/TextField";
 import * as time from "../services/timeService.js";
 
 class TimeInput extends React.Component {
@@ -57,6 +57,7 @@ class TimeInput extends React.Component {
           value={this.state[name]}
           onChange={this.handleTimeChange.bind(this)}
           style={{ verticalAlign: "inherit" }}
+          variant="standard"
         />
       </div>
     );

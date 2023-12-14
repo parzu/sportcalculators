@@ -1,8 +1,8 @@
 import React from "react";
 
-import Paper from "@material-ui/core/Paper";
-import TextField from "@material-ui/core/TextField";
-import ListSubheader from "@material-ui/core/ListSubheader";
+import Paper from "@mui/material/Paper";
+import TextField from "@mui/material/TextField";
+import ListSubheader from "@mui/material/ListSubheader";
 import CombinedEventRow from "../components/CombinedEventRow.js";
 import CombinedTotalRow from "../components/CombinedTotalRow.js";
 

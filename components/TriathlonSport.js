@@ -3,7 +3,7 @@ import {
   Grid,
   TextField,
   Hidden,
-} from "@material-ui/core";
+} from "@mui/material";
 
 //components
 import styles from "./triathlon.module.css";
@@ -162,11 +162,11 @@ function TriathlonSport(props) {
       <Grid
         container
         direction="row"
-        justify="space-evenly"
+        justifyContent="space-evenly"
         alignItems="bottom"
         spacing={1}
       >
-        <Hidden xsDown>
+        <Hidden smDown>
           <Grid item sm={1}></Grid>
         </Hidden>
         <Grid item item xs={1} sm={2} className={styles.verticalHeader}>
@@ -180,6 +180,7 @@ function TriathlonSport(props) {
               name="speed"
               label="speed"
               onChange={(e) => speedPaceChanged(e)}
+              variant="standard"
             />
           </Grid>
         )}
@@ -192,6 +193,7 @@ function TriathlonSport(props) {
                 name="paceMinutes"
                 label="mins"
                 onChange={(e) => speedPaceChanged(e)}
+                variant="standard"
               />
             </Grid>
             <Grid item xs={2} sm={1}>
@@ -201,6 +203,7 @@ function TriathlonSport(props) {
                 name="paceSeconds"
                 label="secs"
                 onChange={(e) => speedPaceChanged(e)}
+                variant="standard"
               />
             </Grid>
           </Fragment>
@@ -214,14 +217,14 @@ function TriathlonSport(props) {
           <div style={{ fontSize: "10px" }}>{paceUnit}</div>
         </Grid>
 
-        <Hidden xsDown>
+        <Hidden smDown>
           <Grid item sm={1}></Grid>
         </Hidden>
         <Grid item xs={5} sm={4}>
           <Grid
             container
             direction="row"
-            justify="space-evenly"
+            justifyContent="space-evenly"
             alignItems="bottom"
             spacing={1}
           >
@@ -232,6 +235,7 @@ function TriathlonSport(props) {
                 name="timeHours"
                 label="hrs"
                 onChange={(e) => timeChanged(e)}
+                variant="standard"
               />
             </Grid>
             <Grid item xs={4}>
@@ -241,6 +245,7 @@ function TriathlonSport(props) {
                 name="timeMinutes"
                 label="mins"
                 onChange={(e) => timeChanged(e)}
+                variant="standard"
               />
             </Grid>
             <Grid item xs={4}>
@@ -250,11 +255,12 @@ function TriathlonSport(props) {
                 name="timeSeconds"
                 label="secs"
                 onChange={(e) => timeChanged(e)}
+                variant="standard"
               />
             </Grid>
           </Grid>
         </Grid>
-        <Hidden xsDown>
+        <Hidden smDown>
           <Grid item sm={1}></Grid>
         </Hidden>
       </Grid>

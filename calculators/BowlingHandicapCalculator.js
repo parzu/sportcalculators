@@ -1,7 +1,7 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
+import Paper from '@mui/material/Paper';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
 
 class BowlingHandicapCalculator extends React.Component {
   constructor(props) {
@@ -84,6 +84,7 @@ class BowlingHandicapCalculator extends React.Component {
               type='number'
               value={this.state.basis}
               onChange={this.handleChange.bind(this)}
+              variant="standard"
             />
           </div>
           <div className='calculatorChild'>
@@ -94,6 +95,7 @@ class BowlingHandicapCalculator extends React.Component {
               type='number'
               value={this.state.factor}
               onChange={this.handleChange.bind(this)}
+              variant="standard"
               InputProps={{
                 endAdornment: <InputAdornment position="end">%</InputAdornment>,
               }}
@@ -107,6 +109,7 @@ class BowlingHandicapCalculator extends React.Component {
               type='number'
               value={this.state.average}
               onChange={this.handleChange.bind(this)}
+              variant="standard"
             />
           </div>
           <div className='calculatorChild'>
@@ -117,6 +120,7 @@ class BowlingHandicapCalculator extends React.Component {
               type='number'
               value={this.state.score}
               onChange={this.handleChange.bind(this)}
+              variant="standard"
             />
           </div>
           <div className='calculatorChild result'>

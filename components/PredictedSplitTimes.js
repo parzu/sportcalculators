@@ -1,6 +1,6 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import ListSubheader from '@material-ui/core/ListSubheader';
+import Paper from '@mui/material/Paper';
+import ListSubheader from '@mui/material/ListSubheader';
 import {formatTime} from '../services/timeService.js'
 
 class SplitRow extends React.Component {

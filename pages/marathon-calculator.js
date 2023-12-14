@@ -33,7 +33,7 @@ const MarathonCalculatorPage = () => (
     <p>
       Just enter your marathon goal time and press calculate. Split times for
       various shorter distances will be shown. Try out the world record
-      (2:01:39,{" "}
+      (2:00:35,{" "}
       <a
         href="https://en.wikipedia.org/wiki/Marathon_world_record_progression"
         target="_blank"

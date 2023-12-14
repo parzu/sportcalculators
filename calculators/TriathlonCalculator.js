@@ -7,7 +7,7 @@ import {
   RadioGroup,
   Radio,
   FormControlLabel,
-} from "@material-ui/core";
+} from "@mui/material";
 
 //Components
 import TriathlonSport from "../components/TriathlonSport.js";
@@ -85,7 +85,7 @@ class TriathlonCalculator extends React.Component {
             <Grid
               container
               direction="row"
-              justify="center"
+              justifyContent="center"
               alignItems="flex-start"
               spacing={2}
             >
@@ -124,7 +124,7 @@ class TriathlonCalculator extends React.Component {
           <Grid
             container
             direction="row"
-            justify="space-evenly"
+            justifyContent="space-evenly"
             alignItems="flex-end"
             spacing={2}
             className={styles.pacesTimes}
@@ -148,7 +148,7 @@ class TriathlonCalculator extends React.Component {
               />
             </Grid>
 
-            <Hidden xsDown>
+            <Hidden smDown>
             <Grid item sm={1}></Grid>
             </Hidden>
             <Grid item xs={1} sm={2} className={styles.verticalHeader}>
@@ -164,7 +164,7 @@ class TriathlonCalculator extends React.Component {
                 onTimeChange={this.onTimeChange.bind(this)}
               />
             </Grid>
-            <Hidden xsDown>
+            <Hidden smDown>
             <Grid item sm={1}></Grid>
             </Hidden>
 
@@ -177,7 +177,7 @@ class TriathlonCalculator extends React.Component {
               />
             </Grid>
 
-            <Hidden xsDown>
+            <Hidden smDown>
             <Grid item sm={1}></Grid>
             </Hidden>
             <Grid item xs={1} sm={2} className={styles.verticalHeader}>
@@ -193,7 +193,7 @@ class TriathlonCalculator extends React.Component {
                 onTimeChange={this.onTimeChange.bind(this)}
               />
             </Grid>
-            <Hidden xsDown>
+            <Hidden smDown>
             <Grid item sm={1}></Grid>
             </Hidden>
 

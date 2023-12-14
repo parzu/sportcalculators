@@ -6,7 +6,7 @@ import {
   FormControlLabel,
   TextField,
   InputAdornment,
-} from "@material-ui/core";
+} from "@mui/material";
 
 //comopnents
 import styles from "./triathlon.module.css";
@@ -127,7 +127,7 @@ function TriathlonDistances(props) {
     <Grid
       container
       direction="row"
-      justify="space-evenly"
+      justifyContent="space-evenly"
       alignItems="baseline"
       spacing={2}
     >
@@ -141,7 +141,7 @@ function TriathlonDistances(props) {
           <Grid
             container
             direction="row"
-            justify="space-evenly"
+            justifyContent="space-evenly"
             alignItems="flex-start"
             spacing={2}
           >
@@ -195,6 +195,7 @@ function TriathlonDistances(props) {
           type="number"
           value={swimDistance}
           onChange={swimChanged}
+          variant="standard"
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -220,6 +221,7 @@ function TriathlonDistances(props) {
           type="number"
           value={bikeDistance}
           onChange={bikeChanged}
+          variant="standard"
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -245,6 +247,7 @@ function TriathlonDistances(props) {
           type="number"
           value={runDistance}
           onChange={runChanged}
+          variant="standard"
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">

@@ -1,9 +1,9 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Grid from "@material-ui/core/Grid";
+import TextField from "@mui/material/TextField";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Grid from "@mui/material/Grid";
 
 //Services
 import { distanceToMeters } from "../services/distanceService.js";
@@ -30,7 +30,7 @@ export default function DistanceInput(props) {
   }
 
   return (
-    <Grid container direction="row" justify="center" alignItems="center">
+    <Grid container direction="row" justifyContent="center" alignItems="center">
       <Grid item xs={12} sm={6}>
         <TextField
           id="distance"
@@ -39,6 +39,7 @@ export default function DistanceInput(props) {
           type="number"
           value={distance}
           onChange={handleDistanceChange}
+          variant="standard"
         />
       </Grid>
       <Grid item xs={12} sm={6}>
@@ -48,7 +49,7 @@ export default function DistanceInput(props) {
           value={distanceUnit}
           onChange={handleUnitChange}
         >
-          <Grid container direction="row" justify="center" alignItems="center">
+          <Grid container direction="row" justifyContent="center" alignItems="center">
             <Grid item xs={3}>
               <FormControlLabel
                 value={consts.distanceTypes.METER}
