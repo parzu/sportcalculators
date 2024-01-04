@@ -5,7 +5,7 @@ import { CacheProvider } from "@emotion/react";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import createEmotionCache from '../src/createEmotionCache';
 import theme from "../src/theme";
-import CookieConsent from "react-cookie-consent";
+//import CookieConsent from "react-cookie-consent";
 
 //Create Emotion cache
 const clientSideEmotionCache = createEmotionCache();
@@ -32,7 +32,7 @@ const SportCalculators = (props) => {
           />
           <title>SportCalculators</title>
         </Head>
-        <CookieConsent
+        {/* <CookieConsent
           location="bottom"
           buttonText="Got it!"
           cookieName="sportcalculators"
@@ -45,7 +45,7 @@ const SportCalculators = (props) => {
           <a style={{ color: "#00b0ff" }} href="/privacy-policy">
             More info here
           </a>
-        </CookieConsent>
+        </CookieConsent> */}
 
 
         <ThemeProvider theme={theme}>
