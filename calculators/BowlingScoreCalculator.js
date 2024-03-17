@@ -7,192 +7,164 @@ import BowlingFrameDisplay from '../components/BowlingFrameDisplay.js'
 class BowlingScoreCalculator extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = this.getInitialState();
+  }
+
+  // Resets the game state to its initial values
+  getInitialState() {
+    return {
       frame: 1,
       throw: 1,
       lastThrow: -1,
       totalResult: 0,
       running: true,
-      throws: [
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['','',''],
-              ],
-      results: ['','','','','','','','','','']
+      throws: Array.from({ length: 10 }, () => ['', '']), // Creates a new array instance for each frame
+      results: Array(10).fill('')
     };
   }
 
-  handleClick = function (value) {
+
+  // Handles click events for all scoring buttons and the new game button
+  handleClick = (value) => {
     if (value == 'new') {
-      this.newGame();
+      this.setState(this.getInitialState());
       return;
     }
-    let tempThrows = this.state.throws.slice();
-    tempThrows[this.state.frame-1][this.state.throw-1] = value;
-    this.setState({throws: tempThrows});
-    
-    if (this.state.frame < 10 && value == 'x') {
+
+    // Update the throws based on the current frame and throw
+    const tempThrows = this.state.throws.slice();
+    const currentFrameIndex = this.state.frame - 1;
+    const currentThrowIndex = this.state.throw - 1;
+    tempThrows[currentFrameIndex][currentThrowIndex] = value;
+    this.setState({ throws: tempThrows, lastThrow: value });;
+
+    // Logic to determine if we move to the next throw, the next frame, or handle special 10th frame cases
+    if ((this.state.frame < 10 && value === 'x') || this.state.throw === 3) {
+      // Move to the next frame immediately on a strike, except in the 10th frame. Also if it's the third throw already.
       this.nextFrame();
-    } else if (this.state.throw == 1) {
-      this.setState({throw: 2});
-    } else if (this.state.frame == 10 && this.state.throw == 2 && (value == '/' || this.state.lastThrow == 'x')) {
-      this.setState({throw: 3});
-    } else {
+    } else if (this.state.throw === 1 || (this.state.frame === 10 && (value === '/' || this.state.lastThrow === 'x'))) {
+      // In the 10th frame, allow a third throw if the first throw is a strike or the second throw is a spare
+      this.setState({ throw: this.state.throw + 1 });
+    }
+    else {
+      // Otherwise, move to the next frame
       this.nextFrame();
     }
-    this.setState({lastThrow: value});
   }
+
 
   nextFrame() {
-    this.setState({throw: 1}, this.calculateResults);
-    
+    this.setState({ throw: 1 }, this.calculateResults);
   }
 
-  newGame() {
-    this.setState({
-      frame: 1,
-      throw: 1,
-      lastThrow: -1,
-      totalResult: 0,
-      running: true,
-      throws: [
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['',''],
-              ['','',''],
-              ],
-      results: ['','','','','','','','','','']
-    });
-  }
 
+  // Calculates the results for each frame and updates the total score
   calculateResults() {
-    let res = this.state.results;
+    let newResults = [...this.state.results]; //creates a copy of the this.state.results
     let totalRes = 0;
-    for (var i = 0; i <= this.state.frame-1; i++) {
-      let sum = 0;
-      if (i == 0) {
-        sum = 0;
-      } else {
-        sum = parseInt(res[i-1]);
-      }
-      if (i == 9) {
-        res[9] = sum + this.calculateFrame10();
-      } else if (this.isStrike(i)) {
-        res[i] = sum + parseInt(this.calculateStrike(i));
-      } else if (this.isSpare(i)) {
-        res[i] = sum + parseInt(this.calculateSpare(i));
-      } else {
-        res[i] = sum + this.calculateOpenFrame(i);
-      }
-      totalRes = res[i];
-    }
-    this.setState({results: res});
-    this.setState({totalResult: totalRes});
-    this.setState({frame: this.state.frame+1}, this.checkGameEnd);
 
+    for (let i = 0; i < this.state.frame; i++) {
+      if (this.isStrike(i) && i < 9) { // Strike calculation for frames 1-9
+        newResults[i] = this.calculateStrike(i);
+      } else if (this.isSpare(i)) { // Spare calculation for all frames
+        newResults[i] = this.calculateSpare(i);
+      } else { // Open frame calculation
+        newResults[i] = this.calculateOpenFrame(i);
+      }
+      // Calculate cumulative score
+      if (i === 9) newResults[i] = 0;
+      if (i > 0) newResults[i] += newResults[i - 1];
+      totalRes = newResults[i];
+    }
+
+    if (this.state.frame === 10) {
+      // Special handling for the 10th frame
+      newResults[9] += this.calculateFrame10();
+      totalRes = newResults[9];
+    }
+
+    this.setState({ results: newResults, totalResult: totalRes }, this.checkGameEnd);
   }
 
+  // Checks if the game has ended
   checkGameEnd() {
-    if (this.state.frame == 11) {
-      this.setState({running: false});
+    if (this.state.frame >= 10) {
+      this.setState({ running: false });
+    } else {
+      // Move to the next frame only if the game hasn't ended
+      this.setState((prevState) => ({ frame: prevState.frame + 1 }));
     }
   }
 
+
+
+
+
+  // Handles calculation logic for the 10th frame, accounting for possible third throw
   calculateFrame10() {
-    let sum = 0;
-    if (this.isStrike(9)) {
-      sum = 10;
-      if (this.isStrike(9,1)) {
-        sum = 20;
-        if (this.isStrike(9,2)) {
-          sum = 30;
-        } else {
-          sum = 20 + this.state.throws[9][2];
-        }
-      } else if (this.isSpare(9,2)) {
-        sum = 20;
-      } else {
-        sum = sum + parseInt(this.state.throws[9][1]) + parseInt(this.state.throws[9][2]);
-      }
-    } else if (this.isSpare(9,2)) {
-        sum = 20;
-    } else if (this.isSpare(9)) {
-      if (this.isStrike(9,2)) {
-        sum = 20;
-      } else {
-        sum = 10 + this.state.throws[9][2];
-      }
-    } else {
-        sum = this.calculateOpenFrame(9);
-    } 
-    return sum;
+    const frameThrows = this.state.throws[9];
+
+    const firstThrow = frameThrows[0] === 'x' ? 10 : parseInt(frameThrows[0] || 0);
+    const secondThrow = frameThrows[1] === 'x' ? 10 : (frameThrows[1] === '/' ? 10 - firstThrow : parseInt(frameThrows[1] || 0));
+    const thirdThrow = frameThrows[2] === 'x' ? 10 : (frameThrows[2] === '/' ? 10 - (secondThrow === 10 ? 0 : secondThrow) : parseInt(frameThrows[2] || 0));
+
+
+    return firstThrow + secondThrow + thirdThrow;
   }
 
-  calculateStrike(frame) {
-    let result = 0;
-    if (this.state.throws[frame+1][0] == '') {
-      result = 10;
-    } else if (this.isStrike(frame+1)) {
-      if (frame == 8) {
-        if (this.isStrike(frame+1, 1)) {
-          result = 30;
-        } else {
-          result = 20 + this.state.throws[frame+1][1];
-        }
-      } else if (this.isStrike(frame+2)) {
-        result = 30;
-      } else {
-        result = this.state.throws[frame+2][0] + 20;
+
+
+
+
+
+  // Calculates score for a strike, including bonus from subsequent throws
+  calculateStrike(frameIndex) {
+    const nextFrame = this.state.throws[frameIndex + 1] || [];
+    const nextNextFrame = this.state.throws[frameIndex + 2] || [];
+
+    let score = 10; // Base score for a strike
+    if (nextFrame[0] === 'x') {
+      score += 10; // Add 10 for another strike
+      if (frameIndex === 8) { // If it's the 9th frame, look at the 10th frame's second throw
+        score += (nextFrame[1] === 'x' ? 10 : parseInt(nextFrame[1] || 0));
+      } else { // Otherwise, check the next frame's first throw
+        score += (nextNextFrame[0] === 'x' ? 10 : parseInt(nextNextFrame[0] || 0));
       }
-    } else if (this.isSpare(frame+1)) {
-      result = 20;
     } else {
-      result = 10 + this.calculateOpenFrame(frame+1);
+      score += parseInt(nextFrame[0] || 0) + (nextFrame[1] === '/' ? 10 - parseInt(nextFrame[0] || 0) : parseInt(nextFrame[1] || 0));
     }
-    return result;
+
+    return score;
   }
 
+
+
+
+  // Calculates score for a spare, including bonus from the next throw
   calculateSpare(frame) {
-    let result = 0;
-    if (this.state.throws[frame+1][0] == '') {
-      result = 10;
-    } else if (this.isStrike(frame+1)) {
-      result = 20
-    } else {
-      result = 10 + this.state.throws[frame+1][0];
-    }
-    return result;
+    const nextFrame = this.state.throws[frame + 1] || [];
+    const bonus = nextFrame[0] === 'x' ? 10 : parseInt(nextFrame[0] || 0);
+    return 10 + bonus; // Base score for a spare + bonus
   }
 
-  calculateOpenFrame(frameIndex) {
-    return (parseInt(this.state.throws[frameIndex][0]) + parseInt(this.state.throws[frameIndex][1]));
+
+
+  // Calculates score for an open frame
+  calculateOpenFrame(frame) {
+    const frameThrows = this.state.throws[frame];
+    return parseInt(frameThrows[0] || 0) + parseInt(frameThrows[1] || 0);
   }
 
+
+
+  // Checks if the frame was a strike
   isStrike(frameIndex, throwIndex = 0) {
-    if (this.state.throws[frameIndex][throwIndex] == 'x') {
-      return true;
-    } 
-    return false;
+    return this.state.throws[frameIndex][throwIndex] === 'x';
   }
 
+  // Checks if the frame was a spare
   isSpare(frameIndex, throwIndex = 1) {
-    if (this.state.throws[frameIndex][throwIndex] == '/') {
-      return true;
-    } 
-    return false;
+    return this.state.throws[frameIndex][throwIndex] === '/';
   }
 
   render() {
@@ -251,34 +223,34 @@ class BowlingScoreCalculator extends React.Component {
         <Paper style={paperStyle} elevation={3}>
           <div className="frameParent">
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='1' throws={this.state.throws[0]} result={this.state.results[0]}/>
+              <BowlingFrameDisplay frameNum='1' throws={this.state.throws[0]} result={this.state.results[0]} />
             </div>
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='2' throws={this.state.throws[1]} result={this.state.results[1]}/>
+              <BowlingFrameDisplay frameNum='2' throws={this.state.throws[1]} result={this.state.results[1]} />
             </div>
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='3' throws={this.state.throws[2]} result={this.state.results[2]}/>
+              <BowlingFrameDisplay frameNum='3' throws={this.state.throws[2]} result={this.state.results[2]} />
             </div>
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='4' throws={this.state.throws[3]} result={this.state.results[3]}/>
+              <BowlingFrameDisplay frameNum='4' throws={this.state.throws[3]} result={this.state.results[3]} />
             </div>
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='5' throws={this.state.throws[4]} result={this.state.results[4]}/>
+              <BowlingFrameDisplay frameNum='5' throws={this.state.throws[4]} result={this.state.results[4]} />
             </div>
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='6' throws={this.state.throws[5]} result={this.state.results[5]}/>
+              <BowlingFrameDisplay frameNum='6' throws={this.state.throws[5]} result={this.state.results[5]} />
             </div>
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='7' throws={this.state.throws[6]} result={this.state.results[6]}/>
+              <BowlingFrameDisplay frameNum='7' throws={this.state.throws[6]} result={this.state.results[6]} />
             </div>
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='8' throws={this.state.throws[7]} result={this.state.results[7]}/>
+              <BowlingFrameDisplay frameNum='8' throws={this.state.throws[7]} result={this.state.results[7]} />
             </div>
             <div className="frameChild">
-              <BowlingFrameDisplay frameNum='9' throws={this.state.throws[8]} result={this.state.results[8]}/>
+              <BowlingFrameDisplay frameNum='9' throws={this.state.throws[8]} result={this.state.results[8]} />
             </div>
             <div className="frameChild frame10">
-              <BowlingFrameDisplay frameNum='10' throws={this.state.throws[9]} result={this.state.results[9]}/>
+              <BowlingFrameDisplay frameNum='10' throws={this.state.throws[9]} result={this.state.results[9]} />
             </div>
             <div className="frameChild result">
               <div>{this.state.totalResult}</div>
@@ -286,7 +258,7 @@ class BowlingScoreCalculator extends React.Component {
           </div>
           <BowlingScoreButtons running={this.state.running} throwNum={this.state.throw} lastThrow={this.state.lastThrow} frameNum={this.state.frame} onClick={this.handleClick.bind(this)} />
         </Paper>
-        
+
       </div>
     );
   }
