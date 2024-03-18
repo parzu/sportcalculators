@@ -81,6 +81,11 @@ export const calculators = [
                 href: "triathlon-calculator",
                 description: "Lorem Ipsum",        
             },
+            {
+                title: "BMI Calculator",
+                href: "bmi-calculator",
+                description: "Lorem Ipsum",        
+            },
         ]
     },
 
