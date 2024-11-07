@@ -126,6 +126,9 @@ const Privacy = () => (
       Google ad and content network privacy policy.
     </p>
     <p>
+      4.2. REVOCATION OF CONSENT Consent revocation is the process by which users in the EEA (European Economic Area) and the UK who consented to personalized ads can revoke that consent. You can withdraw your consent at any time. <a href="javascript:googlefc.callbackQueue.push(googlefc.showRevocationMessage)">Click here to revoke your choice</a>.
+    </p>
+    <p>
       5. CHILDREN We do not knowingly collect personal information from children
       under the age of 13. If we learn that we have personal information on a
       child under the age of 13, we will delete that information from our
@@ -140,7 +143,7 @@ const Privacy = () => (
       decide to change our privacy policy, we will update the Privacy Policy
       modification date below.
     </p>
-    <p>This policy was last modified on 2014-02-25</p>
+    <p>This policy was created on 2014-02-25 and last modified on 2024-08-04</p>
     <p>
       7. CONTACTING US If there are any questions regarding this privacy policy
       you may contact us using the information below.

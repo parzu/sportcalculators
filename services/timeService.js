@@ -46,12 +46,14 @@ export function formatTime(secs, format) {
 }
 
 export function formatTimeObject(secs) {
+  secs = Math.round(secs);
   let hours = parseInt(secs / 3600);
   secs = secs - hours * 3600;
   let mins = parseInt(secs / 60);
   let sec = parseInt(secs - mins * 60);
 
   let ms = parseInt((secs - sec) * 100);
+
 
   
   if (mins < 10 && mins !== 0) {
@@ -65,6 +67,14 @@ export function formatTimeObject(secs) {
   } else {
     ms = ms.toFixed(2);
   }
+
+  if (mins === 0) {
+    mins = "00";
+  }
+  if (sec === 0) {
+    sec = "00";
+  }
+
 
   let result = { hours: hours, minutes: mins, seconds: sec };
   return result;

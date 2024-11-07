@@ -33,6 +33,11 @@ export const calculators = [
                 title: "Cycling Speed Calculator",
                 href: "cycling-speed-calculator",
                 description: "Lorem Ipsum",        
+            },
+            {
+                title: "Cycling Cadence Calculator",
+                href: "cycling-cadence-calculator",
+                description: "Lorem Ipsum",        
             }
         ]
     },
@@ -59,6 +64,11 @@ export const calculators = [
                 title: "Running Speed Converter",
                 href: "running-speed-converter",
                 description: "Lorem Ipsum",        
+            },
+            {
+                title: "Running Pace Planner",
+                href: "running-pace-planner",
+                description: "Lorem Ipsum",
             },
         ]
     },
