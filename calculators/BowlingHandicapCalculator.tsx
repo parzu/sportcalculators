@@ -55,7 +55,7 @@ class BowlingHandicapCalculator extends React.Component<{}, State> {
 
     return (
       // Centered card container — replaces MUI Paper + outer flex justify-center
-      <div className="mx-auto max-w-lg min-[500px]:rounded-lg border border-border bg-card p-5 min-[500px]:shadow-sm">
+      <div className="-mx-4 max-w-lg min-[500px]:mx-auto min-[500px]:rounded-lg border border-border bg-card p-5 min-[500px]:shadow-sm">
         <div className="grid grid-cols-2 gap-4">
           {field('basis-score', 'basis',   'Basis Score',  this.state.basis)}
           {field('factor',      'factor',  'Factor',       this.state.factor, '%')}

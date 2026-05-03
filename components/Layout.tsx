@@ -29,11 +29,10 @@ function SidebarNav({ onLinkClick }: { onLinkClick?: () => void }) {
   return (
     // h-full + overflow-y-auto: sidebar scrolls independently from the main content
     <div className="flex h-full flex-col overflow-y-auto">
-      {/* Sidebar header — equivalent of the old Toolbar at the top of the MUI Drawer */}
-      <div className="flex h-16 items-center px-4">
-        <span className="text-sm font-bold tracking-widest text-foreground">MENU</span>
+      {/* Sidebar header — matches the AppBar height and style */}
+      <div className="flex h-16 shrink-0 items-center bg-primary px-4 shadow-sm">
+        <span className="text-sm font-bold tracking-widest text-primary-foreground">MENU</span>
       </div>
-      <Separator />
 
       {/* Calculator groups — each sport is a section with a bold header + child links */}
       <nav className="flex-1 px-2 py-4">
@@ -103,7 +102,7 @@ export default function Layout({ children }: Props) {
 
       {/* ─── Main content area ────────────────────────────────────────────── */}
       {/* md:ml-60 offsets the content right by the sidebar width on desktop */}
-      <div className="flex flex-1 flex-col md:ml-60">
+      <div className="flex min-w-0 flex-1 flex-col md:ml-60">
 
         {/* ─── AppBar ───────────────────────────────────────────────────────
             Replaces MUI AppBar position="fixed".
@@ -144,7 +143,7 @@ export default function Layout({ children }: Props) {
         </header>
 
         {/* Page content — padding matches old MUI Container + Toolbar spacer */}
-        <main className="flex-1 py-6 min-[500px]:px-4 md:px-8">
+        <main className="flex-1 overflow-x-clip px-4 py-6 md:px-8">
           {children}
         </main>
       </div>

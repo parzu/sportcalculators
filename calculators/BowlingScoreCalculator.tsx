@@ -103,7 +103,7 @@ class BowlingScoreCalculator extends React.Component<{}, State> {
     const { throws, results, totalResult } = this.state;
     return (
       // Centered card — replaces MUI Paper + outer flex justify-center
-      <div className="mx-auto max-w-2xl min-[500px]:rounded-lg border border-border bg-card p-4 min-[500px]:shadow-sm">
+      <div className="-mx-4 max-w-2xl min-[500px]:mx-auto min-[500px]:rounded-lg border border-border bg-card p-4 min-[500px]:shadow-sm">
         {/* Frame display row: 9 normal frames (8% each) + frame 10 (12%) + result (18%) */}
         <div className="flex w-full items-end text-xs min-[500px]:text-base leading-[35px]">
           {[...Array(9)].map((_, i) => (

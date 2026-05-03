@@ -20,7 +20,7 @@ export default function MarathonCalculator() {
   const [time, setTime] = useState(0);
 
   return (
-    <div className="mx-auto max-w-2xl min-[500px]:rounded-lg border border-border bg-card p-5 min-[500px]:shadow-sm">
+    <div className="-mx-4 max-w-2xl min-[500px]:mx-auto min-[500px]:rounded-lg border border-border bg-card p-5 min-[500px]:shadow-sm">
       <SectionHeader>Marathon Goal Time</SectionHeader>
       <div className="mb-5">
         <TimeInput onTimeChange={(_id, totalSecs) => setTime(totalSecs)} />

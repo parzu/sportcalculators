@@ -116,7 +116,7 @@ class DuckpinBowlingScoreCalculator extends React.Component<{}, State> {
   render() {
     const { throws, results, totalResult } = this.state;
     return (
-      <div className="mx-auto max-w-2xl min-[500px]:rounded-lg border border-border bg-card p-4 min-[500px]:shadow-sm">
+      <div className="-mx-4 max-w-2xl min-[500px]:mx-auto min-[500px]:rounded-lg border border-border bg-card p-4 min-[500px]:shadow-sm">
         <div className="flex w-full items-end text-xs min-[500px]:text-base leading-[35px]">
           {[...Array(10)].map((_, i) => (
             <div key={i} style={{ width: '8%' }}>

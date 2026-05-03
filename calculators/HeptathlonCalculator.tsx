@@ -75,7 +75,7 @@ class HeptathlonCalculator extends React.Component<{}, State> {
     );
 
     return (
-      <div className="mx-auto max-w-2xl min-[500px]:rounded-lg border border-border bg-card px-5 pb-0 pt-4 min-[500px]:shadow-sm">
+      <div className="-mx-4 max-w-2xl min-[500px]:mx-auto min-[500px]:rounded-lg border border-border bg-card px-5 pb-0 pt-4 min-[500px]:shadow-sm">
         {/* Day 1 events (4) */}
         {row(0, true)} {row(1, false)} {row(2, false)} {row(3, true)}
         <CombinedTotalRow text="1st day points" points={h.firstDayPoints} />

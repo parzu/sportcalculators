@@ -144,7 +144,7 @@ export default function RunningPacePlanner() {
   );
 
   return (
-    <div className="mx-auto max-w-2xl min-[500px]:rounded-lg border border-border bg-card p-5 min-[500px]:shadow-sm">
+    <div className="-mx-4 max-w-2xl min-[500px]:mx-auto min-[500px]:rounded-lg border border-border bg-card p-5 min-[500px]:shadow-sm">
       <SectionHeader>Race Distance</SectionHeader>
       <RunningDistanceInput onDistanceChange={(d) => setRaceData((p) => ({ ...p, distance: d }))} />
 

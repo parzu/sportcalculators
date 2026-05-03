@@ -33,7 +33,7 @@ export default function SpeedConverter() {
   }, [pace, paceUnit]);
 
   return (
-    <div className="mx-auto max-w-lg min-[500px]:rounded-lg border border-border bg-card p-5 min-[500px]:shadow-sm">
+    <div className="-mx-4 max-w-lg min-[500px]:mx-auto min-[500px]:rounded-lg border border-border bg-card p-5 min-[500px]:shadow-sm">
       <SectionHeader>Pace</SectionHeader>
 
       <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
