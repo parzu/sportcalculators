@@ -50,6 +50,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           strategy="afterInteractive"
         />
 
+        {/* Restore page interactivity after AdSense vignette/interstitial ads are dismissed.
+            These ads can leave pointer-events or overflow locked on the body on mobile. */}
+        <Script id="ad-restore" strategy="afterInteractive">{`
+          function restorePage() {
+            document.body.style.removeProperty('pointer-events');
+            document.body.style.removeProperty('overflow');
+            document.body.style.removeProperty('position');
+            document.body.style.removeProperty('top');
+          }
+          window.addEventListener('focus', restorePage);
+          document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) restorePage();
+          });
+        `}</Script>
+
         {children}
       </body>
     </html>

@@ -108,7 +108,7 @@ export default function Layout({ children }: Props) {
             Replaces MUI AppBar position="fixed".
             sticky top-0 z-40: stays at top when scrolling (simpler than fixed + offset)
             bg-primary text-primary-foreground: indigo background, white text */}
-        <header className="sticky top-0 z-40 flex h-16 items-center gap-3 bg-primary px-4 text-primary-foreground shadow-sm">
+        <header className="fixed inset-x-0 top-0 z-40 flex h-16 items-center gap-3 bg-primary px-4 text-primary-foreground shadow-sm md:left-60">
 
           {/* Mobile hamburger — visible only on mobile (md:hidden) */}
           {/* Replaces MUI IconButton + MenuIcon */}
@@ -143,7 +143,7 @@ export default function Layout({ children }: Props) {
         </header>
 
         {/* Page content — padding matches old MUI Container + Toolbar spacer */}
-        <main className="flex-1 overflow-x-clip px-4 py-6 md:px-8">
+        <main className="mt-16 flex-1 overflow-x-clip px-4 py-6 md:px-8">
           {children}
         </main>
       </div>
