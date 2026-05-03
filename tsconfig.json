@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    // These tell TypeScript which built-in browser and JS APIs are available
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    // allowJs: true means .js files are still accepted alongside .ts files.
+    // This lets you migrate one file at a time without breaking everything.
+    "allowJs": true,
+    // skipLibCheck skips type-checking inside node_modules — they can have their own quirks
+    "skipLibCheck": true,
+    // strict: false keeps TypeScript helpful without being overly strict.
+    // For example, 'null' checks won't break everything while you're learning.
+    // You can enable this later once you're comfortable.
+    "strict": false,
+    // noEmit: TypeScript checks types but doesn't produce output files.
+    // Next.js does the actual compilation.
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    // bundler moduleResolution lets you import .ts files using .js extensions,
+    // which is the modern approach and matches how bundlers (Vite, webpack) work.
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    // isolatedModules: each file can be compiled independently (required by Next.js)
+    "isolatedModules": true,
+    // jsx: "preserve" means TypeScript leaves JSX as-is for Next.js to handle
+    "jsx": "react-jsx",
+    "incremental": true,
+    // The Next.js TypeScript plugin provides editor autocomplete for Next.js-specific features
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    // @/* is a path alias — lets you write 'import from @/components/...' instead of '../../../components'
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
+    "target": "ES2017"
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
